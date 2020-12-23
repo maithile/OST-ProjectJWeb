@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $table = 'users';
+    public $timestamp= 'false';
+
+
+
+   public function lesson(){
+       return $this->belongstoMany('App\Lesson', 'manages', 'users-id', 'lessons_id');
+   }
+
+
+  
+
 }

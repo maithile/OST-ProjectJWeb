@@ -2,6 +2,14 @@
 
 @section('content')
 
-<h1>lay du lieu database ra dada</h1>
+@foreach ($lesson as $value )
+
+    <h1> {{$value->title}} </h1>
+
+@endforeach
+
     
 @endsection
+
+
+        

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Lesson;
 
 class LessonController extends Controller
 {
@@ -13,9 +14,8 @@ class LessonController extends Controller
 
     public function basic(){
 
-        
-     // do du lieu ra day
-        return view('pages.basic'); // ket noi controller voi view
+          $lesson = Lesson::all();
+        return view('pages.basic', compact('lesson')); // ket noi controller voi view
     }
 
     
