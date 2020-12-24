@@ -4,12 +4,12 @@
 
 @foreach ($lesson as $value)
 
-{{ $value->script }} 
+{{ $value->script}} 
 
-
-<audio controls>
+{{--  <audio controls>
+    
     <source src="/storage/images/{{$value->script}}">
-  </audio>
+  </audio>--}} 
 
 @endforeach
 

@@ -16,7 +16,10 @@ class LessonController extends Controller
 
     public function basic(){
 
-            $lesson = Lesson::all(); 
+            $lesson = Lesson::where('level-id','=', 1)->get();  
+
+            //$jobtype = Jobtype::with('jobdetails')->where('id', $id)->get();
+
             //$questions = $lesson->questions; // thu lay level name // xem lai cho này
        
             
