@@ -5,7 +5,12 @@
 @foreach ($lesson as $value)
 
 {{ $value->script }} 
-<img src="/storage/images/{{$value->script }}"/>
+
+
+<audio controls>
+    <source src="/storage/images/{{$value->script}}">
+  </audio>
+
 @endforeach
 
 @endsection
