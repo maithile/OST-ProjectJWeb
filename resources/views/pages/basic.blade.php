@@ -2,13 +2,12 @@
 
 @section('content')
 
-@foreach ($lesson as $value )
+@foreach ($lesson as $value)
 
-    <h1> {{$value->title}} </h1>
-
+{{ $value->script }} 
+<img src="/storage/images/{{$value->script }}"/>
 @endforeach
 
-    
 @endsection
 
 

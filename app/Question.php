@@ -11,11 +11,4 @@ protected $table = 'questions';
 public $timestamp = false;
 
 
-public function lessons(){
-  
-  return $this->belongsto('App\Lesson', 'foreign_key');
-
-}
-
-
 }

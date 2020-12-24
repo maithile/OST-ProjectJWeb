@@ -1,19 +1,20 @@
 <?php
 
 namespace App;
-
+use App\Level;
+use App\Question;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
     // 1-n
-    protected $table = 'lessons'; // sd bang vi ten bang khac
+    //protected $table = 'lessons'; // sd bang vi ten bang khac
     public $timestamp = false;
 
 
     public function questions(){
       
-        return $this->hasMany('App\Question','foreign_key');
+        return $this->hasMany(Question::class, 'lesson-id'); // trả về kết quả của bảng question.
     }
 
     public function vocabulary(){
@@ -24,6 +25,7 @@ class Lesson extends Model
     public function level(){
        return $this->belongsto('App\Level', 'foreign_key');
    }
+
 
 
    public function users(){
