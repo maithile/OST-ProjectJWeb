@@ -11,11 +11,11 @@ class Vocabulary extends Model
 
 
    public function lessons(){
-    return $this->belongsto('App\Lesson', 'foreign_key');
+    return $this->belongsto('App\Lesson');
   }
   
   public function dictionary(){
-    return $this->hasOne('App\Dictionary', 'foreign_key');
+    return $this->hasOne('App\Dictionary');
   }
 
 

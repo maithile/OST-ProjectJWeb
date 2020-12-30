@@ -102,14 +102,6 @@
 <div class="row">
 <div class="col-lg-6">
 <div class="banner_content">
-
-
-<div class="search_course_wrap">
-<form action="" class="form_box d-flex justify-content-between w-100">
-<input type="text" placeholder="Search Courses" class="form-control" name="username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Courses'">
-<button type="submit" class="btn search_course_btn">Search</button>
-</form>
-</div>
 </div>
 </div>
 </div>
@@ -130,7 +122,7 @@
 <span class="lnr lnr-book"></span>
 </div>
 <div class="desc">
-<h4><a href="./basic.blade.php">Basic</h4>
+<h4><a href="./basic">Basic</h4>
 
 <p>
 In the history of modern astronomy, there is probably no one greater leap forward building and launch.
@@ -807,12 +799,6 @@ made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorl
 <script src="{{asset('js/theme.js')}}"></script>
 
 <script async src="{{asset('https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')}}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
-</script>
 </body>
 </html>

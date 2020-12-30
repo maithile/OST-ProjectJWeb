@@ -10,7 +10,7 @@ class Level extends Model
     public $timestamp = 'false';
 
   public function lesson(){
-     return $this->hasMany('App\Lesson', 'foreign key'); // co nhieu post
+     return $this->hasMany('App\Lesson', 'level-id'); // co nhieu post tra ve khoa phu trong bang lesson
   }
      
 }

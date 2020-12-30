@@ -11,7 +11,7 @@ class Dictionary extends Model
 
 
   public function vocabulary(){
-       return $this->belongsto('App\Vocabulary');
+       return $this->belongsto('App\Vocabulary', 'dictionary-id');
   }  
 
 

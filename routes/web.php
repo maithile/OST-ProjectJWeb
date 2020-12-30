@@ -14,8 +14,14 @@
 
 
 Route::get('/', 'LessonController@index'); 
+
 Route::get('/basic', 'LessonController@basic'); 
-Route::get('/intermediate', 'LessonController@intermediate'); 
+Route::get('/inter', 'LessonController@inter'); 
 Route::get('/advance', 'LessonController@advance'); 
+
+
+Route::get('/basic/{id}', 'LessonController@show');
+Route::get('/inter/{id}', 'LessonController@show');
+Route::get('/advance/{id}', 'LessonController@show');
 
 
