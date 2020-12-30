@@ -131,7 +131,7 @@ exciting to think about setting up your own viewing station.</p>
 <div class="course_head overlay">
 <img class="img-fluid w-100" src="img/courses/trainer1.jpg" alt="">
 <div class="authr_meta">
-<img src="img/author1.png" alt="">
+<img src="{{ asset('img/website.jpg')}}" alt="">
 <span>Mart Taylor</span>
 </div>
 </div>
