@@ -10,10 +10,11 @@ class Lesson extends Model
     // 1-n
     //protected $table = 'lessons'; // sd bang vi ten bang khac
     public $timestamp = false;
+    protected  $primaryKey = 'id';
 
     public function questions(){
       
-        return $this->hasMany(Question::class, 'lesson-id'); // trả về kết quả của bảng question. khoa phu trong bang quention
+        return $this->hasMany(Question::class, 'lesson-id', 'id');// trả về kết quả của bảng question. khoa phu trong bang quention
     }
 
     public function vocabulary(){

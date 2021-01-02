@@ -206,33 +206,7 @@
         <div class="row">
 @yield('content')
    
-<div class="col-xs-12">
-    <div class="pagination-div pg-services text-center">
-        <ul class="pagination">
-            <li class="prev">
-                <a href="#"> &lt;&lt; </a>
-            </li>
-            <li>
-                <a href="#">1</a>
-            </li>
-            <li class="active">
-                <a href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">...</a>
-            </li>
-            <li>
-                <a href="#">10</a>
-            </li>
-            <li class="next">
-                <a href="#"> &gt;&gt; </a>
-            </li>
-        </ul>
-    </div>
-</div>
+
 </div>
 </div>
 </section>
