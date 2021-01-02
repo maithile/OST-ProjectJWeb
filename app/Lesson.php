@@ -18,7 +18,7 @@ class Lesson extends Model
     }
 
     public function vocabulary(){
-        return $this->hasMany('App\Vocabulary','lesson-id');
+        return $this->hasMany(Vocabulary::class,'lesson-id', 'id');
     }
  
     public function level(){

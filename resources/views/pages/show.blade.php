@@ -13,15 +13,23 @@
 </div> 
 <p>Question</p>   
 
+ 
+ @foreach ($questions as $values)
 
-@foreach ($questions as $values)
+<div><h2> {{$values->question_1}} </h2></div>
+<div> {{$values->option_1}}</div>
+<div> {{$values->option_2}}</div>
+<div> {{$values->option_3}}</div>
+<div> {{$values->id}}</div>
+@endforeach 
 
-{{$values->question-1}}
-    
-@endforeach
 
+ 
+@foreach ($vocabulary as $value)
 
+<div> {{$values->id}}</div>
 
+@endforeach 
 
 
 </div>

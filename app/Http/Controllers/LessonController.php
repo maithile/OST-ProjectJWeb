@@ -41,9 +41,11 @@ class LessonController extends Controller
     public function show($id){
 
         $lesson = Lesson::find($id);
-        $questions = $lesson->questions;
+         $questions = $lesson->questions;
+         $vocabulary = $lesson->vocabulary;
+        // $result = array_merge($questions, $vocabulary);
 
-        return view('pages.show', compact('lesson'), compact('questions')); 
+        return view('pages.show', compact('lesson','questions', 'vocabulary')); 
 
          }
 
