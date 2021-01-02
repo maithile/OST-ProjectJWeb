@@ -1,269 +1,402 @@
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/favicon.png" type="image/png">
-<title>Courses</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Padhai is a creative education html template">
 
-<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
-<link rel="stylesheet" href="{{ asset('vendors/linericon/style.css')}}">
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{ asset('vendors/owl-carousel/owl.carousel.min.css')}}">
-<link rel="stylesheet" href="{{ asset('vendors/lightbox/simpleLightbox.css')}}">
-<link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css')}}">
-<link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css')}}">
+    <title>Padhai - Education HTML Template</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <script src="{{asset('/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js')}}"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!--Default CSS-->
+    <link href="{{asset('css/default.css')}}" rel="stylesheet" type="text/css">
+
+    <!--Custom CSS-->
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
+
+    <!--Plugin CSS-->
+    <link href="{{asset('css/plugin.css')}}" rel="stylesheet" type="text/css">
+
+    <!--Font Awesome-->
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-<body>
 
-<header class="header_area">
-<div class="header-top">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-lg-6 col-sm-6 col-4 header-top-left">
-<a href="tel:+9530123654896">
-<span class="lnr lnr-phone"></span>
-<span class="text">
-<span class="text">+953012 3654 896</span>
-</span>
-</a>
-<a href="{{ asset('/cdn-cgi/l/email-protection#becdcbceced1cccafeddd1d2d1ccd2d7dc90ddd1d3')}}">
-<span class="lnr lnr-envelope"></span>
-<span class="text">
-<span class="text"><span class="__cf_email__" data-cfemail="66151316160914122605090a09140a0f044805090b">[email&#160;protected]</span></span>
-</span>
-</a>
-</div>
-<div class="col-lg-6 col-sm-6 col-8 header-top-right">
-<a href="#" class="text-uppercase">Login</a>
-</div>
-</div>
-</div>
-</div>
+<body class="page">
+    <!--PRELOADER-->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <div id="top"></div>
 
-<nav class="navbar navbar-expand-lg navbar-light">
-<div class="container">
+    <!--*Header*-->
+    <header id="inner-navigation">
+        <!-- top bar -->
+        <div class="topbar-section">
+            <div class="container">
+                <div class="topbar-inner">
+                    <div class="top-bar-left pull-left">
+                    <ul>
+                       <li><i class="fa fa-phone"></i> Phone: +01-123456789</li>
+                       <li><i class="fa fa-envelope"></i> Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9d0d7dfd6f9cad0cddcd7d8d4dc97dad6d4">[email&#160;protected]</a></li>
+                    </ul>
+                    </div>
+              
+                    <div class="top-bar-right pull-right">
+                        <ul>
+                            <li><a href="faq.html"><i class="fa fa-question-circle"></i> Ask a Question</a> </li>
+                            <li><a href="register.html">Log In</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- navbar start -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function navbar-arrow">
 
-<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
+            <div class="container">
 
-<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-<ul class="nav navbar-nav menu_nav ml-auto">
-<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
-<li class="nav-item submenu dropdown active">
-<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-<ul class="dropdown-menu">
-<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-<li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
-<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-</ul>
-</li>
-<li class="nav-item submenu dropdown">
-<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-<ul class="dropdown-menu">
-<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-</ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-<li class="nav-item">
-<a href="#" class="nav-link search" id="search">
-<i class="lnr lnr-magnifier"></i>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</nav>
-</div>
-</header>
+                <div class="logo pull-left">
+                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->Padhai</a></h2>
+                </div>
+                
+                <div id="navbar" class="navbar-nav-wrapper pull-right">
+                    <ul class="nav navbar-nav navbar-right" id="responsive-menu">
+                        <li>
+                            <a href="#">Home <i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home Style 1</a>
+                                    <ul>
+                                        <li><a href="index.html">Home Slider</a></li>
+                                        <li><a href="index-banner.html">Home Banner</a></li>
+                                        <li><a href="index-video.html">Home Video</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="index-2.html">Home Style 2</a></li>
+                                <li><a href="index-3.html">Home Style 3</a></li>
+                                <li><a href="index-kids.html">Home Kids</a></li>
+                                <li><a href="index-drive.html">Home Driving</a></li>
+                                <li><a href="index-cook.html">Home Cooking</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="dashboard.html">Dashboard <i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="dashboard.html">Dashboard</a></li>
+                                <li><a href="dashboard-my-profile.html">Dashboard Profile</a></li>
+                                <li><a href="dashboard-booking.html">Dashboard Bookings</a></li>
+                                <li><a href="dashboard-history.html">Dashboard History</a></li>
+                                <li><a href="dashboard-list.html">Dashboard Listing</a></li>
+                                <li><a href="dashboard-addtour.html">Dashboard Add Tour</a></li>
+                                <li><a href="dashboard-reviews.html">Dashboard Reviews</a></li>
+                            </ul>    
+                        </li>
+                        <li>
+                            <a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                <li> <a href="about-us.html">About Us</a></li>
+                                <li>
+                                    <a href="#">Events</a>
+                                    <ul>
+                                        <li><a href="events.html">Event List One</a></li>
+                                        <li><a href="events-2.html">Event List Two</a></li>
+                                        <li><a href="events-3.html">Event List Three</a></li>
+                                        <li><a href="events-detail.html">Event Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Gallery</a>
+                                    <ul>
+                                        <li><a href="gallery.html">Gallery One</a></li>
+                                        <li><a href="gallery-2.html">Gallery Two</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Teachers</a>
+                                    <ul>
+                                        <li><a href="teachers.html">Teachers List</a></li>
+                                        <li><a href="teachers-slider.html">Teachers Slider</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="faq.html">FAQ's</a></li>
+                                <li><a href="membership.html">Membership</a></li>
+                                <li><a href="comingsoon.html">Comming Soon</a></li>
+                                <li><a href="404.html">404 page</a></li>
+                            </ul>
+                        </li>                       
+                        <li class="active">
+                            <a href="#">Courses <i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                <li class="active"><a href="courses.html">Courses Grid</a></li>
+                                <li><a href="courses-slider.html">Courses Slider</a></li>
+                                <li><a href="courses-detail.html">Courses Detail</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Blog <i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="blog-listing-left.html">Blog left Sidebar</a></li>
+                                <li><a href="blog-listing.html">Blog Right Sidebar</a></li>
+                                <li><a href="blog-fullwidth.html">Blog Fullwidth</a></li>
+                                <li><a href="blog-grid.html">Blog Grid</a></li>
+                                <li><a href="blog-details.html">Blog Detail</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="header-search">
+                                <a href="#" class="search-icon"><i class="fa fa-search"></i></a>
+                                <div class="search-box-wrap" style="display: none;">
+                                    <div class="searchform" role="search">
+                                        <form class="search-form" method="get" action=".">
+                                            <input type="text" name="s" id="s" placeholder="Search..." value="" class="search-field">
+                                            <input type="submit" class="search-submit" value="Search">
+                                        </form>
+                                    </div><!-- .searchform -->
+                                </div><!-- .search-box-wrap -->
+                            </div>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+            
+            <div id="slicknav-mobile"></div>
+        </nav>
+        <!-- navbar end -->
+    </header>
+    <!--* End Header*-->
 
+    <!-- Banner -->
+    <div id="blog_banner">
+        <div class="page-title">
+            <div class="container">
+                <h2>Courses Grid</h2>
+            </div>
+        </div>
+        <div class="black-overlay"></div>
+    </div>
+    <!-- End banner -->
 
-<section class="banner_area">
-<div class="banner_inner d-flex align-items-center">
-<div class="overlay"></div>
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-lg-6">
-<div class="banner_content text-center">
-<h2>Courses</h2>
-<p>In the history of modern astronomy, there is probably no one greater leap forward than
-the
-building and launch of the space telescope known as the Hubble.</p>
-<div class="page_link">
-<a href="index.html">Home</a>
-<a href="courses.html">Courses</a>
-</div>
-</div>
-</div>
+    <!-- breadcrumb -->
+    <div class="breadcrumb-main">    
+        <div class="container">        
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li class="active">Courses Grid</li>
+            </ul>
+        </div>
+    </div>
+    <!-- End breadcrumb -->
+
+ <!--* Services*-->
+ <section id="mt_services" class="light-bg services-section section-inner">
+    <div class="container">               
+        <div class="row">
+@yield('content')
+   
+<div class="col-xs-12">
+    <div class="pagination-div pg-services text-center">
+        <ul class="pagination">
+            <li class="prev">
+                <a href="#"> &lt;&lt; </a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li class="active">
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">...</a>
+            </li>
+            <li>
+                <a href="#">10</a>
+            </li>
+            <li class="next">
+                <a href="#"> &gt;&gt; </a>
+            </li>
+        </ul>
+    </div>
 </div>
 </div>
 </div>
 </section>
+<!--* End Services*-->
+    <!--*Footer*-->
+    <footer id="mt_footer">
+        <div class="container">
 
+            <section id="newsletter">
+                <div class="newsletter-inner">
+                    <div class="row">
+                    <div class="col-md-7">
+                        <div class="news-content">
+                            <h2>Like to become an instructor?</h2>
+                            <p class="mar-0">Join thousand of instructors and earn money hassle free! Lorem ipsums dolors sit amet consectetur adipiselo elit sed do eiuse.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="mailpoet_form">
+                            <form target="_self" method="post" action="email" novalidate="">
+                                <input type="email" class="mailpoet_text" name="mail" title="Email" placeholder="Please specify a valid email address.">
 
-<div class="popular_courses lite_bg">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-lg-6">
-<div class="main_title">
-<h2>Popular Courses</h2>
-<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first
-telescope. It’s
-exciting to think about setting up your own viewing station.</p>
-</div>
-</div>
-</div>
-<div class="row">
-    @yield('content')
+                                <div class="button"><input type="submit" class="mailpoet_submit" value="Subscribe!"></div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
 
-<div class="col-lg-3 col-md-6">
-<div class="single_course">
-<div class="course_head overlay">
-<img class="img-fluid w-100" src="img/courses/trainer1.jpg" alt="">
-<div class="authr_meta">
-<img src="{{ asset('img/website.jpg')}}" alt="">
-<span>Mart Taylor</span>
-</div>
-</div>
+            <div class="footer-main">
+                <div class="row">
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="follow_us">
+                        
+                        <h2><a href="index.html">Padhai</a></h2>
 
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="textwidget">
+                            <p class="white">PO Box 16122 Grasswood Street West<br>
+                            Sydney 5217 Australia</p>
+                            <p class="white">Mon-Thu: 9:00 – 21:00<br>
+                            Fri: 8:00 – 21:00<br>
+                            Sat: 10:00 – 15:00</p>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-6 col-xs-12">
+                    <div class="footer-right">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="mt_contact_ftr">
+                                    <h3>Quick Links</h3>
+                                    <ul class="footer-quick-links-4">
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Placerat bibendum</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Ullamcorper odio nec turpis</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Aliquam porttitor vestibulum</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Lobortis enim nec nisi</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Placerat bibendum</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Lobortis enim nec nisi</a></li>
+                                       <li><a href="#"><i class="fa fa-angle-right"></i> Ullamcorper odio nec turpis</a></li>
+                                     </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="mt_post_ftr">
+                                    <h3>Instagram</h3>
+                                    <div class="insta-list">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_01.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_02.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_03.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_04.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_05.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_06.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_07.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_08.jpg" alt="insta">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <img src="images/insta/insta_09.jpg" alt="insta">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt_footer_copy">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="copy_txt">
+                            <p class="mar-0 white">&copy; Copyright 2018 - Padhai All rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="follow_us pull-right">
+                            <ul class="social_icons">
+                                <li><a href="#"> <i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--* End Footer*-->
 
+    <!-- back to top -->
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="" data-placement="left">
+        <span class="fa fa-arrow-up"></span>
+    </a>
 
+    <!--*Scripts*-->
 
-<div class="course_content">
-<h4>
-<a href="course-details.html">Learn React js beginners</a>
-</h4>
-<p>When television was young, there was a huge popular show based on the still popular
-fictional character of
-Superman.</p>
-<div class="course_meta d-flex justify-content-between">
-<div>
-<span class="meta_info">
-<a href="#">
-<i class="lnr lnr-user"></i>355
-</a>
-</span>
-<span class="meta_info"><a href="#">
-<i class="lnr lnr-bubble"></i>35
-</a></span>
-</div>
-<div>
-<span class="price df_color2">$150</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <!-- Latest jquery --><script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script src="js/jquery-3.2.1.min.js" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
+    <!-- latest Bootstrap --><script src="{{asset('js/bootstrap.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
-<footer class="footer-area section_gap">
-<div class="container">
-<div class="row">
-<div class="col-lg-2 col-md-6 single-footer-widget">
-<h4>Top Products</h4>
-<ul>
-<li><a href="#">Managed Website</a></li>
-<li><a href="#">Manage Reputation</a></li>
-<li><a href="#">Power Tools</a></li>
-<li><a href="#">Marketing Service</a></li>
-</ul>
-</div>
-<div class="col-lg-2 col-md-6 single-footer-widget">
-<h4>Quick Links</h4>
-<ul>
-<li><a href="#">Jobs</a></li>
-<li><a href="#">Brand Assets</a></li>
-<li><a href="#">Investor Relations</a></li>
-<li><a href="#">Terms of Service</a></li>
-</ul>
-</div>
-<div class="col-lg-2 col-md-6 single-footer-widget">
-<h4>Features</h4>
-<ul>
-<li><a href="#">Jobs</a></li>
-<li><a href="#">Brand Assets</a></li>
-<li><a href="#">Investor Relations</a></li>
-<li><a href="#">Terms of Service</a></li>
-</ul>
-</div>
-<div class="col-lg-2 col-md-6 single-footer-widget">
-<h4>Resources</h4>
-<ul>
-<li><a href="#">Guides</a></li>
-<li><a href="#">Research</a></li>
-<li><a href="#">Experts</a></li>
-<li><a href="#">Agencies</a></li>
-</ul>
-</div>
-<div class="col-lg-4 col-md-6 single-footer-widget">
-<h4>Newsletter</h4>
-<p>You can trust us. we only send promo offers,</p>
-<div class="form-wrap" id="mc_embed_signup">
-<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-<input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" required="" type="email">
-<button class="click-btn btn btn-default">
-<span>subscribe</span>
-</button>
-<div style="position: absolute; left: -5000px;">
-<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-</div>
-<div class="info"></div>
-</form>
-</div>
-</div>
-</div>
-<div class="row footer-bottom d-flex justify-content-between">
-<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved | This
-template is
-made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a></p>
-<div class="col-lg-4 col-sm-12 footer-social">
-<a href="#"><i class="fa fa-facebook"></i></a>
-<a href="#"><i class="fa fa-twitter"></i></a>
-<a href="#"><i class="fa fa-dribbble"></i></a>
-<a href="#"><i class="fa fa-behance"></i></a>
-</div>
-</div>
-</div>
-</footer>
+    <!-- Parallax jquery --><script src="{{asset('js/jquery.parallax-1.1.3.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+    
+    <!-- Fancybox jquery --><script src="{{asset('js/jquery.fancybox.pack.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
+    <!-- wow animated jquery --><script src="{{asset('js/wow.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
+    <!-- Navigation jquery --><script src="{{asset('js/jquery.nav.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.2.1.min.js"></script>
-<script src="{{ asset('js/popper.js')}}"></script>
-<script src="{{ asset('js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('js/stellar.js')}}"></script>
-<script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js')}}"></script>
-<script src="{{ asset('js/owl-carousel-thumb.min.js')}}"></script>
-<script src="{{ asset('js/jquery.ajaxchimp.min.js')}}"></script>
-<script src="{{ asset('vendors/counter-up/jquery.counterup.js')}}"></script>
-<script src="{{ asset('js/mail-script.js')}}"></script>
+    <!-- Slick jquery --><script src="{{asset('js/slick.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
-<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE')}}"></script>
-<script src="{{ asset('js/gmaps.min.js')}}"></script>
-<script src="{{ asset('js/theme.js')}}"></script>
+    <!-- Slicknav jquery --><script src="{{asset('js/slicknav.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
-<script async src="{{ asset('https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')}}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- custom nav jquery --><script src="{{asset('js/custom-nav.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
-  gtag('config', 'UA-23581568-13');
-</script>
-</body>
+    <!-- Easing Jquery --><script src="{{asset('js/jquery.easing.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+
+    <!-- Appear Jquery --><script src="{{asset('js/jquery.appear.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+
+    <!-- isotope Jquery --><script src="{{asset('js/isotope.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+
+    <!-- div default Jquery --><script src="{{asset('js/main.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+<script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="d24e5d0efad4614245bc6604-|49" defer=""></script></body>
+
 </html>

@@ -9,14 +9,14 @@ use App\Question;
 class LessonController extends Controller
 {
     public function index(){ 
-        return view('welcome'); // ket noi controller voi view
+        return view('welcome1'); // ket noi controller voi view
     }
 
     public function basic(){
 
-        $lesson = Lesson::where('level-id','=', 1)->get();  
-
-            //$questions = $lesson->questions; // thu lay level name // xem lai cho này
+     $lesson = Lesson::where('level-id','=', 6)->get();   
+    
+    //$questions = $lesson->questions; // thu lay level name // xem lai cho này
        
         return view('pages.basic',  compact('lesson'));
     }
