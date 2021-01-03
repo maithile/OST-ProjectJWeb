@@ -10,13 +10,13 @@ class Manage extends Model
 
 
     public function users(){
-        return $this->belongstoMany('App\User', 'manages','user-id', 'lesson-id');
+        return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');
     }
 
 
     
    public function lesson(){
-    return $this->belongstoMany('App\Lesson', 'manages', 'user-id', 'lesson-id'); // tra ve lessons
+    return $this->belongstoMany(Lesson::class, 'manages', 'user_id', 'lesson_id'); // tra ve lessons
 }
 
 

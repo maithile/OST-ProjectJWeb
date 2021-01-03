@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Vocabulary extends Model
@@ -11,12 +12,11 @@ class Vocabulary extends Model
 
 
    public function lessons(){
-    return $this->belongsto('App\Lesson');
+    return $this->belongsto(Lesson::class);
   }
   
   public function dictionary(){
-    return $this->hasOne('App\Dictionary');
+    return $this->hasOne(Dictionary::class, 'dictionary_id', 'id');// 
   }
-
-
+  
 }

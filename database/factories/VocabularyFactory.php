@@ -4,13 +4,12 @@
 
 use App\Vocabulary;
 use App\Dictionary;
-
 use Faker\Generator as Faker;
 
-$factory->defineAs(Vocabulary::class, Dictionary::class, function (Faker $faker) {
+$factory->define(Vocabulary::class, function (Faker $faker) {
     return [
-         
-        'lesson-id' =>factory(App\Lesson::class),
-        'dictionary-id' =>factory(App\Dictionary::class)
+          
+        'lesson_id' =>factory(App\Lesson::class),
+        'dictionary_id' =>factory(App\Dictionary::class)
     ];
 });

@@ -15,11 +15,11 @@ class CreateManagesTable extends Migration
     {
         Schema::create('manages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('lesson-id')->unsigned();
-            $table->foreign('lesson-id')->references('id')->on('lessons');
+            $table->bigInteger('lesson_id')->unsigned();
+            $table->foreign('lesson_id')->references('id')->on('lessons');
  
-            $table->bigInteger('user-id')->unsigned();
-            $table->foreign('user-id')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
          });
  

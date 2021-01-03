@@ -9,6 +9,5 @@ $factory->define(Dictionary::class, function(Faker $faker) {
     return [
          'vocabulary'=>$faker->title,
          'meaning'=>$faker->text
-
     ];
 });

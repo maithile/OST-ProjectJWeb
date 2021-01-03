@@ -15,16 +15,14 @@ class CreateVocabulariesTable extends Migration
     {
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->bigIncrements('id');
+                     
+            $table->bigInteger('lesson_id')->unsigned();
+            $table->foreign('lesson_id')->references('id')->on('lessons');
 
-            $table->bigInteger('lesson-id')->unsigned();
-            $table->foreign('lesson-id')->references('id')->on('lessons');
-
-            $table->bigInteger('dictionary-id')->unsigned();
-            $table->foreign('dictionary-id')->references('id')->on('dictionaries');
-
+            $table->bigInteger('dictionary_id')->unsigned();
+            $table->foreign('dictionary_id')->references('id')->on('dictionaries');
             $table->timestamps();
         });
-
     }
 
     /**

@@ -9,27 +9,40 @@
     </audio>
 
 </div>
+<p>script</p> 
+
+
+
+@foreach ($Array as $item)
+{!! $item  !!}<br>
+    
+@endforeach
+
 
 </div> 
 <p>Question</p>   
 
- 
- @foreach ($questions as $values)
 
+@foreach ($questions as $values)
 <div><h2> {{$values->question_1}} </h2></div>
 <div> {{$values->option_1}}</div>
 <div> {{$values->option_2}}</div>
 <div> {{$values->option_3}}</div>
 <div> {{$values->id}}</div>
-@endforeach 
+@endforeach  
 
 
  
-@foreach ($vocabulary as $value)
+ @foreach ($vocabulary as $value)
 
-<div> {{$values->id}}</div>
-
+<div> Dictionrty_id: {{$value->dictionary_id }}</div>
 @endforeach 
+
+<div> Vocabulary: </div>
+<div> Meaning:  </div> 
+
+
+
 
 
 </div>

@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Manage::class, function(Faker $faker){
     return [ 
-         'lesson-id'=>factory(App\Lesson::class),
-         'user-id'=>factory(App\User::class)
+         'lesson_id'=>factory(App\Lesson::class),
+         'user_id'=>factory(App\User::class)
     ];
 });

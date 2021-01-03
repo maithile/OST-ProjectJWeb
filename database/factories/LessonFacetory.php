@@ -10,9 +10,10 @@ $factory->define(Lesson::class, function (Faker $faker) {
 
     return [ 
         'title' => $faker->title,
-        'mp3-link' => $faker->title,
+        'image' => $faker->title,
+        'mp3_file' => $faker->title,
         'script'   =>$faker->paragraph,
-        'level-id' => factory(App\Level::class)
+        'level_id' => factory(App\Level::class)
         
     ];
 

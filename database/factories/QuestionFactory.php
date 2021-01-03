@@ -8,11 +8,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Question::class, function (Faker $faker) {
     return[
-        'question-1' => $faker->title,
-        'option-1' => $faker->title,
-        'option-2' => $faker->title,
-        'option-3' => $faker->title,
+        'question_1' => $faker->title,
+        'option_1' => $faker->title,
+        'option_2' => $faker->title,
+        'option_3' => $faker->title,
         'answer' => $faker->title,
-        'lesson-id' => factory(App\Lesson::class)
+        'lesson_id' => factory(App\Lesson::class)
     ];
 });

@@ -43,7 +43,7 @@ class User extends Authenticatable
 
 
    public function lesson(){
-       return $this->belongstoMany('App\Lesson', 'manages', 'users-id', 'lesson-id'); // tra ve lessons
+       return $this->belongstoMany(Lesson::class, 'manages', 'users_id', 'lesson_id'); // tra ve lessons
    }
 
 

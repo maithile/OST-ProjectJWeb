@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lesson;
 use App\Level;
 use App\Question;
+use App\Dictionary;
 
 
 class LessonController extends Controller
@@ -17,7 +18,7 @@ class LessonController extends Controller
 
     public function basic(){
 
-     $lesson = Lesson::where('level-id','=', 1)->paginate(1);   
+     $lesson = Lesson::where('level_id','=', 1)->paginate(1);   
     
     //$questions = $lesson->questions; // thu lay level name // xem lai cho này
        
@@ -28,24 +29,35 @@ class LessonController extends Controller
 
     public function inter(){
 
-        $lesson = Lesson::where('level-id','=', 2)->paginate(1);  
+        $lesson = Lesson::where('level_id','=', 2)->paginate(1);  
         return view('pages.inter',  compact('lesson')); // ket noi controller voi view
     
     }
 
     public function advance(){
-        $lesson = Lesson::where('level-id','=', 3)->paginate(1);
+        $lesson = Lesson::where('level_id','=', 3)->paginate(1);
         return view('pages.advance',  compact('lesson')); // ket noi controller voi view
     }
  
     public function show($id){
 
-        $lesson = Lesson::find($id);
-         $questions = $lesson->questions;
-         $vocabulary = $lesson->vocabulary;
-        // $result = array_merge($questions, $vocabulary);
+        $lesson = Lesson::find($id)->first();
 
-        return view('pages.show', compact('lesson','questions', 'vocabulary')); 
+       // split sentences
+         $script = $lesson->script;
+         $Array = explode('.', trim($script));
+        
+         
+ 
+
+        $questions = $lesson->questions; //  for question
+
+        $vocabulary = $lesson->vocabulary;
+          
+        //return $dic = $vocabulary->with('Dictionary')->dictionary;
+
+      
+        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
 
          }
 

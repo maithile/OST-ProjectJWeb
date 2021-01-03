@@ -10,9 +10,10 @@ class Dictionary extends Model
     public $timestamp = 'fasle';
 
 
-  public function vocabulary(){
-       return $this->belongsto('App\Vocabulary', 'dictionary-id');
+  public function vocabularies(){
+       return $this->belongsto(Vocabulary::class, 'dictionary_id', 'id');
   }  
 
+  
 
 }

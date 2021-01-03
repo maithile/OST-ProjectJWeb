@@ -16,14 +16,14 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('lesson-id')->unsigned();
-            $table->foreign('lesson-id')->references('id')->on('lessons');
+            $table->bigInteger('lesson_id')->unsigned();
+            $table->foreign('lesson_id')->references('id')->on('lessons');
  
              
-            $table->string('question-1');
-            $table->string('option-1');
-            $table->string('option-2');
-            $table->string('option-3');
+            $table->string('question_1');
+            $table->string('option_1');
+            $table->string('option_2');
+            $table->string('option_3');
             $table->string('answer');
             $table->timestamps();
          });

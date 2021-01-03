@@ -16,11 +16,11 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('level-id')->unsigned();
-            $table->foreign('level-id')->references('id')->on('levels');
+            $table->bigInteger('level_id')->unsigned();
+            $table->foreign('level_id')->references('id')->on('levels');
             
             $table->string('title');
-            $table->string('mp3-link');
+            $table->string('mp3_file');
             $table->text('script');
             $table->timestamps();
         });

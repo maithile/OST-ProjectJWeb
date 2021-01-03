@@ -1,11 +1,8 @@
 <?php
 
-use App\Lesson;
-use App\Dictionary;
-use App\Vocabulary;
 use Illuminate\Database\Seeder;
 
-class VocaburalyTableSeeder extends Seeder
+class VocabularyTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +11,6 @@ class VocaburalyTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         factory(App\Vocabulary::class, 10)->create()->each(function ($v) {
             $v->lessons()->associate(factory(App\Lesson::class)->make());
         });
