@@ -18,24 +18,26 @@
 </div> 
 <p>Question</p>   
 
-
-@foreach ($questions as $values)
-<div><h2> {{$values->question_1}} </h2></div>
-<div> {{$values->option_1}}</div>
-<div> {{$values->option_2}}</div>
-<div> {{$values->option_3}}</div>
-<div> {{$values->id}}</div>
+@foreach ($questions as $value)
+<div><h2> {{$value->question_1}} </h2></div>
+<div> {{$value->option_1}}</div>
+<div> {{$value->option_2}}</div>
+<div> {{$value->option_3}}</div>
+<div> {{$value->id}}</div>
 @endforeach  
 
 
  
  @foreach ($vocabulary as $value)
 
-<div> Dictionrty_id: {{$value->dictionary_id }}</div>
+<div> Dictionrty_id: {{$value->dictionary_id}} </div>
+<div> Vocabulary: {{$value->dictionary->vocabulary }}</div>
+<div> Meaning: {{$value->dictionary->meaning }} </div> 
+
+
 @endforeach 
 
-<div> Vocabulary: </div>
-<div> Meaning:  </div> 
+
 
 
 

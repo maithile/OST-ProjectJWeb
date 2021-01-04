@@ -20,8 +20,8 @@ Route::get('/inter', 'LessonController@inter');
 Route::get('/advance', 'LessonController@advance'); 
 
 
-Route::get('/show/{id}', 'LessonController@show');
-//Route::get('/inter/{id}', 'LessonController@show');
-//Route::get('/advance/{id}', 'LessonController@show');
+Route::get('/basic/{id}', 'LessonController@show');
+Route::get('/inter/{id}', 'LessonController@show');
+Route::get('/advance/{id}', 'LessonController@show');
 
 

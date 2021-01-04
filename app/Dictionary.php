@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Dictionary extends Model
 {
     protected $table = 'dictionaries';
+    protected $primaryKey = 'id';
     public $timestamp = 'fasle';
 
 
   public function vocabularies(){
-       return $this->belongsto(Vocabulary::class, 'dictionary_id', 'id');
+       return $this->hasone(Dictionary::class, 'dictionary_id');
   }  
 
-  
+
+
 
 }

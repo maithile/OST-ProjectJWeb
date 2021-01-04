@@ -17,7 +17,7 @@
                       <div class="overlayPort">
                           <ul class="info text-center list-inline">
                               <li>
-                                  <a href="show/{{$value->id}}">
+                                  <a href="advance/{{$value->id}}">
                                     <h4>Listen</h4>
                                   </a>
                               </li>

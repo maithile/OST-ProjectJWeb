@@ -14,7 +14,7 @@ class Lesson extends Model
 
     public function questions(){
       
-        return $this->hasMany(Question::class, 'lesson_id', 'id');// trả về kết quả của bảng question. khoa phu trong bang quention
+        return $this->hasMany(Question::class, 'lesson_id');// trả về kết quả của bảng question. khoa phu trong bang quention
     }
 
     public function vocabulary(){

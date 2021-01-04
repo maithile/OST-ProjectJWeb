@@ -18,7 +18,7 @@ class LessonController extends Controller
 
     public function basic(){
 
-     $lesson = Lesson::where('level_id','=', 1)->paginate(1);   
+     $lesson = Lesson::where('level_id','=', 1)->paginate(3);   
     
     //$questions = $lesson->questions; // thu lay level name // xem lai cho này
        
@@ -41,7 +41,7 @@ class LessonController extends Controller
  
     public function show($id){
 
-        $lesson = Lesson::find($id)->first();
+        $lesson = Lesson::find($id); 
 
        //  split sentences
 
@@ -56,29 +56,18 @@ class LessonController extends Controller
 
         $separator2 = '/\}([A-z\s.?!]*)\&/';  
 
-        preg_match_all($separator2, $script, $match2, 1);
+        preg_match_all($separator2, $script, $match2);
         $talk = $match2[1];
         
         $Array = array_combine($roler, $talk);
 
         
+         $questions = $lesson->questions; 
 
+         $vocabulary = $lesson->vocabulary; // lay ra duoc bang dictionnary = 
+        
 
-        //$Array = explode('.', trim($script));
-  
-        //   foreach($Array as $value){
-            
-        //    $new = explode('*', trim($value));
-          
-        //  }
-               
          
-        $questions = $lesson->questions; //  for question
-
-        $vocabulary = $lesson->vocabulary;
-          
-        //return $dic = $vocabulary->with('Dictionary')->dictionary;
-
       
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
 

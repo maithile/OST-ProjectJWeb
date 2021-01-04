@@ -12,6 +12,6 @@ public $timestamp = false;
 
 
 public function lessons(){
-    return $this->belongsto(Lesson::class, 'lesson_id', 'id');
+    return $this->belongsto(Lesson::class);
   }
 }
