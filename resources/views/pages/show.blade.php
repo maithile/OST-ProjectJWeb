@@ -11,13 +11,9 @@
 </div>
 <p>script</p> 
 
-
-
-@foreach ($Array as $item)
-{!! $item  !!}<br>
-    
-@endforeach
-
+@foreach($Array as $key => $values)
+ <b> {!! $key !!}</b> : {!! $values !!} <br>
+@endforeach  
 
 </div> 
 <p>Question</p>   

@@ -43,13 +43,36 @@ class LessonController extends Controller
 
         $lesson = Lesson::find($id)->first();
 
-       // split sentences
-         $script = $lesson->script;
-         $Array = explode('.', trim($script));
-        
-         
- 
+       //  split sentences
 
+         $script = $lesson->script; 
+   
+       // split roler  
+         $separator1 = '/\{([A-z\s]*)\}/';     
+         preg_match_all($separator1, $script, $match1);
+         $roler = $match1[1];
+      
+       // split sentences
+
+        $separator2 = '/\}([A-z\s.?!]*)\&/';  
+
+        preg_match_all($separator2, $script, $match2, 1);
+        $talk = $match2[1];
+        
+        $Array = array_combine($roler, $talk);
+
+        
+
+
+        //$Array = explode('.', trim($script));
+  
+        //   foreach($Array as $value){
+            
+        //    $new = explode('*', trim($value));
+          
+        //  }
+               
+         
         $questions = $lesson->questions; //  for question
 
         $vocabulary = $lesson->vocabulary;
