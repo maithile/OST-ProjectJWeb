@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manage extends Model
 {
     protected $table = 'manages';
-
+    protected $primaryKey = 'id';
 
     public function users(){
         return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');

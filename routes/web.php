@@ -11,17 +11,20 @@
 |
 */
 
-
+// Homepage
 
 Route::get('/', 'LessonController@index'); 
 
+
+// Layout 1
 Route::get('/basic', 'LessonController@basic'); 
 Route::get('/inter', 'LessonController@inter'); 
 Route::get('/advance', 'LessonController@advance'); 
 
+// layout detail
+Route::get('/{id}', 'LessonController@show');    // xem lai cho nay sau 
 
-Route::get('/basic/{id}', 'LessonController@show');
-Route::get('/inter/{id}', 'LessonController@show');
-Route::get('/advance/{id}', 'LessonController@show');
+// Admin 
+Route::resource('admin/post', 'AdminPostLessonCotroller');
 
 

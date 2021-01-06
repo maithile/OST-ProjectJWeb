@@ -18,7 +18,7 @@ class LessonController extends Controller
 
     public function basic(){
 
-     $lesson = Lesson::where('level_id','=', 1)->paginate(3);   
+     $lesson = Lesson::where('level_id','=', 1)->paginate(1);   
     
     //$questions = $lesson->questions; // thu lay level name // xem lai cho này
        

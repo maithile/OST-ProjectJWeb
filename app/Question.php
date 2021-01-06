@@ -8,6 +8,7 @@ class Question extends Model
 {
     // 1-n
 protected $table = 'questions';
+protected $primaryKey = 'id';
 public $timestamp = false;
 
 

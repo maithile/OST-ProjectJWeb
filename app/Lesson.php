@@ -11,6 +11,8 @@ class Lesson extends Model
     //protected $table = 'lessons'; // sd bang vi ten bang khac
     public $timestamp = false;
     protected  $primaryKey = 'id';
+    protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
+
 
     public function questions(){
       
@@ -22,7 +24,7 @@ class Lesson extends Model
     }
  
     public function level(){
-       return $this->belongsto(Level::class);
+       return $this->belongsTo(Level::class, 'level_id','id' );
    }
 
 
