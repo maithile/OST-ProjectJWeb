@@ -4,8 +4,6 @@
 @section('content')
 
 
-
-
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
@@ -19,7 +17,7 @@
         </div>
     <div class="audio">
         <audio controls>
-            <source src="/storage/images/{{$lesson->mp3_file}}" type="audio/mpeg">
+            <source src="/storage/audioFile/{{$lesson->mp3_file}}" type="audio/mpeg">
         </audio>
     </div>
     <div class="course-tabs">
@@ -38,7 +36,7 @@
   
 
  @foreach ($questions as $value)
- <div><h2> {{$value->question_1}} </h2></div>
+ <div><h2> {{$value->question}} </h2></div>
  <div> {{$value->option_1}}</div>
  <div> {{$value->option_2}}</div>
  <div> {{$value->option_3}}</div>

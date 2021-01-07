@@ -12,14 +12,14 @@
                       {{-- <img src="images/education/ft-1.jpg" alt=""> --}}
                       <div class="th-name">
                           <img src="images/blog/cmnt-1.jpg" alt="">
-                          <a href="basic/{{$value->id}}">
+                          <a href="/{{$value->id}}">
                             <h4>Listen</h4>
                         </a>
                       </div>
                       <div class="overlayPort">
                           <ul class="info text-center list-inline">
                               <li>
-                                  <a href="basic/{{$value->id}}">
+                                  <a href="/{{$value->id}}">
                                       <h4>Listen</h4>
                                   </a>
                               </li>
@@ -28,7 +28,7 @@
                   </div>
                   <div class="feat-inn">
                     
-                      <a href="basic/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
+                      <a href="/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
                       <div class="course-feat">
                           <div class="price-ft pull-left">
                              

@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     // 1-n
-    //protected $table = 'lessons'; // sd bang vi ten bang khac
+    protected $table = 'lessons'; 
     public $timestamp = false;
-    protected  $primaryKey = 'id';
-    protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
+    
+ 
+   // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
 
 
     public function questions(){
       
-        return $this->hasMany(Question::class, 'lesson_id');// trả về kết quả của bảng question. khoa phu trong bang quention
+        return $this->hasMany(Question::class, 'lesson_id', 'id');// trả về kết quả của bảng question. khoa phu trong bang quention
     }
 
     public function vocabulary(){

@@ -24,9 +24,6 @@ class LessonController extends Controller
        
         return view('pages.basic',  compact('lesson'));
     }
-
-
-
     public function inter(){
 
         $lesson = Lesson::where('level_id','=', 2)->paginate(1);  
@@ -44,31 +41,26 @@ class LessonController extends Controller
         $lesson = Lesson::find($id); 
 
        //  split sentences
-
          $script = $lesson->script; 
-   
+
+      
        // split roler  
-         $separator1 = '/\{([A-z\s]*)\}/';     
-         preg_match_all($separator1, $script, $match1);
-         $roler = $match1[1];
+         $separator1 = '/\{([A-z\s]*)\}/';   // test lai when it the sanme name  roler
+          preg_match_all($separator1, trim($script), $match1);
+          $roler = $match1[1];
       
        // split sentences
 
         $separator2 = '/\}([A-z\s.?!]*)\&/';  
-
-        preg_match_all($separator2, $script, $match2);
-        $talk = $match2[1];
-        
+         preg_match_all($separator2, trim($script), $match2);
+         $talk = $match2[1];
+    
         $Array = array_combine($roler, $talk);
 
         
          $questions = $lesson->questions; 
-
          $vocabulary = $lesson->vocabulary; // lay ra duoc bang dictionnary = 
-        
-
-         
-      
+    
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
 
          }

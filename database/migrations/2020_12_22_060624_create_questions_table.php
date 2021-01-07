@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
  
              
-            $table->string('question_1');
+            $table->string('question');
             $table->string('option_1');
             $table->string('option_2');
             $table->string('option_3');

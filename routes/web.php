@@ -22,9 +22,9 @@ Route::get('/inter', 'LessonController@inter');
 Route::get('/advance', 'LessonController@advance'); 
 
 // layout detail
-Route::get('/{id}', 'LessonController@show');    // xem lai cho nay sau 
+Route::get('/{id}', 'LessonController@show');    
 
 // Admin 
 Route::resource('admin/post', 'AdminPostLessonCotroller');
-
-
+Route::resource('admin/question', 'AdminQuestionController');
+Route::resource('admin/dictionary', 'AdminDictionaryController');

@@ -28,9 +28,9 @@ class AdminPostLessonCotroller extends Controller
      */
     public function create()
     {
-
-        $level =Level::pluck('level','id' )->all();
-        return view('admin.postLayout.create', compact('level'));
+        
+        $level = Level::pluck('level','id' )->all();
+        return view('admin.questionLayout.create', compact('level'));
     }
 
     /**
@@ -41,35 +41,64 @@ class AdminPostLessonCotroller extends Controller
      */
     public function store(Request $request)
     {
-       
+
+        // for post
         $this->validate($request, [
              
             'title' => 'required',
-           // 'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
-            //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
+            'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+            'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
             'script' => 'required',
-           'level_id' => 'required'
-
+            'level_id' => 'required'
+            
         ]);
-     
-    //create Post Lesson
 
+    //upload image file 
+
+    if($request->hasFile('image')){
+        //get file name with extension
+       $filenameWithExt = $request->file('image')->getClientOriginalName(); 
+        //Get just name
+       $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+       // get extension 
+       $extension = $request->file('image')->getClientOriginalExtension();
+       //file name to store
+       $fileNameToStore = $filename.'_'.time().'.'.$extension;
+       //store file
+       $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+    
+    }else{
+        $fileNameToStore = 'noimage.jpg';
+    }
+ 
+    // upload mp3 file
+    if($request->hasFile('mp3_file')){
+        //get mp3 file name with extension 
+
+        $filename_mp3WithExt = $request->file('mp3_file')->getClientOriginalName();
+        // get just name
+        $filename_mp3 = pathinfo($filename_mp3WithExt, PATHINFO_FILENAME);
+        //get extension
+        $extension_mp3 = $request->file('mp3_file')->getClientOriginalExtension();
+        //file mp3 name to store
+        $fileMp3NameToStore = $filename_mp3 .'_'.time().'.'.$extension_mp3;
+        //path to store
+        $path_mp3 = $request->file('mp3_file')->storeAs('public/audioFile', $fileMp3NameToStore);
+
+    }else{
+        $$fileMp3NameToStore  = 'nofile.jpg'; 
+ }
+    //create Post Lesson
       $post_lesson = new Lesson;
       $post_lesson->level_id = $request->input('level_id');
       $post_lesson->title = $request->input('title');
-      //$post_lesson->mp3_file = $request->input('mp3_file');
+      $post_lesson->mp3_file = $fileMp3NameToStore;
       $post_lesson->script = $request->input('script');
-      //$post_lesson->image = $request->input('image');  gioi qua co be co gang len
-      
-      
-       $post_lesson->save();
 
-return 1;
-   
+      $post_lesson->image = $fileNameToStore;  
+      $post_lesson->save();
 
-      
-        return 2;
-
+   return redirect('/admin/post/create')->with('success', 'Create lesson success'); 
 
     }
 

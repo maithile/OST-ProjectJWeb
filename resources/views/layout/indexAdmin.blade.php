@@ -174,17 +174,17 @@
                 <div class="dashboard-nav-inner">
                     <ul>
                         <li class="active"><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                        <li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> Edit Profile</a></li>
-                        <li><a href="dashboard-addtour.html"><i class="sl sl-icon-plus"></i> Add Courses</a></li>
                         <li>
-                            <a><i class="sl sl-icon-layers"></i> Courses Listing</a>
+                            <a><i class="sl sl-icon-layers"></i>Lesson Manage</a>
                             <ul>
-                                <li><a href="dashboard-list.html">Active <span class="nav-tag green">6</span></a></li>
-                                <li><a href="dashboard-list.html">Pending <span class="nav-tag yellow">1</span></a></li>
-                                <li><a href="dashboard-list.html">Expired <span class="nav-tag red">2</span></a></li>
+                                <li><a href="{{route('post.create')}}">Create Lesson</span></a></li>
+                                <li><a href="{{route('question.create')}}">Create Question</span></a></li>
+                                <li><a href="{{route('question.create')}}">Create Dictionary</span></a></li>
+                                <li><a href="{{route('question.create')}}">Overview Lesson</span></a></li>
+                
                             </ul>   
                         </li>
-                        <li><a href="dashboard-booking.html"><i class="sl sl-icon-list"></i> Booking List</a></li>
+                        <li><a href="dashboard-booking.html"><i class="sl sl-icon-list"></i> User Manage</a></li>
                         <li><a href="dashboard-history.html"><i class="sl sl-icon-folder"></i> History</a></li>
                         <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
                         <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
