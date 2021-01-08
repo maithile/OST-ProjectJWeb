@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Dictionary;
 
 class AdminDictionaryController extends Controller
 {
@@ -13,7 +14,10 @@ class AdminDictionaryController extends Controller
      */
     public function index()
     {
-        //
+
+         $dic = Dictionary::paginate(5);
+
+         return view('admin.dictionLayout.index', compact('dic'));
     }
 
     /**
@@ -23,7 +27,7 @@ class AdminDictionaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dictionLayout.create');
     }
 
     /**
@@ -34,7 +38,18 @@ class AdminDictionaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+    
+            'vocabulary' => 'required',
+            'meaning' => 'required'
+        ]);
+
+        // create 
+        $newVocab = new Dictionary;
+        $newVocab->vocabulary = $request->input('vocabulary');
+        $newVocab->meaning = $request->input('meaning');
+        $newVocab->save();
+        return redirect('/admin/dictionary')->with('success', 'New vocabulary created!');
     }
 
     /**
@@ -45,7 +60,8 @@ class AdminDictionaryController extends Controller
      */
     public function show($id)
     {
-        //
+        $dic = Dictionary::find($id);
+        return view('admin.dictionLayout.show', compact('dic'));
     }
 
     /**
@@ -56,7 +72,9 @@ class AdminDictionaryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dic = Dictionary::find($id);
+        return view('admin.dictionLayout.edit', compact('dic'));
+       
     }
 
     /**
@@ -68,7 +86,19 @@ class AdminDictionaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+     $this->validate($request, [
+
+        'vocabulary' => 'required',
+        'meaning' => 'required'
+    ]);
+
+    $updateVocab = Dictionary::find($id);
+    $updateVocab->vocabulary = $request->input('vocabulary');
+    $updateVocab->meaning = $request->input('meaning');
+    $updateVocab->save();
+     return redirect('/admin/dictionary')->with('success', 'update Ok Sir!');
+
     }
 
     /**
@@ -79,6 +109,15 @@ class AdminDictionaryController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $delVocab = Dictionary::find($id);
+
+        if ($delVocab != null) {
+            $delVocab->delete();
+            return redirect('/admin/dictionary')->with('success', 'Delete Ok Sir!');
+       }
+    
+       
+    
     }
 }

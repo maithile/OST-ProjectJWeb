@@ -14,7 +14,7 @@ class AdminQuestionController extends Controller
     public function index()
     {
 
-     $question = Question::all();
+     $question = Question::paginate(5);
      return view('admin.questionLayout.index', compact('question'));
 
     }
@@ -129,7 +129,7 @@ class AdminQuestionController extends Controller
      */
     public function destroy($id)
     {
-
+      
         $question = Question::find($id);
         $question->delete();
         return redirect('/admin/question')->with('success', 'Delete Ok Sir!');

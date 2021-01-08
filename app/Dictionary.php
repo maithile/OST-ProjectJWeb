@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Dictionary extends Model
 {
     protected $table = 'dictionaries';
-    protected $primaryKey = 'id';
     public $timestamp = 'fasle';
 
 

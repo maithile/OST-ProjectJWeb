@@ -175,16 +175,32 @@
                     <ul>
                         <li class="active"><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
                         <li>
-                            <a><i class="sl sl-icon-layers"></i>Lesson Manage</a>
-                            <ul>
+                            <a><i class="sl sl-icon-layers"></i>Lesson</a>
+                            <ul> 
                                 <li><a href="{{route('post.create')}}">Create Lesson</span></a></li>
-                                <li><a href="{{route('question.create')}}">Create Question</span></a></li>
-                                <li><a href="{{route('question.create')}}">Create Dictionary</span></a></li>
-                                <li><a href="{{route('question.create')}}">Overview Lesson</span></a></li>
-                
+                                <li><a href="#">Create Script</span></a></li>
+                                <li><a href="{{route('post.create')}}">View Lesson</span></a></li>
                             </ul>   
+                            
                         </li>
-                        <li><a href="dashboard-booking.html"><i class="sl sl-icon-list"></i> User Manage</a></li>
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i>Questions</a>
+                            <ul>
+                                <li><a href="{{route('question.index')}}">All Questions</span></a></li>
+                                <li><a href="{{route('question.create')}}">Add New Questions</span></a></li>
+                            </ul>   
+                            
+                        </li>
+
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i>Dictionary </a>
+                            <ul>
+                                <li><a href="{{route('dictionary.index')}}">All Vocabulary</span></a></li>
+                                <li><a href="{{route('dictionary.create')}}">Add New Vocabulary</span></a></li>
+                            </ul>   
+                            
+                        </li>
+                        <li><a href="dashboard-booking.html"><i class="sl sl-icon-list"></i>view</a></li>
                         <li><a href="dashboard-history.html"><i class="sl sl-icon-folder"></i> History</a></li>
                         <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
                         <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>

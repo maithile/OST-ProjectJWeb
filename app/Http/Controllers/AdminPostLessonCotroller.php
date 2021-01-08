@@ -28,9 +28,8 @@ class AdminPostLessonCotroller extends Controller
      */
     public function create()
     {
-        
-        $level = Level::pluck('level','id' )->all();
-        return view('admin.questionLayout.create', compact('level'));
+        $level = Level::pluck('level','id')->all();
+        return view('admin.postLayout.create', compact('level'));
     }
 
     /**

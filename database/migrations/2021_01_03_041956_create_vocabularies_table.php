@@ -20,7 +20,7 @@ class CreateVocabulariesTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
 
             $table->bigInteger('dictionary_id')->unsigned();
-            $table->foreign('dictionary_id')->references('id')->on('dictionaries');
+            $table->foreign('dictionary_id')->references('id')->on('dictionaries')->onDelete('cascade');;
             $table->timestamps();
         });
     }
