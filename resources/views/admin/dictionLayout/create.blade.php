@@ -110,8 +110,6 @@
     </div>
     
     </div>
-    
-    
     <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
 
     

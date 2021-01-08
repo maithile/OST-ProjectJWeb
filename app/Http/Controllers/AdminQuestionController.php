@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Lesson;
 use App\Question;
@@ -50,7 +49,6 @@ class AdminQuestionController extends Controller
             'option_3'=> 'required',
             'answer' => 'required'
         ]);
-
         // create question 
         $question = new Question;
         $question->lesson_id = $request->input('lesson_id');
@@ -60,9 +58,7 @@ class AdminQuestionController extends Controller
         $question->option_3 = $request->input('option_3');
         $question->answer = $request->input('answer');
         $question->save();
-
-        return redirect('/admin/question/create')->with('success', 'Good Job :))' );
-
+        return redirect('/admin/question')->with('success', 'Created Ok Sir :))' );
     }
 
     /**
@@ -73,11 +69,9 @@ class AdminQuestionController extends Controller
      */
     public function show($id)
     {
-
        $question = Question::find($id);
-       $lesson_title = $question->lessons; // for title
-       $lesson = Lesson::pluck('title', 'id')->all();
-    return view('admin.questionlayout.show', compact('question', 'lesson', 'lesson_title'));
+       $lesson_title = $question->lessons;  // for lesson_id
+    return view('admin.questionlayout.show', compact('question', 'lesson_title'));
     }
 
     /**
@@ -89,9 +83,10 @@ class AdminQuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-        $lesson_title = $question->lessons; // for title
-        $lesson = Lesson::pluck('title', 'id')->all();
-        return view('admin.questionlayout.edit', compact('question', 'lesson', 'lesson_title'));
+        $lesson_title = $question->lessons; 
+       
+        //$belong = Lesson::pluck('title', 'id')->where() // $question->lessons; 
+        return view('admin.questionlayout.edit', compact('question', 'lesson_title'));
     }
     /**
      * Update the specified resource in storage.
@@ -103,15 +98,14 @@ class AdminQuestionController extends Controller
     public function update(Request $request, $id)
     {
     
-
         $this->validate($request, [
     
             'lesson_id' => 'required',
-            'question' => 'required',
-            'option_1' => 'required',
-            'option_2' => 'required',
-            'option_3'=> 'required',
-            'answer' => 'required'
+            'question'  => 'required',
+            'option_1'  => 'required',
+            'option_2'  => 'required',
+            'option_3'  => 'required',
+            'answer'    => 'required'
         ]);
 
         // create question 
@@ -124,10 +118,9 @@ class AdminQuestionController extends Controller
         $question->answer = $request->input('answer');
         $question->save();
 
-        return 12;// ;/redirect('/admin/question')->with('success', 'Update ok :))' );
+        return redirect('/admin/question')->with('success', 'Update Ok Baby :))' );
 
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -136,6 +129,9 @@ class AdminQuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $question = Question::find($id);
+        $question->delete();
+        return redirect('/admin/question')->with('success', 'Delete Ok Sir!');
     }
 }

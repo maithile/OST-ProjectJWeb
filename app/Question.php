@@ -3,7 +3,6 @@
 namespace App;
 use App\Lesson;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
@@ -20,9 +19,6 @@ protected $fillable = [
   'option_3',
   'answer'
 ];
-
-
-
 
 public function lessons(){
     return $this->belongsTo(Lesson::class, 'lesson_id','id');

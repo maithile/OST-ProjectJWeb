@@ -1,68 +1,45 @@
 @extends('layout.indexAdmin')
 @section('content')
 
-
-
-{!! Form::open(['action' => ['AdminQuestionController@show', $question->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-
 <div class="add-listing-section">
     <div class="add-listing-headline">
     <h3><i class="sl sl-icon-map"></i>Question</h3>
     </div>
     
-    
     <div class="row with-forms">
 
-        <div class="col-md-6">
-       
-       {{Form::label('lesson_id','Lesson')}}
-        {!!Form::select('lesson_id', ['id' => 'Seclect Lesson'] + $lesson) !!}  
-        </div>
+       <div class="question" >
 
-        <div class="col-md-8">
+        <div style="display:block;">
+          <div style="background-color:#f2f2f2; color:#444;">
+         <p><b>Lesson</b> : {{$lesson_title->title}}</p>
+          </div>
+          <div style ="background-color:#f2f2f2; color:#444;">
+            <h4> {{$question->question}}</h4>
+          </div>
+          </div>
+          <div style="background-color:#f2f2f2; color:#444;">
+            <p><b>1</b> : {{$question->option_1}}</p>
+          </div>
+          <div style="background-color:#f2f2f2; color:#444;">
+            <p><b>2</b> : {{$question->option_2}}<p>
+          </div>
+          <div style="background-color:#f2f2f2; color:#444;">
+            <p><b>3</b> : {{$question->option_3}}</p>
+          </div>
+          <div style="background-color:#f2f2f2; color:#444;">
+            <p><b>Answer</b> : {{$question->answer}}</p>  
           
-        {{Form::label('question','Question')}}
-        {{Form::text('question', $question->question, ['class' => 'form-group', 'placeholder' => 'Question'])  }}
         </div>
-        <div class="col-md-8">
-           
-        {{Form::label('option_1','Option_1')}}
-        {{Form::text('option_1', $question->option_1, ['class' => 'form-group']) }}
         </div>
-
-        <div class="col-md-8">
-          
-        {{Form::label('option_2','Option_2')}}
-        {{Form::text('option_2', $question->option_2, ['class' => 'form-group'])  }}
         </div>
-
-        <div class="col-md-8">
-           
-        {{Form::label('option_3','Option_3')}}
-        {{Form::text('option_3', $question->option_3, ['class' => 'form-group'])  }}
-        </div>
-
-        <div class="col-md-8">
-          
-         {{Form::label('answer','Answer')}}
-         {{Form::text('answer', $question->answer, ['class' => 'form-group'])  }}
-        </div>
-
-       </div>
-       </div>
-       </div>
        
-        {!! Form::close() !!}
-      
-      <div class="col-md-10">
-
-        <a href="{{ route('question.index') }}" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Back </a>
-        </div> 
-        <a href="{{ route('question.edit', $question->id) }}" class="btn btn-primary" >Edit <i class="fa fa-arrow-circle-right"></i></a>
-        
-       
-
-    </div>
+        <div class="col-md-10">
+          <a href="{{ route('question.index') }}" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Back </a>
+          </div> 
+          <a href="{{ route('question.edit', $question->id) }}" class="btn btn-primary" >Edit</a>
+        </div>
+    
     </div>
     </div>
     </div>

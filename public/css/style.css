@@ -52,7 +52,9 @@
   /* ============================= */
   /*           Fancy Box           */
   /* ============================= */
-  
+
+
+
   .fancybox-next span,
   .fancybox-prev span {
     background-image: none !important;
@@ -223,6 +225,7 @@
   background-color: #FFFFFF !important; 
   }
   
+
   .sticky-nav-white ul.nav.navbar-nav li a {
     color: #444444 !important; 
   }

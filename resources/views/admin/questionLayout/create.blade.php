@@ -67,7 +67,7 @@
        </div>
         {{Form::submit('Submit', ['class' => 'btn btn-default'])}}
         {!! Form::close() !!}
-    <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
     </div>
     </div>
     </div>
