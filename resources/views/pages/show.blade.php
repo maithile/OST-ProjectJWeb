@@ -43,7 +43,6 @@
  <div> {{$value->answer}}</div>
  @endforeach  
 
-
     <div class="button">
     <a href="#" class="mt_btn_yellow mar-top-10">Apply Now</a>
     </div>
@@ -159,9 +158,10 @@
     </div>
     <div class="advisor-description">
     
-        @foreach($Array as $key => $values)
+ @foreach($Array as $key => $values)
         <b>{!! $key !!}</b> : {!! $values !!} <br>
-       @endforeach  </p>
+       @endforeach  </p>  
+
     </div>
     </div>
     </div>

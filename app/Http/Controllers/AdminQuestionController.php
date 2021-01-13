@@ -49,6 +49,7 @@ class AdminQuestionController extends Controller
             'option_3'=> 'required',
             'answer' => 'required'
         ]);
+
         // create question 
         $question = new Question;
         $question->lesson_id = $request->input('lesson_id');
@@ -57,7 +58,7 @@ class AdminQuestionController extends Controller
         $question->option_2 = $request->input('option_2');
         $question->option_3 = $request->input('option_3');
         $question->answer = $request->input('answer');
-        $question->save();
+        json_encode($question->save());
         return redirect('/admin/question')->with('success', 'Created Ok Sir :))' );
     }
 

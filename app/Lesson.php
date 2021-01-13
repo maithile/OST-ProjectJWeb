@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 use App\Level;
 use App\Question;
@@ -8,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     // 1-n
-    protected $table = 'lessons'; 
+    //protected $table = 'lessons';
     public $timestamp = false;
     
- 
    // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
 
 
@@ -32,6 +30,12 @@ class Lesson extends Model
    public function users(){
        return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');
    }
+
+   protected $casts = [
+    'script' => 'array',    
+    'talker' => 'array',
+
+];
 
 
 }

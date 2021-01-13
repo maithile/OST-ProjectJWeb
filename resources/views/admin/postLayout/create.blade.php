@@ -71,13 +71,41 @@
         @error('script')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+        <div class="col-md-3">
+        {{Form::label('talker', 'talker')}}
+        {{Form::text('talker[]', '', ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
+        </div>
 
+        <div class="col-md-8">
         {{Form::label('script', 'Script')}}
-        {{Form::text('script', '', ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'Text'])}}
-        
+        {{Form::text('script[]', '', ['class' => 'WYSIWYG'  ])}}
+        </div>
+
+        <div class="col-md-3">
+        {{Form::label('talker', 'speaker-2')}}
+        {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
+         </div>
+
+         <div class="col-md-8">
+        {{Form::label('script', 'script')}}
+        {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
 
 
+    <button onclick="addMore()"> Add More</button> 
+
+       <p id = "demo"></p>
+
+    <script>      // change place later
+
+     function addMore(){
+
+        return 123;
+     }
+
+    </script>
+ 
+        </div>
         {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
        </div>
     </div>

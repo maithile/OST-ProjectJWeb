@@ -18,7 +18,9 @@ class AdminPostLessonCotroller extends Controller
      */
     public function index()
     {
-        return view('layout.indexAdmin');
+
+        $lesson = Lesson::all();
+        return view('admin.postLayout.index', compact('lesson'));
     }
 
     /**
@@ -48,7 +50,8 @@ class AdminPostLessonCotroller extends Controller
             'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
             'script' => 'required',
-            'level_id' => 'required'
+            'level_id' => 'required',
+            'talker' => 'required'
             
         ]);
 
@@ -93,10 +96,12 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->title = $request->input('title');
       $post_lesson->mp3_file = $fileMp3NameToStore;
       $post_lesson->script = $request->input('script');
+      $post_lesson->talker = $request->input('talker');
 
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
 
+   
    return redirect('/admin/post/create')->with('success', 'Create lesson success'); 
 
     }
@@ -109,10 +114,8 @@ class AdminPostLessonCotroller extends Controller
      */
     public function show($id)
     {
-        
+        //$lesson = Lesson::find($id); 
         return view('admin.postLayout.show');  // tao sau
-
-
     }
 
     /**

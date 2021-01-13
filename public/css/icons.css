@@ -6135,7 +6135,7 @@
   .im-icon-Loud:before {
     content: "\ea61";
   }
-  .im-icon-Loudspeaker:before {
+  .im-icon-LoudTalker:before {
     content: "\ea62";
   }
   .im-icon-Love-2:before {
@@ -7896,10 +7896,10 @@
   .im-icon-Speak:before {
     content: "\ecac";
   }
-  .im-icon-Speaker-2:before {
+  .im-icon-Talker-2:before {
     content: "\ecad";
   }
-  .im-icon-Speaker:before {
+  .im-icon-Talker:before {
     content: "\ecae";
   }
   .im-icon-Spell-Check:before {
