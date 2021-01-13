@@ -85,8 +85,6 @@ class AdminQuestionController extends Controller
     {
         $question = Question::find($id);
         $lesson_title = $question->lessons; 
-       
-        //$belong = Lesson::pluck('title', 'id')->where() // $question->lessons; 
         return view('admin.questionlayout.edit', compact('question', 'lesson_title'));
     }
     /**

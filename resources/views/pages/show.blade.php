@@ -159,7 +159,7 @@
     <div class="advisor-description">
     
  @foreach($Array as $key => $values)
-        <b>{!! $key !!}</b> : {!! $values !!} <br>
+        <b>{!! $values  !!}</b> : {!!$key !!} <br>
        @endforeach  </p>  
 
     </div>
@@ -524,5 +524,5 @@
 
 
 
-</div>
+
 @endsection

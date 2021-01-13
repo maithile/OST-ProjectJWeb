@@ -2,7 +2,8 @@
 @section('content')
 
 @if(!empty(session('success')))
-  <div class="alert alert-success"> {{ session('success') }}</div>
+  <div class="alert alert-success"> {{ session('success') }}
+  </div>
 @endif
 <div class="col-lg-12 col-md-12">
     <div class="dashboard-list-box">
@@ -44,7 +45,6 @@
     </div>
     <div class="pagination-container">
         {{$dic->links()}}
-    </nav>
     </div>
     </div>
     </div>

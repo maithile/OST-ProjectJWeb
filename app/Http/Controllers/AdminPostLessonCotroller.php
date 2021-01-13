@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Storage;
 use App\File;
 use App\Lesson;
 use App\Level;
@@ -19,7 +20,7 @@ class AdminPostLessonCotroller extends Controller
     public function index()
     {
 
-        $lesson = Lesson::all();
+        $lesson = Lesson::paginate(5);
         return view('admin.postLayout.index', compact('lesson'));
     }
 
@@ -102,7 +103,7 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->save();
 
    
-   return redirect('/admin/post/create')->with('success', 'Create lesson success'); 
+   return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }
 
@@ -114,10 +115,20 @@ class AdminPostLessonCotroller extends Controller
      */
     public function show($id)
     {
-        //$lesson = Lesson::find($id); 
-        return view('admin.postLayout.show');  // tao sau
-    }
+        $lesson = Lesson::find($id); 
 
+        // $collection = collect($array1 );
+        // $combined = $collection->combine($array2 );
+        // $combined->all();
+
+         $array1  = $lesson->talker; 
+         $array2 = $lesson->script; 
+         $Array = array_combine($array2, $array1);
+
+        $questions= $lesson->questions;
+        $vocabulary =$lesson->vocabulary;
+        return view('admin.postLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array'));  // tao sau
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -126,7 +137,18 @@ class AdminPostLessonCotroller extends Controller
      */
     public function edit($id)
     {
-        return view('admin.postLayout.edit');
+
+         $lesson = Lesson::find($id);
+
+          $array1  = $lesson->talker; 
+          $array2 = $lesson->script; 
+          $Array = array_combine($array2, $array1);
+
+
+          $level = $lesson->level;
+
+        
+        return view('admin.postLayout.edit', compact('lesson', 'level', 'Array'));
     }
 
     /**
@@ -138,7 +160,66 @@ class AdminPostLessonCotroller extends Controller
      */
     public function update(Request $request, $id)
     {
-       //  return view('admin.postLayout.create');
+        $this->validate($request, [
+             
+            'title' => 'required',
+            //'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+             //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
+            'script' => 'required',
+            'level_id' => 'required',
+            'talker' => 'required'
+            
+        ]);
+
+    //upload image file 
+
+    if($request->hasFile('image')){
+        //get file name with extension
+       $filenameWithExt = $request->file('image')->getClientOriginalName(); 
+        //Get just name
+       $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+       // get extension 
+       $extension = $request->file('image')->getClientOriginalExtension();
+       //file name to store
+       $fileNameToStore = $filename.'_'.time().'.'.$extension;
+       //store file
+       $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+    
+    }
+ 
+    // upload mp3 file
+    if($request->hasFile('mp3_file')){
+        //get mp3 file name with extension 
+
+        $filename_mp3WithExt = $request->file('mp3_file')->getClientOriginalName();
+        // get just name
+        $filename_mp3 = pathinfo($filename_mp3WithExt, PATHINFO_FILENAME);
+        //get extension
+        $extension_mp3 = $request->file('mp3_file')->getClientOriginalExtension();
+        //file mp3 name to store
+        $fileMp3NameToStore = $filename_mp3 .'_'.time().'.'.$extension_mp3;
+        //path to store
+        $path_mp3 = $request->file('mp3_file')->storeAs('public/audioFile', $fileMp3NameToStore);
+
+    }
+    //create Post Lesson
+      $post_lesson = Lesson::find($id);
+      $post_lesson->level_id = $request->input('level_id');
+      $post_lesson->title = $request->input('title');
+
+      if($request->hasFile('mp3_file')){
+      $post_lesson->mp3_file = $fileMp3NameToStore;
+    }
+      $post_lesson->script = $request->input('script');
+      $post_lesson->talker = $request->input('talker');
+      
+      if($request->hasFile('image')){
+      $post_lesson->image = $fileNameToStore;  
+    }
+      $post_lesson->save();
+
+
+      return redirect('/admin/post')->with('success', 'Create lesson success'); 
     }
 
     /**
@@ -147,8 +228,21 @@ class AdminPostLessonCotroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function destroy($id)
     {
-        
+        $lesson =Lesson::find($id);
+
+        if(isset($lesson->image)){
+            Storage::delete('public/images/' .$lesson->image);
+        }
+
+        if(isset($lesson->mp3_file)){
+            Storage::delete('public/audioFile/'.$lesson->audioFile);
+        }
+
+        $lesson->delete();
+        return redirect('/admin/post')->with('success', 'Ⅾeleted lesson success'); 
     }
 }

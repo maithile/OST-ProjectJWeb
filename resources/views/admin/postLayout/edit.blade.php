@@ -4,7 +4,7 @@
 @if(!empty(session('success')))
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif
-{!! Form::open(['action' => 'AdminPostLessonCotroller@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+{!! Form::open(['action' => ['AdminPostLessonCotroller@update', $lesson->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
  
  <div class="col-lg-12 col-sm-12">
     <div id="add-listing">
@@ -20,7 +20,7 @@
         @enderror 
 
         {{Form::label('title', 'Title')}}
-        {{Form::text('title', '', ['class' => 'search-field', 'placeholder' => 'Title'])}}
+        {{Form::text('title', $lesson->id, ['class' => 'search-field', 'placeholder' => 'Title'])}}
         </div>
     </div>
 
@@ -32,7 +32,7 @@
          @enderror
 
         {{Form::label('level_id','Level')}}
-        {!!Form::select('level_id', ['id' => 'Seclect Level'] + $level) !!} 
+        {!!Form::select('level_id', [$level->id => $level->level]) !!}  
         </div>
   </div>
 
@@ -45,7 +45,7 @@
          @enderror
 
         {{Form::label('mp3_file', 'mp3_file')}}
-        {{Form::file('mp3_file')}}
+        {{Form::file('mp3_file') }}
         </div>
 
         <div class="col-md-6">
@@ -53,7 +53,7 @@
          @error('image')
         <div class="alert alert-danger">{{ $message }}</div>
          @enderror
-
+ 
         {{Form::label('image', 'Image')}}
         {{Form::file('image')}}
         </div>
@@ -71,53 +71,22 @@
         @error('script')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+        
+        @foreach($Array as $key => $values)
         <div class="col-md-3">
         {{Form::label('talker', 'talker')}}
-        {{Form::text('talker[]', '', ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
+        {{Form::text('talker[]', $values , ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
         </div>
 
         <div class="col-md-8">
         {{Form::label('script', 'Script')}}
-        {{Form::text('script[]', '', ['class' => 'WYSIWYG'  ])}}
+        {{Form::text('script[]',  $key, ['class' => 'WYSIWYG'  ])}}
         </div>
-
-        <div class="col-md-3">
-        {{Form::label('talker', 'speaker-2')}}
-        {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-         </div>
-
-         <div class="col-md-8">
-        {{Form::label('script', 'script')}}
-        {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
+        @endforeach
         </div>
-
-        
-        <div class="col-md-3">
-            {{Form::label('talker', 'speaker-2')}}
-            {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-             </div>
     
-             <div class="col-md-8">
-            {{Form::label('script', 'script')}}
-            {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
-            </div>
-    
-
-    <button onclick="addMore()"> Add More</button> 
-
-       <p id = "demo"></p>
-
-    <script>      // change place later
-
-     function addMore(){
-
-        return 123;
-     }
-
-    </script>
- 
-        </div>
-        {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
+        {{Form::hidden('_method', 'PUT')}}
+        {{Form::submit('Update', ['class' => 'btn btn-success'])}}
        </div>
     </div>
 </div>
@@ -147,10 +116,7 @@
     <input id="check-h" type="checkbox" name="check">
     <label for="check-h">Events</label>
     </div>
-    
     </div>
-    
-    
     <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
 
     

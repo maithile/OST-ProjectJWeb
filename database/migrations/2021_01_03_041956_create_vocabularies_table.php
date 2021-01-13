@@ -17,7 +17,7 @@ class CreateVocabulariesTable extends Migration
             $table->bigIncrements('id');
                      
             $table->bigInteger('lesson_id')->unsigned();
-            $table->foreign('lesson_id')->references('id')->on('lessons');
+            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
 
             $table->bigInteger('dictionary_id')->unsigned();
             $table->foreign('dictionary_id')->references('id')->on('dictionaries')->onDelete('cascade');;

@@ -41,10 +41,10 @@ class LessonController extends Controller
     $lesson = Lesson::find($id); 
 
        //  split sentences
-        $Array1  = $lesson->talker;
-        $Array2 = $lesson->script; 
        
-        $Array = array_combine($Array1, $Array2);
+       $array1  = $lesson->talker; 
+       $array2 = $lesson->script; 
+       $Array = array_combine($array2, $array1);
      
     //    // split roler  
     //      $separator1 = '/\{([A-z\s]*)\}/';   // test lai when it the sanme name  roler
