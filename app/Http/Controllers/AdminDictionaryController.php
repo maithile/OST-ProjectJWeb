@@ -43,7 +43,6 @@ class AdminDictionaryController extends Controller
             'vocabulary' => 'required',
             'meaning' => 'required'
         ]);
-
         // create 
         $newVocab = new Dictionary;
         $newVocab->vocabulary = $request->input('vocabulary');

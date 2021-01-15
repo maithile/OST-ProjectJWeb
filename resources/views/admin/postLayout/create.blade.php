@@ -1,9 +1,15 @@
 @extends('layout.indexAdmin')
 @section('content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+ <script src="{{ asset('js/app.js') }}"></script> 
+
 @if(!empty(session('success')))
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif
+                        {{--Lesson --}}
 {!! Form::open(['action' => 'AdminPostLessonCotroller@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
  
  <div class="col-lg-12 col-sm-12">
@@ -12,9 +18,9 @@
     <div class="add-listing-headline">
     <h3><i class="sl sl-icon-doc"></i> Lesson Create</h3>
     </div>
+
     <div class="row with-forms">
         <div class="col-sm-10"> 
-
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror 
@@ -35,7 +41,6 @@
         {!!Form::select('level_id', ['id' => 'Seclect Level'] + $level) !!} 
         </div>
   </div>
-
 
     <div class="row with-forms">
         <div class="col-md-6">
@@ -60,6 +65,7 @@
         </div>
     </div>
     </div>
+
     <div class="add-listing-section">
         <div class="add-listing-headline">
         <h3><i class="sl sl-icon-map"></i>Script</h3>
@@ -82,7 +88,7 @@
         </div>
 
         <div class="col-md-3">
-        {{Form::label('talker', 'speaker-2')}}
+        {{Form::label('talker', 'talker')}}
         {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
          </div>
 
@@ -90,76 +96,177 @@
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
-
         
         <div class="col-md-3">
-            {{Form::label('talker', 'speaker-2')}}
-            {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-             </div>
-    
-             <div class="col-md-8">
-            {{Form::label('script', 'script')}}
-            {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
+        {{Form::label('talker', 'talker')}}
+        {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
             </div>
-    
 
-    <button onclick="addMore()"> Add More</button> 
+            <div class="col-md-8">
+        {{Form::label('script', 'script')}}
+        {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
+        </div>
 
-       <p id = "demo"></p>
+        <div class="col-md-8">
+           <button onclick="talker()">Add Talker </button>
+        </div>
 
-    <script>      // change place later
+        <div class="col-md-8" >
+            <button onclick="scipt()"> Add Script</button>
+         </div>
 
-     function addMore(){
 
-        return 123;
-     }
+         
+   
 
-    </script>
- 
+
+
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
        </div>
     </div>
-</div>
-
-{!! Form::close() !!}
+   </div>
+   {!! Form::close() !!}
+    </div>
+    </div>           
+                                 {{--End Lesson--}}
+       {{--Question--}}  
+    {!! Form::open(['action' => 'AdminQuestionController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 
     <div class="add-listing-section">
+    
+        <div class="add-listing-headline">
+        <h3><i class="sl sl-icon-map"></i>Question</h3>
+        </div>
+        
+        <div class="row with-forms">
+            <div class="col-md-6">
+            @error('lesson')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+    
+            {{Form::label('lesson_id','Lesson')}}
+            {!!Form::select('lesson_id', ['id' => 'Seclect Lesson'] + $lesson) !!} 
+            </div>
+    
+            <div class="col-md-8">
+                @error('question')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            {{Form::label('question','question')}}
+            {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => 'Question'])  }}
+            </div>
+        
+            <div class="col-md-8">
+                @error('option_1')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            {{Form::label('option_1','Option_1')}}
+            {{Form::text('option_1', '', ['class' => 'form-group']) }}
+            </div>
+    
+            <div class="col-md-8">
+                @error('option_2')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            {{Form::label('option_2','Option_2')}}
+            {{Form::text('option_2', '', ['class' => 'form-group'])  }}
+            </div>
+    
+            <div class="col-md-8">
+                @error('option_3')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            {{Form::label('option_3','Option_3')}}
+            {{Form::text('option_3', '', ['class' => 'form-group'])  }}
+            </div>
+    
+            <div class="col-md-8">
+                @error('answer')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+             {{Form::label('','Answer')}}
+             {{Form::text('answer', '', ['class' => 'form-group'])  }}
+             {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
+             {!! Form::close() !!}
+            </div>
+           </div>
+        </div>
+                                     {{--End Question--}}  
+        {{--Dictionary--}} 
+
+        {!! Form::open(['action' => 'AdminDictionaryController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+
+     <div class="add-listing-section">
+
     <div class="add-listing-headline">
-    <h3><i class="sl sl-icon-docs"></i> More</h3>
-    </div>
-    
-    <label class="margin-top-30 margin-bottom-10">Topic & Relate<span>(optional)</span></label>
-    <div class="checkboxes in-row margin-bottom-20">
-        <p> change to laravel collective</p>
-    <input id="check-a" type="checkbox" name="check">
-    <label for="check-a">Travel</label>
-    <input id="check-b" type="checkbox" name="check">
-    <label for="check-b">Sport</label>
-    <input id="check-d" type="checkbox" name="check">
-    <label for="check-d">Onsen</label>
-    <input id="check-e" type="checkbox" name="check">
-    <label for="check-e">Autum Leaves</label>
-    <input id="check-f" type="checkbox" name="check">
-    <label for="check-f">Kanji</label>
-    <input id="check-g" type="checkbox" name="check">
-    <label for="check-g">Smoking allowed</label>
-    <input id="check-h" type="checkbox" name="check">
-    <label for="check-h">Events</label>
-    </div>
-    
-    </div>
-    
-    
-    <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
-
-    
-    </div>
-    </div>
-    </div>
+    <h3><i class="sl sl-icon-map"></i>Dictionaries Create</h3>
     </div>
 
-    
-    
+    <div class="row with-forms">
+
+        <div class="col-md-4">
+            @error('vocabulary')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+        {{Form::label('vocabulary','Vocabulary')}}
+        {{Form::text('vocabulary', '', ['class' => 'form-group'])  }}
+        </div>
+
+        <div class="col-md-8">
+            @error('meaning')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        {{Form::label('meaning','Meaning')}}
+        {{Form::text('meaning', '', ['class' => 'form-group']) }}
+        {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
+        {!! Form::close() !!}
+        </div> 
+       </div>
+    </div>
+                          {{--End Dictionary--}}
+
+{{--Vocabulary--}}
+
+{!! Form::open(['action' => 'AdminVocabularyController@store', 'method' => 'POST']) !!}
+       <div class="add-listing-section">
+           <div class="add-listing-headline">
+           <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
+           </div>
+           
+           <div class="row with-forms">
+               <div class="col-md-6">
+                   @error('vocabulary')
+                   <div class="alert alert-danger">{{ $message }}</div>
+                   @enderror  
+                             
+                   {{Form::label('lesson_id','Lesson')}}
+                   {!!Form::select('lesson_id', ['id' => 'Seclect Lesson'] + $lesson) !!} 
+                </div>
+            </div>
+                <div class="row with-forms">
+                <div class="col-md-4">
+                    @error('vocabulary')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror  
+               {!! Form::select('dictionary_id', $dictionary, null, ['class' => 'g']) !!}
+            </div>
+            {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
+            {!! Form::close() !!}
+               </div>
+              
+               </div> 
+              </div>
+
+              {{--End  Vocabulary--}}
+
+              </div>
+          </div>
+   <script>
+     $(document).ready(function() {
+     $('.g').select2();
+     });
+</script>
 @endsection
 

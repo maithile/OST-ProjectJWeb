@@ -10,13 +10,21 @@
 
     <title>Padhai - Education HTML Template</title>
     <!-- Favicon -->
-    <script src="{{ asset('/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js')}}"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <script src="/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 
     <!--Default CSS-->
     <link href="{{ asset('css/default.css')}}" rel="stylesheet" type="text/css">
 
+    <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet" type="text/css">
+
+    <link href="{{ asset('node_modules/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css')}}" type="text/css">
     <!--Plugin CSS-->
     <link href="{{ asset('css/plugin.css')}}" rel="stylesheet" type="text/css">
     <!--Dashboard CSS-->
@@ -233,6 +241,11 @@
     <!-- Back to top ends -->
 
     <!-- *Scripts* -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
+    <script src="{{ asset('js/select2.min.js')}}" type="text/javascript"></script>
+
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/jquery.easing.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
@@ -241,6 +254,7 @@
     <script src="{{ asset('js/counterup.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/dashboard-custom.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/jpanelmenu.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <script src="{{ asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="8c7c28a0a27045965419e5b0-|49" defer=""></script></body>
 </html>

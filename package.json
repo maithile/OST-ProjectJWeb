@@ -20,5 +20,7 @@
         "sass-loader": "^8.0.0",
         "vue-template-compiler": "^2.6.12"
     },
-    "dependencies": {}
+    "dependencies": {
+        "select2": "^4.0.13"
+    }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Storage;
@@ -30,9 +29,12 @@ class AdminPostLessonCotroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
+        $dictionary = Dictionary::pluck('vocabulary','id')->all();
+        $lesson = Lesson::pluck('title','id')->all();
         $level = Level::pluck('level','id')->all();
-        return view('admin.postLayout.create', compact('level'));
+        return view('admin.postLayout.create', compact('level', 'lesson', 'dictionary'));
     }
 
     /**
@@ -53,7 +55,6 @@ class AdminPostLessonCotroller extends Controller
             'script' => 'required',
             'level_id' => 'required',
             'talker' => 'required'
-            
         ]);
 
     //upload image file 
@@ -101,7 +102,6 @@ class AdminPostLessonCotroller extends Controller
 
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
-
    
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
@@ -138,16 +138,11 @@ class AdminPostLessonCotroller extends Controller
     public function edit($id)
     {
 
-         $lesson = Lesson::find($id);
-
+          $lesson = Lesson::find($id);
           $array1  = $lesson->talker; 
           $array2 = $lesson->script; 
           $Array = array_combine($array2, $array1);
-
-
           $level = $lesson->level;
-
-        
         return view('admin.postLayout.edit', compact('lesson', 'level', 'Array'));
     }
 
@@ -184,7 +179,6 @@ class AdminPostLessonCotroller extends Controller
        $fileNameToStore = $filename.'_'.time().'.'.$extension;
        //store file
        $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
-    
     }
  
     // upload mp3 file
@@ -200,7 +194,6 @@ class AdminPostLessonCotroller extends Controller
         $fileMp3NameToStore = $filename_mp3 .'_'.time().'.'.$extension_mp3;
         //path to store
         $path_mp3 = $request->file('mp3_file')->storeAs('public/audioFile', $fileMp3NameToStore);
-
     }
     //create Post Lesson
       $post_lesson = Lesson::find($id);
@@ -228,7 +221,6 @@ class AdminPostLessonCotroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
 
     public function destroy($id)
     {

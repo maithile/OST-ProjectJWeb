@@ -7,12 +7,12 @@
 {!! Form::open(['action' => 'AdminQuestionController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 
 <div class="add-listing-section">
+
     <div class="add-listing-headline">
     <h3><i class="sl sl-icon-map"></i>Question</h3>
     </div>
     
     <div class="row with-forms">
-
         <div class="col-md-6">
         @error('lesson')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -63,13 +63,9 @@
         </div>
 
        </div>
-       </div>
-       </div>
+      
         {{Form::submit('Submit', ['class' => 'btn btn-default'])}}
         {!! Form::close() !!}
-      <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-    </div>
     </div>
     </div>
     
