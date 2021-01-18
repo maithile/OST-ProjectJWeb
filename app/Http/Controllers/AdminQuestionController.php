@@ -44,20 +44,20 @@ class AdminQuestionController extends Controller
     
             'lesson_id' => 'required',
             'question' => 'required',
-            'option_1' => 'required',
-            'option_2' => 'required',
-            'option_3'=> 'required',
-            'answer' => 'required'
+            'choice1' => 'required',
+            'choice2' => 'required',
+            'choice3'=> 'required',
+            'correct_answer' => 'required'
         ]);
 
         // create question 
         $question = new Question;
         $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
-        $question->option_1 = $request->input('option_1');
-        $question->option_2 = $request->input('option_2');
-        $question->option_3 = $request->input('option_3');
-        $question->answer = $request->input('answer');
+        $question->choice1 = $request->input('choice1');
+        $question->choice2 = $request->input('choice2');
+        $question->choice3 = $request->input('choice3');
+        $question->correct_answer = $request->input('correct_answer');
         json_encode($question->save());
         return redirect('/admin/question')->with('success', 'Created Ok Sir :))' );
     }
@@ -101,20 +101,20 @@ class AdminQuestionController extends Controller
     
             'lesson_id' => 'required',
             'question'  => 'required',
-            'option_1'  => 'required',
-            'option_2'  => 'required',
-            'option_3'  => 'required',
-            'answer'    => 'required'
+            'choice1'  => 'required',
+            'choice2'  => 'required',
+            'choice3'  => 'required',
+            'correct_answer'    => 'required'
         ]);
 
         // create question 
         $question = Question::find($id);
         $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
-        $question->option_1 = $request->input('option_1');
-        $question->option_2 = $request->input('option_2');
-        $question->option_3 = $request->input('option_3');
-        $question->answer = $request->input('answer');
+        $question->choice1 = $request->input('choice1');
+        $question->choice2 = $request->input('choice2');
+        $question->choice3 = $request->input('choice3');
+        $question->correct_answer = $request->input('correct_answer');
         $question->save();
 
         return redirect('/admin/question')->with('success', 'Update Ok Baby :))' );

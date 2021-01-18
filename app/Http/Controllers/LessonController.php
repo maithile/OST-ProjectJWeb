@@ -63,7 +63,7 @@ class LessonController extends Controller
          $vocabulary = $lesson->vocabulary; // lay ra duoc bang dictionnary s
     
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
-
+   
          }
 
 

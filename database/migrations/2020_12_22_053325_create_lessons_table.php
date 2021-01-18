@@ -21,6 +21,8 @@ class CreateLessonsTable extends Migration
             
             $table->string('title');
             $table->string('mp3_file');
+            $table->string('image');
+            $table->text('talker');
             $table->text('script');
             $table->timestamps();
         });

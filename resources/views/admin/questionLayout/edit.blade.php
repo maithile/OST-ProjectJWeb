@@ -32,35 +32,35 @@
             </div>
 
             <div class="col-md-8">
-                @error('option_1')
+                @error('choice1')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('option_1','Option_1')}}
-            {{Form::text('option_1', $question->option_1, ['class' => 'form-group']) }}
+            {{Form::label('choice1','choice1')}}
+            {{Form::text('choice1', $question->choice1, ['class' => 'form-group']) }}
             </div>
 
             <div class="col-md-8">
-            @error('option_2')
+            @error('choice2')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            {{Form::label('option_2','Option_2')}}
-            {{Form::text('option_2', $question->option_2, ['class' => 'form-group'])  }}
+            {{Form::label('choice2','choice2')}}
+            {{Form::text('choice2', $question->choice2, ['class' => 'form-group'])  }}
             </div>
 
             <div class="col-md-8">
-            @error('option_3')
+            @error('choice3')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            {{Form::label('option_3','Option_3')}}
-            {{Form::text('option_3', $question->option_3, ['class' => 'form-group'])  }}
+            {{Form::label('choice3','choice3')}}
+            {{Form::text('choice3', $question->choice3, ['class' => 'form-group'])  }}
             </div>
 
             <div class="col-md-8">
-            @error('answer')
+            @error('correct_answer')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            {{Form::label('answer','Answer')}}
-            {{Form::text('answer', $question->answer, ['class' => 'form-group'])  }}
+            {{Form::label('correct_answer','correct_answer')}}
+            {{Form::text('correct_answer', $question->correct_answer, ['class' => 'form-group'])  }}
             </div>
 
         </div>

@@ -19,16 +19,16 @@
           </div>
           </div>
           <div style="background-color:#f2f2f2; color:#444;">
-            <p><b>1</b> : {{$question->option_1}}</p>
+            <p><b>1</b> : {{$question->choice1}}</p>
           </div>
           <div style="background-color:#f2f2f2; color:#444;">
-            <p><b>2</b> : {{$question->option_2}}<p>
+            <p><b>2</b> : {{$question->choice2}}<p>
           </div>
           <div style="background-color:#f2f2f2; color:#444;">
-            <p><b>3</b> : {{$question->option_3}}</p>
+            <p><b>3</b> : {{$question->choice3}}</p>
           </div>
           <div style="background-color:#f2f2f2; color:#444;">
-            <p><b>Answer</b> : {{$question->answer}}</p>  
+            <p><b>correct_answer</b> : {{$question->correct_answer}}</p>  
           
         </div>
         </div>

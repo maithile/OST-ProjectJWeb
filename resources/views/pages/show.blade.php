@@ -28,27 +28,44 @@
     <li><a data-toggle="tab" href="#menu2">Script</a></li>
     <li><a data-toggle="tab" href="#menu3">Reviews</a></li>
     </ul>
+
     <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
     <div class="post_body">
     <h3>Course Summery</h3>
     <div class="over-view">
   
+        @foreach ($questions as $value)
 
- @foreach ($questions as $value)
- <div><h2> {{$value->question}} </h2></div>
- <div> {{$value->option_1}}</div>
- <div> {{$value->option_2}}</div>
- <div> {{$value->option_3}}</div>
- <div> {{$value->answer}}</div>
- @endforeach  
+        <form action="UserAnswerCotroller@store">
+            <p>{{$value->question}}</p>
 
+            {{$value->id}}
+            <input type="radio" id="male" name="gender" value="{{$value->choice1}}"> 
+            <label for="male">{{$value->choice1}}</label><br>
+
+            <input type="radio" id="male" name="gender" value="{{$value->choice2}}">
+            <label for="male">{{$value->choice2}}</label><br>
+
+            <input type="radio" id="male" name="gender" value="{{$value->choice3}}">
+            <label for="male">{{$value->choice3}}</label><br>
+       
+            <br>  
+            @endforeach 
     <div class="button">
-    <a href="#" class="mt_btn_yellow mar-top-10">Apply Now</a>
+    <a href="#" class="mt_btn_yellow mar-top-10">Submit</a>
     </div>
     </div>
     </div>
     </div>
+
+   </form>
+
+  
+
+
+
+
 
   
     <div id="menu1" class="tab-pane fade">

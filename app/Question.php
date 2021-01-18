@@ -14,10 +14,10 @@ public $timestamp = false;
 protected $fillable = [
   'lesson_id',
   'question',
-  'option_1',
-  'option_2',
-  'option_3',
-  'answer'
+  'choice1',
+  'choice2',
+  'choice3',
+  'correct_answer'
 ];
 
 public function lessons(){

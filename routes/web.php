@@ -29,3 +29,5 @@ Route::resource('admin/post', 'AdminPostLessonCotroller');
 Route::resource('admin/question', 'AdminQuestionController');
 Route::resource('admin/dictionary', 'AdminDictionaryController');
 Route::resource('admin/vocabulary', 'AdminVocabularyController');
+
+Route::resource('/answer', 'UserAnswerCotroller');
