@@ -22,7 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('correct_answerId');
             $table->timestamps();
          });
- 
+
     }
 
     /**

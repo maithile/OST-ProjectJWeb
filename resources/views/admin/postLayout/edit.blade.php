@@ -20,7 +20,7 @@
         @enderror 
 
         {{Form::label('title', 'Title')}}
-        {{Form::text('title', $lesson->id, ['class' => 'search-field', 'placeholder' => 'Title'])}}
+        {{Form::text('title', $lesson->title, ['class' => 'search-field', 'placeholder' => 'Title'])}}
         </div>
     </div>
 

@@ -17,6 +17,7 @@ class LessonController extends Controller
         return view('welcome'); // ket noi controller voi view
     }
 
+
     public function basic(){
 
      $lesson = Lesson::where('level_id','=', 1)->paginate(2);   
@@ -36,12 +37,11 @@ class LessonController extends Controller
         $lesson = Lesson::where('level_id','=', 3)->paginate(1);
         return view('pages.advance',  compact('lesson')); // ket noi controller voi view
     }
+
     public function show($id){
 
+        $lesson_show = Lesson::where('level_id','=', 1)->get();
         $lesson = Lesson::find($id); 
-
-      
-       
         $array1  = $lesson->talker; 
         $array2 = $lesson->script; 
         $Array = array_combine($array2, $array1);
@@ -51,13 +51,13 @@ class LessonController extends Controller
 
 
     
-        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
+        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
    
     }
+
+
     public function answerSubmit(Request $request, $id)
-    {
-       
-        
+         { 
        $inputed = $request->input('mit');
      
 
@@ -66,7 +66,6 @@ class LessonController extends Controller
         // $array1  = $lesson->talker; 
         // $array2 = $lesson->script; 
         // $Array = array_combine($array2, $array1);
-
          $vocabulary = $lesson->vocabulary;
         $questions = $lesson->questions->pluck('correct_answerId', 'id'); 
         
