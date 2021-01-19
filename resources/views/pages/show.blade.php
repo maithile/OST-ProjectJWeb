@@ -14,8 +14,9 @@
     <div class="post_img">
         <img src="/storage/images/{{$lesson->image}}"> 
     </div>
-    <div class="audio">
-        <audio controls>
+    <br>
+    <div class="audio" >
+        <audio controls >
             <source src="/storage/audioFile/{{$lesson->mp3_file}}" type="audio/mpeg">
         </audio>
     </div>
@@ -89,38 +90,11 @@
         </div>
          </div>
                            {{-- comment--}}
-         <div class="leave_review">
-            <h3 class="blog_heading_border"> Leave a Comment </h3>
-            <form action="#" method="post">
-            <div class="row">
-            <div class="col-sm-6">
-            <div class="form-group">
-            <input placeholder="Name" class="form-control" type="text" required=""> </div>
-            </div>
-            <div class="col-sm-6">
-            <div class="form-group">
-            <input placeholder="Email" class="form-control" type="email" required=""> </div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-sm-12">
-            <textarea placeholder="Message" class="form-control" required=""></textarea>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-md-12">
-            <button type="submit" class="mt_btn_yellow">Submit</button>
-            </div>
-            </div>
-            </form>
-            </div>
-                        {{-- end comment--}}
+         
+                      
 
         </div>
     </div>
-
-
-
 
          {{-- side bar--}}
             <aside class="col-md-4 col-sm-12">
@@ -133,19 +107,15 @@
             <h3 class="blog_heading_border">Categories </h3>
             <ul>
             <li>
-            <a href="#"> Web Design </a>
-            <span class="categoryCount">(10)</span>
-            </li>
-            <li>
-            <a href="#"> CSE Engineering </a>
+            <a href="#"> Travel</a>
             <span class="categoryCount">(07)</span>
             </li>
              <li>
-            <a href="#"> Web Development </a>
+            <a href="#"> Sports </a>
             <span class="categoryCount">(18)</span>
             </li>
             <li>
-            <a href="#"> Civil Engineering </a>
+            <a href="#"> Cooking </a>
             <span class="categoryCount">(08)</span>
             </li>
             <li>
@@ -159,7 +129,6 @@
             </ul>
             </div>
 
-    
             <div class="widget widget_recent_entries">
             <h3 class="blog_heading_border"> Recent Lessons</h3>
             <ul>
@@ -176,8 +145,6 @@
             @endforeach
             </ul>
             </div>
-
-
 
             <div class="widget widget_tag_cloud">
             <h3 class="blog_heading_border"> Lesson Tags </h3>
@@ -206,62 +173,94 @@
 
                   {{-- side bar end --}}
 
-
             </div>
             </div>
-
 
             {{-- lesson related to categories(Example Travel)--}}
             <div class="related-item">
-            <div class="inner-heading">
-            <h3>Related Lessons</h3>
-            <h2>There are variations available</h2>
-            </div>
             <div class="row inner-detail-p">
-
-           
-                @foreach ($lesson_show as $item)
+                   <div id="review-c">
+                    <div class="review-wrap">
+                        <div class="col-sm-9">
+                            <div class="leave_review">
+                            <h3 class="blog_heading_border"> Discuss </h3>
+                    <ol class="review-lists">
+                    <li class="comment">
+                    <div class="activity_rounded">
+                    <img src="/storage/icon_image/user.png" alt="image"> </div>
+                    <div class="comment-body">
+                    <h4 class="text-left"> NIKLOS DELSON &nbsp;&nbsp;
+                        <small class="date-posted pull-right">18th Mar, 2018</small>
+                    </h4>
+                    <p> Duis a enim vel mauris ultrices, duis a enim vel mauris ultrices</p>
                     
-                @endforeach
-            
+                    <a href="#" class="pull-left">Reply</a>
+                    <div class="clearfix"></div>
+                    </div>
+                    </li>
+                    </ol>
+                    <div class="leave_review">
+                    <h3 class="blog_heading_border"> Leave a Comment </h3>
+
+                    <form action="#" method="post">
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                    <input placeholder="Name" class="form-control" type="text" required=""> </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-12">
+                    <textarea placeholder="Message" class="form-control" required=""></textarea>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                    <button type="submit" class="mt_btn_yellow">Submit</button>
+                    </div>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                    <div class="inner-heading">
+                        <h3>Related This Topic</h3>
+                    </div>
+                    
+            @foreach ($lesson_show as $item)
+           
             <div class="col-md-4 col-sm-6 col-xs-12 item">
             <div class="featured-item">
 
-
             <div class="feat-img">
-            <img src="images/education/ft-3.jpg" alt="">
+            <img src="/storage/images/{{$item->image}}" alt="">
             <div class="th-name">
-            <img src="images/blog/cmnt-3.jpg" alt="">
-            <h5>{{$item->title}}</h5>
+            <h5>Listen</h5>
             </div>
             <div class="overlayPort">
             <ul class="info text-center list-inline">
             <li>
-            <a href="portfolio-detail.html">
-            <h4>View Detail</h4>
+            <a href="/{{$item->id}}">
+            <h4>Listen</h4>
             </a>
             </li>
             </ul>
             </div>
              </div>
             <div class="feat-inn">
-            <span>(20 Reviws)</span>
-            <ul>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            </ul>
-            <a href="#"><h3>Marketing Management from start for beginner</h3></a>
+         
+            <a href="/{{$item->id}}"><h3>{{$item->title}}</h3></a>
             <div class="course-feat">
-            <div class="price-ft pull-left">
-            <span>$90</span>
-            </div>
+          
             <div class="admin-ft pull-right">
             <ul>
-            <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>31</span></a></li>
-            <li><a href="#" tabindex="-1"><i class="fa fa-heart"></i><span>10</span></a></li>
+            <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>31 comments</span></a></li>
+
             </ul>
             </div>
             </div>
@@ -269,7 +268,7 @@
             </div>
             </div>
 
-            
+            @endforeach
          
 
 

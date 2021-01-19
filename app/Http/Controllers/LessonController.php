@@ -20,21 +20,19 @@ class LessonController extends Controller
 
     public function basic(){
 
-     $lesson = Lesson::where('level_id','=', 1)->paginate(2);   
-    
-    //$questions = $lesson->questions; // thu lay level name // xem lai cho này
-       
+        $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
         return view('pages.basic',  compact('lesson'));
+
     }
     public function inter(){
 
-        $lesson = Lesson::where('level_id','=', 2)->paginate(1);  
+        $lesson = Lesson::where('level_id','=', 2)->paginate(5);  
         return view('pages.inter',  compact('lesson')); // ket noi controller voi view
 
     }
 
     public function advance(){
-        $lesson = Lesson::where('level_id','=', 3)->paginate(1);
+        $lesson = Lesson::where('level_id','=', 3)->paginate(5);
         return view('pages.advance',  compact('lesson')); // ket noi controller voi view
     }
 
@@ -46,10 +44,8 @@ class LessonController extends Controller
         $array2 = $lesson->script; 
         $Array = array_combine($array2, $array1);
 
-         $vocabulary = $lesson->vocabulary;
-         $questions = $lesson->questions; 
-
-
+        $vocabulary = $lesson->vocabulary;
+        $questions = $lesson->questions;
     
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
    

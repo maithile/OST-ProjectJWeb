@@ -9,9 +9,7 @@
                   <div class="feat-img">
 
                     <img src = "/storage/images/{{$value->image}}"  width="360" height="230">
-                      {{-- <img src="images/education/ft-1.jpg" alt=""> --}}
                       <div class="th-name">
-                          <img src="images/blog/cmnt-1.jpg" alt="">
                           <a href="/{{$value->id}}">
                             <h4>Listen</h4>
                         </a>
