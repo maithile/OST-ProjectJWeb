@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     // 1-n
-    //protected $table = 'lessons';
+     protected $table = 'lessons';
     public $timestamp = false;
     
    // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];

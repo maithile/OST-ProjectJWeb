@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Lesson;
+use App\answer;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,16 +12,13 @@ class Question extends Model
 protected $table = 'questions';
 public $timestamp = false;
 
-protected $fillable = [
-  'lesson_id',
-  'question',
-  'choice1',
-  'choice2',
-  'choice3',
-  'correct_answer'
-];
-
 public function lessons(){
     return $this->belongsTo(Lesson::class, 'lesson_id','id');
   }
+
+  public function answer() {
+    return $this->hasMany(answer::class,'question_id','id' );
+  }    
+
+  
 }

@@ -34,39 +34,24 @@
     <div class="post_body">
     <h3>Course Summery</h3>
     <div class="over-view">
-  
+        
+     <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+      
         @foreach ($questions as $value)
-
-        <form action="UserAnswerCotroller@store">
-            <p>{{$value->question}}</p>
-
-            {{$value->id}}
-            <input type="radio" id="male" name="gender" value="{{$value->choice1}}"> 
-            <label for="male">{{$value->choice1}}</label><br>
-
-            <input type="radio" id="male" name="gender" value="{{$value->choice2}}">
-            <label for="male">{{$value->choice2}}</label><br>
-
-            <input type="radio" id="male" name="gender" value="{{$value->choice3}}">
-            <label for="male">{{$value->choice3}}</label><br>
-       
-            <br>  
-            @endforeach 
-    <div class="button">
-    <a href="#" class="mt_btn_yellow mar-top-10">Submit</a>
-    </div>
-    </div>
-    </div>
-    </div>
-
+           <p><b> {{$value->question}} </b></p>
+             @foreach ($value->answer as $item) 
+               <input type="radio" id="male" name="mit[{{$item->question_id}}]" value="{{$value->id}}"> 
+                <p>{{$item->answer}}</p>
+              @endforeach 
+            @endforeach
+   
+      <input  type="submit" name ="submit" value="Submit">
    </form>
 
-  
-
-
-
-
-
+</div>
+</div>
+</div>
   
     <div id="menu1" class="tab-pane fade">
     <h3>Scheduled Lectures</h3>
@@ -84,12 +69,12 @@
     </h4>
     </div>
     <div id="collapse1" class="panel-collapse collapse in">
-    <div class="panel-body"> @foreach ($vocabulary as $value)
-
+    <div class="panel-body"> 
+        
+        @foreach ($vocabulary as $value)
         <div> Dictionrty_id: {{$value->dictionary_id}} </div>
         <div> Vocabulary: {{$value->dictionary->vocabulary }}</div>
         <div> Meaning: {{$value->dictionary->meaning }} </div> 
-        
         @endforeach 
     </div>
     </div>

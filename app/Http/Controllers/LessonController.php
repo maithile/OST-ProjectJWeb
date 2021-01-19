@@ -7,6 +7,7 @@ use App\Lesson;
 use App\Level;
 use App\Question;
 use App\Dictionary;
+use App\answer;
 
 class LessonController extends Controller
 {
@@ -35,36 +36,42 @@ class LessonController extends Controller
         $lesson = Lesson::where('level_id','=', 3)->paginate(1);
         return view('pages.advance',  compact('lesson')); // ket noi controller voi view
     }
- 
     public function show($id){
 
-    $lesson = Lesson::find($id); 
+        $lesson = Lesson::find($id); 
 
-       //  split sentences
-       
-       $array1  = $lesson->talker; 
-       $array2 = $lesson->script; 
-       $Array = array_combine($array2, $array1);
-     
-    //    // split roler  
-    //      $separator1 = '/\{([A-z\s]*)\}/';   // test lai when it the sanme name  roler
-    //       preg_match_all($separator1, trim($script), $match1);
-    //       $roler = $match1[1];
       
-    //    // split sentences
+       
+        $array1  = $lesson->talker; 
+        $array2 = $lesson->script; 
+        $Array = array_combine($array2, $array1);
 
-    //     $separator2 = '/\}([A-z\s.?!]*)\&/';  
-    //      preg_match_all($separator2, trim($script), $match2);
-    //      $talk = $match2[1];
-    
-    //     $Array = array_combine($roler, $talk);
-
+         $vocabulary = $lesson->vocabulary;
          $questions = $lesson->questions; 
-         $vocabulary = $lesson->vocabulary; // lay ra duoc bang dictionnary s
+
+
     
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array')); 
    
-         }
+    }
+    public function answerSubmit(Request $request, $id)
+    {
+       
+        
+       $inputed = $request->input('mit');
+     
+
+        $lesson = Lesson::find($id); 
+       
+        // $array1  = $lesson->talker; 
+        // $array2 = $lesson->script; 
+        // $Array = array_combine($array2, $array1);
+
+         $vocabulary = $lesson->vocabulary;
+        $questions = $lesson->questions->pluck('correct_answerId', 'id'); 
+        
+        return view('pages.show-anser', compact('lesson', 'questions','inputed', 'vocabulary')); 
+    }
 
 
 }

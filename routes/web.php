@@ -21,8 +21,13 @@ Route::get('/basic', 'LessonController@basic');
 Route::get('/inter', 'LessonController@inter'); 
 Route::get('/advance', 'LessonController@advance'); 
 
+// answe
+Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit"); 
+
+
 // layout detail
 Route::get('/{id}', 'LessonController@show');    
+
 
 // Admin 
 Route::resource('admin/post', 'AdminPostLessonCotroller');
@@ -30,4 +35,4 @@ Route::resource('admin/question', 'AdminQuestionController');
 Route::resource('admin/dictionary', 'AdminDictionaryController');
 Route::resource('admin/vocabulary', 'AdminVocabularyController');
 
-Route::resource('/answer', 'UserAnswerCotroller');
+
