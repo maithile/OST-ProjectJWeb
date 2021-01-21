@@ -14,4 +14,13 @@ class answer extends Model
       }
 
       
+
+
+      protected $casts = [
+        'answer' => 'array',    
+        
+    
+    ];
+    
+
 }

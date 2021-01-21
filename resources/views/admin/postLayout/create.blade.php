@@ -138,30 +138,33 @@
             {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => 'Question'])  }}
             </div>
         
+
+             {{-- answer choice--}}
+
             <div class="col-md-8">
                 @error('choice1')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('choice1','choice1')}}
-            {{Form::text('choice1', '', ['class' => 'form-group']) }}
+            {{Form::label('answer','answer1')}}
+            {{Form::text('answer[] ', '', ['class' => 'form-group']) }}
             </div>
     
             <div class="col-md-8">
-                @error('choice2')
+                @error('answer')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('choice2','choice2')}}
-            {{Form::text('choice2', '', ['class' => 'form-group'])  }}
+            {{Form::label('answer','answer2')}}
+            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
             </div>
     
             <div class="col-md-8">
-                @error('choice3')
+                @error('answer')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('choice3','choice3')}}
-            {{Form::text('choice3', '', ['class' => 'form-group'])  }}
+            {{Form::label('choice3','answer3')}}
+            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
             </div>
-    
+                      {{-- answer choice--}}
             <div class="col-md-8">
                 @error('correct_answerId')
                 <div class="alert alert-danger">{{ $message }}</div>

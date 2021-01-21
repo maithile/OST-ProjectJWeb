@@ -8,6 +8,7 @@ use App\Level;
 use App\Question;
 use App\Dictionary;
 use App\Vocabulary;
+use App\answer;
 
 class AdminPostLessonCotroller extends Controller
 {
@@ -136,13 +137,21 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->save();
        $post_lesson->id;
      
-
+    //for question
        $question = new Question;
        $question->lesson_id =  $post_lesson->id;
        $question->question = $request->input('question');
        $question->correct_answerId = $request->input('correct_answerId');
        $question->save();
+       $question->id;
 
+      //for anwser
+        $answer = new answer;
+        $answer->question_id = $question->id;
+        $answer->answer = $request->input('answer');
+        $answer->save();
+        
+ 
       // create vocab
       $newVocab = new Dictionary;
       $newVocab->lesson_id =  $post_lesson->id;
