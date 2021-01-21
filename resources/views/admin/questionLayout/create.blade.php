@@ -55,11 +55,11 @@
         </div>
 
         <div class="col-md-8">
-            @error('correct_answer')
+            @error('')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-         {{Form::label('','correct_answer')}}
-         {{Form::text('correct_answer', '', ['class' => 'form-group'])  }}
+         {{Form::label('correct_answerId','correct_answer')}}
+         {{Form::text('correct_answerId', '', ['class' => 'form-group'])  }}
         </div>
 
        </div>

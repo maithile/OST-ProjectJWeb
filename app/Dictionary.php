@@ -11,9 +11,8 @@ class Dictionary extends Model
 
 
   public function vocabularies(){
-       return $this->hasone(Dictionary::class, 'dictionary_id');
+       return $this->belongsTo(Lesson::class, 'lesson_id', 'id');
   }  
-
 
 
 

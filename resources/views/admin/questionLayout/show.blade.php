@@ -28,7 +28,7 @@
             <p><b>3</b> : {{$question->choice3}}</p>
           </div>
           <div style="background-color:#f2f2f2; color:#444;">
-            <p><b>correct_answer</b> : {{$question->correct_answer}}</p>  
+            <p><b>correct_answer</b> : {{$question->correct_answerId}}</p>  
           
         </div>
         </div>

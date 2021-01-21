@@ -57,7 +57,37 @@ class AdminPostLessonCotroller extends Controller
             'level_id' => 'required',
             'talker' => "required|array",
             "talker.*"  => "required|string"
+
+
+            // //for question
+            // 'lesson_id' => 'required',
+            // 'question' => 'required',
+            // 'correct_answerId' => 'required'
+
+
         ]);
+
+        // $this->validate($request, [
+        //     'lesson_id' => 'required',
+        //     'question' => 'required',
+        //     'correct_answerId' => 'required'
+        //   ]);
+     
+         
+         //  for answer
+    //   $this->validate($request, [
+    //         'question_id' => 'required',
+    //          'answer' => 'required',
+    //      ]);
+     
+     
+    //      //  // for dictionary
+    //       $this->validate($request, [
+         
+    //     'vocabulary' => 'required',
+    //         'meaning' => 'required'
+    //   ]);
+
 
     //upload image file 
 
@@ -104,17 +134,22 @@ class AdminPostLessonCotroller extends Controller
 
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
-      $post_lesson->id;
+       $post_lesson->id;
+     
 
+       $question = new Question;
+       $question->lesson_id =  $post_lesson->id;
+       $question->question = $request->input('question');
+       $question->correct_answerId = $request->input('correct_answerId');
+       $question->save();
 
-      // create question 
-    //   $question = new Question;
-    //   $question->lesson_id = $request->input('lesson_id');
-    //   $question->question = $request->input('question');
-    //   $question->correct_answer = $request->input('correct_answerId');
-    //   $question->save();
+      // create vocab
+      $newVocab = new Dictionary;
+      $newVocab->lesson_id =  $post_lesson->id;
+      $newVocab->vocabulary = $request->input('vocabulary');
+      $newVocab->meaning = $request->input('meaning');
+      $newVocab->save();
 
-   
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }

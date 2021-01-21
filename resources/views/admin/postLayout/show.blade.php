@@ -37,7 +37,7 @@
     <div> {{$value->choice1}}</div>
     <div> {{$value->choice2}}</div>
     <div> {{$value->choice3}}</div>
-    <div> {{$value->correct_answer}}</div>
+    <div> {{$value->correct_answerId}}</div>
     @endforeach  
 
     </div>

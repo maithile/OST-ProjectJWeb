@@ -113,8 +113,7 @@
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
 
-       
-      
+    
         </div>
        </div>
      </div>
@@ -164,11 +163,11 @@
             </div>
     
             <div class="col-md-8">
-                @error('correct_answer')
+                @error('correct_answerId')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-             {{Form::label('','correct_answer')}}
-             {{Form::text('correct_answer', '', ['class' => 'form-group'])  }}
+             {{Form::label('correct_answer','correct_answer')}}
+             {{Form::text('correct_answerId', '', ['class' => 'form-group'])  }}
             </div>
            </div>
         </div>
@@ -198,10 +197,13 @@
             @enderror
         {{Form::label('meaning','Meaning')}}
         {{Form::text('meaning', '', ['class' => 'form-group']) }}
-        {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
-        {!! Form::close() !!}
+
+
+      
         </div> 
        </div>
+       {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
+       {!! Form::close() !!}
     </div>
                           {{--End Dictionary--}}
 

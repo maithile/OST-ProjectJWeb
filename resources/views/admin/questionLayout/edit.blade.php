@@ -60,7 +60,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             {{Form::label('correct_answer','correct_answer')}}
-            {{Form::text('correct_answer', $question->correct_answer, ['class' => 'form-group'])  }}
+            {{Form::text('Id', $question->correct_answerId, ['class' => 'form-group'])  }}
             </div>
 
         </div>

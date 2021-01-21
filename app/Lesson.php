@@ -31,6 +31,11 @@ class Lesson extends Model
        return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');
    }
 
+   
+   public function vocabularies(){
+    return $this->hasMany(Dictionary::class, 'lesson_id', 'id');
+}
+
    protected $casts = [
     'script' => 'array',    
     'talker' => 'array',
