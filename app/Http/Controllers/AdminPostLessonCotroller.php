@@ -52,9 +52,11 @@ class AdminPostLessonCotroller extends Controller
             'title' => 'required',
             'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
-            'script' => 'required',
+            'script' => "required|array",
+            "script.*"  => "required|string",
             'level_id' => 'required',
-            'talker' => 'required'
+            'talker' => "required|array",
+            "talker.*"  => "required|string"
         ]);
 
     //upload image file 

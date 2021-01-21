@@ -24,7 +24,6 @@
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror 
-
         {{Form::label('title', 'Title')}}
         {{Form::text('title', '', ['class' => 'search-field', 'placeholder' => 'Title'])}}
         </div>
@@ -72,44 +71,49 @@
         <div class="submit-section">
         
     <div class="row with-forms">
-        <div class="form">
-        @error('talker')
+        @error('talker.*')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        @error('script.*')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <div class="col-md-3">
+         
         {{Form::label('talker', 'talker')}}
         {{Form::text('talker[]', '', ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
         </div>
 
         <div class="col-md-8">
-            @error('script')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+     
         {{Form::label('script', 'Script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'  ])}}
         </div>
 
         <div class="col-md-3">
-        {{Form::label('talker', 'talker')}}
+     
+        {{Form::label('talker.*', 'talker')}}
         {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
          </div>
 
          <div class="col-md-8">
+     
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
         
         <div class="col-md-3">
+       
         {{Form::label('talker', 'talker')}}
         {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
             </div>
 
             <div class="col-md-8">
+     
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
 
-        </div>
+       
       
         </div>
        </div>
