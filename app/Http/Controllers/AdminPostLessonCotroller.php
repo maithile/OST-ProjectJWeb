@@ -47,10 +47,8 @@ class AdminPostLessonCotroller extends Controller
 
     public function store(Request $request)
     {
-
         // for post
-        $this->validate($request, [
-             
+        $this->validate($request, [    
             'title' => 'required',
              'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
@@ -59,12 +57,17 @@ class AdminPostLessonCotroller extends Controller
             'level_id' => 'required',
             'talker' => "required|array",
             "talker.*"  => "required|string",
+
         ]);
 
+
+
+
+        
   
     //   //for question
     //   'lesson_id' => 'required',
-    //   'question' => 'required',
+    //   'lesson_id' => 'required',
     //   'correct_answerId' => 'required'
 
     
