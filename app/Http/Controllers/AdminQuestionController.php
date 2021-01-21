@@ -101,16 +101,13 @@ class AdminQuestionController extends Controller
             'choice1'  => 'required',
             'choice2'  => 'required',
             'choice3'  => 'required',
-            'correct_answer'    => 'required'
+            'correct_answerId'    => 'required'
         ]);
 
         // create question 
         $question = Question::find($id);
         $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
-        // $question->choice1 = $request->input('choice1');
-        // $question->choice2 = $request->input('choice2');
-        // $question->choice3 = $request->input('choice3');
         $question->correct_answerId = $request->input('correct_answerId');
         $question->save();
 

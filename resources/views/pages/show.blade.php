@@ -29,7 +29,6 @@
     <li><a data-toggle="tab" href="#menu3">Reviews</a></li>
     </ul>
 
-
     <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
     <div class="post_body">

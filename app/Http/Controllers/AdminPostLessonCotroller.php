@@ -44,6 +44,7 @@ class AdminPostLessonCotroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
 
@@ -51,7 +52,7 @@ class AdminPostLessonCotroller extends Controller
         $this->validate($request, [
              
             'title' => 'required',
-            'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+             'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
             'script' => "required|array",
             "script.*"  => "required|string",
@@ -137,7 +138,7 @@ class AdminPostLessonCotroller extends Controller
        $question->correct_answerId = $request->input('correct_answerId');
        $question->save();
        $question->id;
-
+       
       //for anwser
         $answer = new answer;
         $answer->question_id = $question->id;
@@ -145,10 +146,10 @@ class AdminPostLessonCotroller extends Controller
         $answer->save();
 
       // create vocab
-      $newVocab = new Vocabulary;
-      $newVocab->lesson_id =  $post_lesson->id;
-      $newVocab->dictionary_id =$request->input('dictionary_id');
-      $newVocab->save();
+        $newVocab = new Vocabulary;
+        $newVocab->lesson_id =  $post_lesson->id;
+        $newVocab->dictionary_id =$request->input('dictionary_id');
+        $newVocab->save();
 
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
@@ -173,7 +174,7 @@ class AdminPostLessonCotroller extends Controller
          $Array = array_combine($array2, $array1);
 
         $questions= $lesson->questions;
-        $vocabulary = $lesson->vocabularies;
+        $vocabulary = $lesson->vocabulary;
 
         return view('admin.postLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array'));  // tao sau
     }
@@ -185,13 +186,16 @@ class AdminPostLessonCotroller extends Controller
      */
     public function edit($id)
     {
+        $lesson = Lesson::find($id); 
+        $array1  = $lesson->talker; 
+        $array2 = $lesson->script; 
+        $Array = array_combine($array2, $array1);
 
-          $lesson = Lesson::find($id);
-          $array1  = $lesson->talker; 
-          $array2 = $lesson->script; 
-          $Array = array_combine($array2, $array1);
-          $level = $lesson->level;
-        return view('admin.postLayout.edit', compact('lesson', 'level', 'Array'));
+        $questions= $lesson->questions;
+        $vocabulary = $lesson->vocabulary;
+        $dictionary = Dictionary::pluck('vocabulary','id')->all();
+        $level = $lesson->level;
+        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'dictionary', 'vocabulary'));
     }
 
     /**
@@ -203,16 +207,40 @@ class AdminPostLessonCotroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+      // for post
+      $this->validate($request, [
              
-            'title' => 'required',
-            //'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
-             //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
-            'script' => 'required',
-            'level_id' => 'required',
-            'talker' => 'required'
-            
-        ]);
+        'title' => 'required',
+        //'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+        //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
+        'script' => "required|array",
+        "script.*"  => "required|string",
+        'level_id' => 'required',
+        'talker' => "required|array",
+        "talker.*"  => "required|string",
+    ]);
+
+
+//   //for question
+//   'lesson_id' => 'required',
+//   'question' => 'required',
+//   'correct_answerId' => 'required'
+
+
+     
+     //  for answer
+//   $this->validate($request, [
+//         'question_id' => 'required',
+//          'answer' => 'required',
+//      ]);
+ 
+ 
+//      //  // for dictionary
+//       $this->validate($request, [
+     
+//     'vocabulary' => 'required',
+//         'meaning' => 'required'
+//   ]);
 
     //upload image file 
 
@@ -258,9 +286,30 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->image = $fileNameToStore;  
     }
       $post_lesson->save();
+       $post_lesson->id;
+  
+ //for question
+    $question =Question::find($id);
+    $question->lesson_id =  $post_lesson->id;
+    $question->question = $request->input('question');
+    $question->correct_answerId = $request->input('correct_answerId');
+    $question->save();
+    $question->id;
+
+   //for anwser
+     $answer = answer::find($id);
+     $answer->question_id = $question->id;
+     $answer->answer = $request->input('answer');
+     $answer->save();
+
+   // create vocab
+     $newVocab = Vocabulary::find($id);
+     $newVocab->lesson_id =  $post_lesson->id;
+     $newVocab->dictionary_id =$request->input('dictionary_id');
+     $newVocab->save();
 
 
-      return redirect('/admin/post')->with('success', 'Create lesson success'); 
+      return redirect('/admin/post')->with('success', 'update succeed'); 
     }
 
     /**

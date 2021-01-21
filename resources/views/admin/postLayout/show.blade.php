@@ -43,15 +43,24 @@
     </div>
     </div>
     </div>
-
-    <div id="menu1" class="tab-pane fade">
-       @foreach ($vocabulary as $value)
-            <div> Dictionrty_id: {{$value->dictionary_id}} </div>
-            <div> Vocabulary: {{$value->dictionary->vocabulary }}</div>
-            <div> Meaning: {{$value->dictionary->meaning }} </div> 
-        @endforeach 
-    
-    </div>
+    <div id="menu1" class="tab-pane fade"> 
+        <div class="panel-group course-accd" id="accordion">
+            @foreach ($vocabulary as $value)
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        <ul class="accd-titles">
+        <li>{{$value->dictionary->vocabulary }}</li>
+        <li class="let-title">{{$value->dictionary->meaning }}</li>
+        </ul>
+        </a>
+        </h4>
+        </div>
+        </div>
+        @endforeach
+        </div>
+        </div>
 
     <div id="menu2" class="tab-pane fade">
     <div class="advisor-description">

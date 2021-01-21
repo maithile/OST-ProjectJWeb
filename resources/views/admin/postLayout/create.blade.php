@@ -43,17 +43,14 @@
 
     <div class="row with-forms">
         <div class="col-md-6">
-
          @error('mp3_file')
             <div class="alert alert-danger">{{ $message }}</div>
          @enderror
-
         {{Form::label('mp3_file', 'mp3_file')}}
         {{Form::file('mp3_file')}}
         </div>
 
         <div class="col-md-6">
-
          @error('image')
         <div class="alert alert-danger">{{ $message }}</div>
          @enderror
@@ -142,7 +139,7 @@
              {{-- answer choice--}}
 
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer1')}}
@@ -150,7 +147,7 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer2')}}
@@ -158,7 +155,7 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('choice3','answer3')}}
@@ -180,13 +177,11 @@
 
        <div class="add-listing-section">
            <div class="add-listing-headline">
-           <h3></i>Vocabularies</h3>
+           <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
            </div>
            
            <div class="row with-forms">
-               <div class="col-md-6">
-                 
-                </div>
+
             </div>
                 <div class="row with-forms">
                 <div class="col-md-4">

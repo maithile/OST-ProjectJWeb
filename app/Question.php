@@ -16,7 +16,7 @@ public function lessons(){
     return $this->belongsTo(Lesson::class, 'lesson_id','id');
   }
 
-  public function answer() {
+  public function answer(){
     return $this->hasMany(answer::class,'question_id','id' );
   }    
 
