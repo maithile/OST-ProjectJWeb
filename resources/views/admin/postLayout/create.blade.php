@@ -16,7 +16,7 @@
     <div id="add-listing">
     <div class="add-listing-section">
     <div class="add-listing-headline">
-    <h3><i class="sl sl-icon-doc"></i> Lesson Create</h3>
+    <h3>Lesson Create</h3>
     </div>
 
     <div class="row with-forms">
@@ -58,7 +58,6 @@
          @error('image')
         <div class="alert alert-danger">{{ $message }}</div>
          @enderror
-
         {{Form::label('image', 'Image')}}
         {{Form::file('image')}}
         </div>
@@ -68,13 +67,13 @@
 
     <div class="add-listing-section">
         <div class="add-listing-headline">
-        <h3><i class="sl sl-icon-map"></i>Script</h3>
+        <h3>Script</h3>
         </div>
         <div class="submit-section">
         
     <div class="row with-forms">
         <div class="form">
-        @error('script')
+        @error('talker')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <div class="col-md-3">
@@ -83,6 +82,9 @@
         </div>
 
         <div class="col-md-8">
+            @error('script')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         {{Form::label('script', 'Script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'  ])}}
         </div>
@@ -108,37 +110,23 @@
         </div>
 
         </div>
-        {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
+      
         </div>
        </div>
      </div>
-   {!! Form::close() !!}
-  
-    
-
 
     </div>
     </div>           
                                  {{--End Lesson--}}
        {{--Question--}}  
-    {!! Form::open(['action' => 'AdminQuestionController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 
     <div class="add-listing-section">
     
         <div class="add-listing-headline">
-        <h3><i class="sl sl-icon-map"></i>Question</h3>
+        <h3>Question</h3>
         </div>
         
         <div class="row with-forms">
-            <div class="col-md-6">
-            @error('lesson')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-    
-            {{Form::label('lesson_id','Lesson')}}
-            {!!Form::select('lesson_id', ['id' => 'Seclect Lesson'] + $lesson) !!} 
-            </div>
-    
             <div class="col-md-8">
                 @error('question')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -177,20 +165,16 @@
                 @enderror
              {{Form::label('','correct_answer')}}
              {{Form::text('correct_answer', '', ['class' => 'form-group'])  }}
-             {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
-             {!! Form::close() !!}
             </div>
            </div>
         </div>
                                      {{--End Question--}}  
         {{--Dictionary--}} 
 
-        {!! Form::open(['action' => 'AdminDictionaryController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
-
      <div class="add-listing-section">
 
     <div class="add-listing-headline">
-    <h3><i class="sl sl-icon-map"></i>Dictionaries Create</h3>
+    <h3>Dictionaries Create</h3>
     </div>
 
     <div class="row with-forms">
@@ -221,7 +205,7 @@
                           
 {{--Vocabulary--}}
 
-{!! Form::open(['action' => 'AdminVocabularyController@store', 'method' => 'POST']) !!}
+{{-- {!! Form::open(['action' => 'AdminVocabularyController@store', 'method' => 'POST']) !!}
        <div class="add-listing-section">
            <div class="add-listing-headline">
            <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
@@ -251,7 +235,7 @@
                </div> 
               </div>
 
-              {{--End  Vocabulary--}}
+              End  Vocabulary
 
               </div>
           </div>
@@ -260,6 +244,6 @@
      $(document).ready(function() {
      $('.g').select2();
      });
- </script>
+ </script> --}}
 @endsection
 

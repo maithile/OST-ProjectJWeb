@@ -19,7 +19,7 @@ class AdminPostLessonCotroller extends Controller
     public function index()
     {
 
-        $lesson = Lesson::paginate(5);
+        $lesson = Lesson::orderBy('created_at','desc')->paginate(5);
         return view('admin.postLayout.index', compact('lesson'));
     }
 
@@ -102,6 +102,16 @@ class AdminPostLessonCotroller extends Controller
 
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
+      $post_lesson->id;
+
+
+      // create question 
+    //   $question = new Question;
+    //   $question->lesson_id = $request->input('lesson_id');
+    //   $question->question = $request->input('question');
+    //   $question->correct_answer = $request->input('correct_answerId');
+    //   $question->save();
+
    
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 

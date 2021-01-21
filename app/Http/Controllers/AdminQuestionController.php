@@ -54,11 +54,8 @@ class AdminQuestionController extends Controller
         $question = new Question;
         $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
-        // $question->choice1 = $request->input('choice1');
-        // $question->choice2 = $request->input('choice2');
-        // $question->choice3 = $request->input('choice3');
         $question->correct_answer = $request->input('correct_answerId');
-        json_encode($question->save());
+        $question->save();
         return redirect('/admin/question')->with('success', 'Created Ok Sir :))' );
     }
 
