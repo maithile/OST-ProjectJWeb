@@ -135,7 +135,7 @@ class AdminPostLessonCotroller extends Controller
 
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
-       $post_lesson->id;
+      $post_lesson->id;
      
     //for question
        $question = new Question;
@@ -150,13 +150,11 @@ class AdminPostLessonCotroller extends Controller
         $answer->question_id = $question->id;
         $answer->answer = $request->input('answer');
         $answer->save();
-        
- 
+
       // create vocab
-      $newVocab = new Dictionary;
+      $newVocab = new Vocabulary;
       $newVocab->lesson_id =  $post_lesson->id;
-      $newVocab->vocabulary = $request->input('vocabulary');
-      $newVocab->meaning = $request->input('meaning');
+      $newVocab->dictionary_id =$request->input('dictionary_id');
       $newVocab->save();
 
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
@@ -182,7 +180,8 @@ class AdminPostLessonCotroller extends Controller
          $Array = array_combine($array2, $array1);
 
         $questions= $lesson->questions;
-        $vocabulary =$lesson->vocabulary;
+        $vocabulary = $lesson->vocabularies;
+
         return view('admin.postLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array'));  // tao sau
     }
     /**

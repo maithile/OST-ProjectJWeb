@@ -35,7 +35,6 @@ class Lesson extends Model
    public function vocabularies(){
     return $this->hasMany(Dictionary::class, 'lesson_id', 'id');
 }
-
    protected $casts = [
     'script' => 'array',    
     'talker' => 'array',

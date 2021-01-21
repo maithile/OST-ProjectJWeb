@@ -19,7 +19,4 @@ class Vocabulary extends Model
 }
 
 
-
-
-
 }

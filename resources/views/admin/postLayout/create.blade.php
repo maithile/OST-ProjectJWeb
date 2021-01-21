@@ -175,48 +175,9 @@
            </div>
         </div>
                                      {{--End Question--}}  
-        {{--Dictionary--}} 
-
-     <div class="add-listing-section">
-
-    <div class="add-listing-headline">
-    <h3>Dictionaries Create</h3>
-    </div>
-
-    <div class="row with-forms">
-
-        <div class="col-md-4">
-            @error('vocabulary')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-
-        {{Form::label('vocabulary','Vocabulary')}}
-        {{Form::text('vocabulary[]', '', ['class' => 'form-group'])  }}
-        
-        {{Form::text('vocabulary[]', '', ['class' => 'form-group'])  }}
-        </div>
-
-        <div class="col-md-8">
-            @error('meaning')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        {{Form::label('meaning','Meaning')}}
-        {{Form::text('meaning[]', '', ['class' => 'form-group']) }}
-      
-        {{Form::text('meaning[]', '', ['class' => 'form-group']) }}
-
-      </div> 
-       </div>
-       {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
-       {!! Form::close() !!}
-    </div>
-                          {{--End Dictionary--}}
-
-
-                          
+             
 {{--Vocabulary--}}
 
-{{-- {!! Form::open(['action' => 'AdminVocabularyController@store', 'method' => 'POST']) !!}
        <div class="add-listing-section">
            <div class="add-listing-headline">
            <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
@@ -246,8 +207,7 @@
                </div> 
               </div>
 
-              End  Vocabulary
-
+      
               </div>
           </div>
 

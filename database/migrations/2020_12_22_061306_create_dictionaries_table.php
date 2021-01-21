@@ -15,8 +15,6 @@ class CreateDictionariesTable extends Migration
     {
         Schema::create('dictionaries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('lesson_id')->unsigned();
-            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->string('vocabulary');
             $table->string('meaning');
             $table->timestamps();
