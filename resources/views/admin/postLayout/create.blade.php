@@ -109,7 +109,6 @@
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
-
     
         </div>
        </div>

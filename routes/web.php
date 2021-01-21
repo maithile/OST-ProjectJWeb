@@ -28,9 +28,13 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
 // layout detail
 Route::get('/{id}', 'LessonController@show');    
 
-
+Route::post('admin/post/request', 'LessonController@storeQuestion');
 // Admin 
 Route::resource('admin/post', 'AdminPostLessonCotroller');
+// request 
+
+
+
 Route::resource('admin/question', 'AdminQuestionController');
 Route::resource('admin/dictionary', 'AdminDictionaryController');
 Route::resource('admin/vocabulary', 'AdminVocabularyController');

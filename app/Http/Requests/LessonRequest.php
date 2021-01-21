@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class LessonRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+    return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            
+            'title' => 'required',
+            'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+           'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
+           'script' => "required|array",
+           "script.*"  => "required|string",
+           'level_id' => 'required',
+           'talker' => "required|array",
+           "talker.*"  => "required|string",
+
+        ];
+    }
+}

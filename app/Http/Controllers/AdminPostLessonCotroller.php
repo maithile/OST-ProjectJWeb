@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use LessonRequest;
 use Storage;
 use App\File;
 use App\Lesson;
@@ -47,6 +49,7 @@ class AdminPostLessonCotroller extends Controller
 
     public function store(Request $request)
     {
+      
         // for post
         $this->validate($request, [    
             'title' => 'required',
@@ -61,10 +64,6 @@ class AdminPostLessonCotroller extends Controller
         ]);
 
 
-
-
-        
-  
     //   //for question
     //   'lesson_id' => 'required',
     //   'lesson_id' => 'required',
@@ -157,6 +156,8 @@ class AdminPostLessonCotroller extends Controller
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }
+
+    
 
     /**
      * Display the specified resource.
