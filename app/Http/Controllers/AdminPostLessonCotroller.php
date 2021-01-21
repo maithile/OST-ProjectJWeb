@@ -57,23 +57,16 @@ class AdminPostLessonCotroller extends Controller
             "script.*"  => "required|string",
             'level_id' => 'required',
             'talker' => "required|array",
-            "talker.*"  => "required|string"
-
-
-            // //for question
-            // 'lesson_id' => 'required',
-            // 'question' => 'required',
-            // 'correct_answerId' => 'required'
-
-
+            "talker.*"  => "required|string",
         ]);
 
-        // $this->validate($request, [
-        //     'lesson_id' => 'required',
-        //     'question' => 'required',
-        //     'correct_answerId' => 'required'
-        //   ]);
-     
+  
+    //   //for question
+    //   'lesson_id' => 'required',
+    //   'question' => 'required',
+    //   'correct_answerId' => 'required'
+
+    
          
          //  for answer
     //   $this->validate($request, [

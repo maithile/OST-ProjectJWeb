@@ -142,7 +142,7 @@
              {{-- answer choice--}}
 
             <div class="col-md-8">
-                @error('choice1')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer1')}}
@@ -150,7 +150,7 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer2')}}
@@ -158,7 +158,7 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('choice3','answer3')}}
@@ -180,17 +180,12 @@
 
        <div class="add-listing-section">
            <div class="add-listing-headline">
-           <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
+           <h3></i>Vocabularies</h3>
            </div>
            
            <div class="row with-forms">
                <div class="col-md-6">
-                   @error('vocabulary')
-                   <div class="alert alert-danger">{{ $message }}</div>
-                   @enderror  
-                             
-                   {{Form::label('lesson_id','Lesson')}}
-                   {!!Form::select('lesson_id', ['id' => 'Seclect Lesson'] + $lesson) !!} 
+                 
                 </div>
             </div>
                 <div class="row with-forms">
