@@ -13,7 +13,11 @@ class Dictionary extends Model
   public function vocabularies(){
        return $this->belongsTo(Lesson::class, 'lesson_id', 'id');
   }  
-
+  protected $casts = [
+    'vocabulary' => 'array',    
+    'meaning' => 'array',
+  
+  ];
 
 
 }

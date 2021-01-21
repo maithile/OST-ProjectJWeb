@@ -16,6 +16,10 @@ class Vocabulary extends Model
   public function dictionary(){
     return $this->belongsto(Dictionary::class, 'dictionary_id'); // each vocaburary thuoc ve dictionary
 
-
 }
+
+
+
+
+
 }

@@ -191,7 +191,9 @@
             @enderror
 
         {{Form::label('vocabulary','Vocabulary')}}
-        {{Form::text('vocabulary', '', ['class' => 'form-group'])  }}
+        {{Form::text('vocabulary[]', '', ['class' => 'form-group'])  }}
+        
+        {{Form::text('vocabulary[]', '', ['class' => 'form-group'])  }}
         </div>
 
         <div class="col-md-8">
@@ -199,11 +201,11 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         {{Form::label('meaning','Meaning')}}
-        {{Form::text('meaning', '', ['class' => 'form-group']) }}
-
-
+        {{Form::text('meaning[]', '', ['class' => 'form-group']) }}
       
-        </div> 
+        {{Form::text('meaning[]', '', ['class' => 'form-group']) }}
+
+      </div> 
        </div>
        {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
        {!! Form::close() !!}
