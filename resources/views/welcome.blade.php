@@ -56,8 +56,8 @@
                     <div class="top-bar-right pull-right">
                         <ul>
                             <li><a href="faq.html"><i class="fa fa-question-circle"></i> Ask a Question</a> </li>
-                            <li><a href="register.html">Log In</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            <li><a href="{{route('login')}}">Log In</a></li>
+                            <li><a href="{{route('register')}}">Register</a></li>
                         </ul>                        
                     </div>
                 </div>

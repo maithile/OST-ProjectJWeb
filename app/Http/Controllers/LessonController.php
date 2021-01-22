@@ -11,7 +11,6 @@ use App\answer;
 
 class LessonController extends Controller
 {
-
     public function index(){ 
       
         return view('welcome'); // ket noi controller voi view

@@ -133,12 +133,11 @@
             {{Form::label('question','question')}}
             {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => 'Question'])  }}
             </div>
-        
 
              {{-- answer choice--}}
 
             <div class="col-md-8">
-                @error('answer')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer1')}}
@@ -146,7 +145,7 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             {{Form::label('answer','answer2')}}
@@ -154,10 +153,10 @@
             </div>
     
             <div class="col-md-8">
-                @error('answer')
+                @error('answer.*')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('choice3','answer3')}}
+            {{Form::label('answer','answer3')}}
             {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
             </div>
                       {{-- answer choice--}}
@@ -184,10 +183,10 @@
             </div>
                 <div class="row with-forms">
                 <div class="col-md-4">
-                    @error('vocabulary')
+                    @error('dictionary_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror  
-               {!! Form::select('dictionary_id', $dictionary, null, ['class' => 'g']) !!}
+               {!! Form::select('dictionary_id',['id' => 'Search Word'] + $dictionary, null, ['class' => 'g']) !!}
             </div>
             {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
             {!! Form::close() !!}
