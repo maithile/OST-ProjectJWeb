@@ -13,9 +13,8 @@
 
 // Homepage
 
-Route::get('/', 'LessonController@index'); 
-
-
+  Route::get('/', 'LessonController@index'); 
+  
 // Layout 1
 Route::get('/basic', 'LessonController@basic'); 
 Route::get('/inter', 'LessonController@inter'); 
@@ -28,7 +27,7 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
 // layout detail
 Route::get('/{id}', 'LessonController@show');    
 
-Route::post('admin/post/request', 'LessonController@storeQuestion');
+// Route::post('admin/post/request', 'LessonController@storeQuestion');
 // Admin 
 Route::resource('admin/post', 'AdminPostLessonCotroller');
 // request 
@@ -40,3 +39,7 @@ Route::resource('admin/dictionary', 'AdminDictionaryController');
 Route::resource('admin/vocabulary', 'AdminVocabularyController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

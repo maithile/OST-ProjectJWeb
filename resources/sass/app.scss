@@ -1,3 +1,8 @@
-@import "~font-awesome/scss/font-awesome.scss"
-//@import url('https://fonts.googleapis.com/css?family=Poppins');
-//@import url('https://fonts.googleapis.com/css?family=Poppins:700&display=swap');
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

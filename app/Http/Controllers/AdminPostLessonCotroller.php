@@ -50,8 +50,10 @@ class AdminPostLessonCotroller extends Controller
     public function store(Request $request)
     {
       
-        // for post
-        $this->validate($request, [    
+
+       $validatedData = $request->validate([    
+             
+            // for post
             'title' => 'required',
              'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
@@ -61,29 +63,12 @@ class AdminPostLessonCotroller extends Controller
             'talker' => "required|array",
             "talker.*"  => "required|string",
 
+            // //for question
+            // 'lesson_id' => 'required',
+            // 'question' => 'required',
+            // 'correct_answerId' => 'required'
         ]);
-
-
-    //   //for question
-    //   'lesson_id' => 'required',
-    //   'lesson_id' => 'required',
-    //   'correct_answerId' => 'required'
-
     
-         
-         //  for answer
-    //   $this->validate($request, [
-    //         'question_id' => 'required',
-    //          'answer' => 'required',
-    //      ]);
-     
-     
-    //      //  // for dictionary
-    //       $this->validate($request, [
-         
-    //     'vocabulary' => 'required',
-    //         'meaning' => 'required'
-    //   ]);
 
 
     //upload image file 
@@ -134,20 +119,22 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->id;
      
     //for question
+
+    if($post_lesson->save()){
        $question = new Question;
        $question->lesson_id =  $post_lesson->id;
        $question->question = $request->input('question');
        $question->correct_answerId = $request->input('correct_answerId');
        $question->save();
        $question->id;
-       
-      //for anwser
+      }
+     // for anwser
         $answer = new answer;
         $answer->question_id = $question->id;
         $answer->answer = $request->input('answer');
         $answer->save();
 
-      // create vocab
+      //  create vocab
         $newVocab = new Vocabulary;
         $newVocab->lesson_id =  $post_lesson->id;
         $newVocab->dictionary_id =$request->input('dictionary_id');
@@ -156,8 +143,6 @@ class AdminPostLessonCotroller extends Controller
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }
-
-    
 
     /**
      * Display the specified resource.
@@ -169,13 +154,15 @@ class AdminPostLessonCotroller extends Controller
     {
         $lesson = Lesson::find($id); 
 
-        // $collection = collect($array1 );
-        // $combined = $collection->combine($array2 );
-        // $combined->all();
+       
 
          $array1  = $lesson->talker; 
          $array2 = $lesson->script; 
          $Array = array_combine($array2, $array1);
+
+        //  $collection = collect($array1 );
+        //   $Array = $collection->combine($array2 );
+        //  $$Array->all();
 
         $questions= $lesson->questions;
         $vocabulary = $lesson->vocabulary;
