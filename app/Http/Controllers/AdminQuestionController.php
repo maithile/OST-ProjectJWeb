@@ -106,7 +106,6 @@ class AdminQuestionController extends Controller
 
         // create question 
         $question = Question::find($id);
-        $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
         $question->correct_answerId = $request->input('correct_answerId');
         $question->save();

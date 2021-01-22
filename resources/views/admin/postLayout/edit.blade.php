@@ -162,7 +162,6 @@
            
            <div class="row with-forms">
                <div class="col-md-6">
-                 
                 </div>
             </div>
                 <div class="row with-forms">
@@ -171,11 +170,11 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror  
 
-                    @foreach ( $vocabulary as $item)
+                   @foreach ($vocabulary as $item) 
                         
-               {!! Form::select('dictionary_id', [$item->dictionary->id => $item->dictionary->vocabulary, $dictionary], null, ['class' => 'g']) !!}
+                    {!! Form::select('dictionary_id',[$item->dictionary_id => $item->dictionary->vocabulary] + $dictionary, null, ['class' => 'g']) !!}
 
-               @endforeach
+                   @endforeach 
             </div>
         </div> 
     </div>

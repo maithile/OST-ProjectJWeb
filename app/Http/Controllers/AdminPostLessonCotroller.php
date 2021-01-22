@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Lessonrequest;
+use App\Http\Requests\updateReques;
 use Storage;
 use App\File;
 use App\Lesson;
@@ -49,11 +50,7 @@ class AdminPostLessonCotroller extends Controller
 
     public function store(LessonRequest $request)
     {
-      
-
-  
-   
-
+    
     //upload image file 
 
     if($request->hasFile('image')){
@@ -109,16 +106,19 @@ class AdminPostLessonCotroller extends Controller
        $question->save();
        $question->id;
        
+
       //for anwser
+
+      if($question->save()){
         $answer = new answer;
         $answer->question_id = $question->id;
         $answer->answer = $request->input('answer');
         $answer->save();
-
+      }
       // create vocab
         $newVocab = new Vocabulary;
         $newVocab->lesson_id =  $post_lesson->id;
-        $newVocab->dictionary_id =$request->input('dictionary_id');
+        $newVocab->dictionary_id = $request->input('dictionary_id');
         $newVocab->save();
 
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
@@ -158,6 +158,7 @@ class AdminPostLessonCotroller extends Controller
      */
     public function edit($id)
     {
+
         $lesson = Lesson::find($id); 
         $array1  = $lesson->talker; 
         $array2 = $lesson->script; 
@@ -177,21 +178,9 @@ class AdminPostLessonCotroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateReques $request, $id)
     {
-      // for post
-      $this->validate($request, [
-             
-        'title' => 'required',
-        //'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
-        //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
-        'script' => "required|array",
-        "script.*"  => "required|string",
-        'level_id' => 'required',
-        'talker' => "required|array",
-        "talker.*"  => "required|string",
-    ]);
-
+ 
 
     //upload image file 
 
@@ -223,9 +212,9 @@ class AdminPostLessonCotroller extends Controller
         $path_mp3 = $request->file('mp3_file')->storeAs('public/audioFile', $fileMp3NameToStore);
     }
     //create Post Lesson
-      $post_lesson = Lesson::find($id);
-      $post_lesson->level_id = $request->input('level_id');
-      $post_lesson->title = $request->input('title');
+       $post_lesson = Lesson::find($id);
+       $post_lesson->level_id = $request->input('level_id');
+       $post_lesson->title = $request->input('title');
 
       if($request->hasFile('mp3_file')){
       $post_lesson->mp3_file = $fileMp3NameToStore;
@@ -237,28 +226,23 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->image = $fileNameToStore;  
     }
       $post_lesson->save();
-       $post_lesson->id;
-  
+
  //for question
-    $question =Question::find($id);
-    $question->lesson_id =  $post_lesson->id;
+    $question = Question::find($id);
     $question->question = $request->input('question');
     $question->correct_answerId = $request->input('correct_answerId');
     $question->save();
-    $question->id;
-
-   //for anwser
-     $answer = answer::find($id);
-     $answer->question_id = $question->id;
-     $answer->answer = $request->input('answer');
-     $answer->save();
+ 
+  //  //for anwser
+  //    $answer = answer::find($id);
+  //   $answer->question_id = $request->input('question_id');
+  //  $answer->answer = $request->input('answer');
+  // $answer->save();
 
    // create vocab
-     $newVocab = Vocabulary::find($id);
-     $newVocab->lesson_id =  $post_lesson->id;
-     $newVocab->dictionary_id =$request->input('dictionary_id');
-     $newVocab->save();
-
+        $newVocab = Vocabulary::find($id);
+        $newVocab->dictionary_id = $request->input('dictionary_id');
+        $newVocab->save();
 
       return redirect('/admin/post')->with('success', 'update succeed'); 
     }
