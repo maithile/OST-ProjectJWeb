@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use LessonRequest;
+use App\Http\Requests\Lessonrequest;
 use Storage;
 use App\File;
 use App\Lesson;
@@ -47,35 +47,9 @@ class AdminPostLessonCotroller extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(LessonRequest $request)
     {
       
-        
-        $this->validate($request, [    
-             
-            // for post
-            'title' => 'required',
-             'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
-            'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
-            'script' => "required|array",
-            "script.*"  => "required|string",
-            'level_id' =>  'required|integer',
-            'talker' => "required|array",
-            "talker.*"  => "required|string",
-
-            //for question
-            'question' => 'required',
-            'correct_answerId' => 'required',
-
-           //for answer
-
-           'answer' => "required|array",
-           "answer.*"  => "required|string",
-
-           //for vocabulary
-           'dictionary_id' => 'required|integer',
-
-        ]);
 
   
    
@@ -218,27 +192,6 @@ class AdminPostLessonCotroller extends Controller
         "talker.*"  => "required|string",
     ]);
 
-
-//   //for question
-//   'lesson_id' => 'required',
-//   'question' => 'required',
-//   'correct_answerId' => 'required'
-
-
-     
-     //  for answer
-//   $this->validate($request, [
-//         'question_id' => 'required',
-//          'answer' => 'required',
-//      ]);
- 
- 
-//      //  // for dictionary
-//       $this->validate($request, [
-     
-//     'vocabulary' => 'required',
-//         'meaning' => 'required'
-//   ]);
 
     //upload image file 
 
