@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 
 use Closure;
-
 use User;
 
 class CheckAdmin
@@ -19,12 +18,11 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
 
-       if(Auth::user()->is_admin == true){
-
-        return $next($request);
+       if(Auth::check() && Auth::user()->is_admin == true){
+        
+        return $next($request); 
        }
-       
-         return redirect()->route('welcome');
+       return redirect('welcome');
     }
     
  
