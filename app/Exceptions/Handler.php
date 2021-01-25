@@ -38,7 +38,6 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
     }
-
     /**
      * Render an exception into an HTTP response.
      *
@@ -50,7 +49,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
-        // return redirect()->route('login');
+        //return parent::render($request, $exception);
+        return redirect()->route('home');
     }
 }

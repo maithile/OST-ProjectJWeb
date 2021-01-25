@@ -5,7 +5,7 @@
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif
 {!! Form::open(['action' => 'AdminQuestionController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
-
+{{ csrf_field() }}
 <div class="add-listing-section">
 
     <div class="add-listing-headline">

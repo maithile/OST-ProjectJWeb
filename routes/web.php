@@ -12,7 +12,7 @@
 */
 
 // Homepage
-Route::get('/', 'LessonController@index')->name('welcome'); 
+// Route::get('/', 'LessonController@index')->name('welcome'); 
 
   // for users
 // Layout 1
@@ -34,17 +34,13 @@ Route::middleware('auth')->group(function(){
 // Route::resource('/admin/question', 'AdminQuestionController');
 // Route::resource('/admin/vocabulary', 'AdminVocabularyController');
 
-Route::get('thoat', function(){
-    Auth::logout();
-    return redirect()->route('/');
-});
+Route::get('/logout', 'Auth\LoginController@logout');
 
 });
-
-
 
 Auth::routes();
 
+//homepage
 Route::get('/home', 'HomeController@index')->name('home');
 
 

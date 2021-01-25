@@ -22,7 +22,7 @@ class CheckAdmin
         
         return $next($request); 
        }
-       return redirect('welcome');
+       return redirect('home');
     }
     
  
