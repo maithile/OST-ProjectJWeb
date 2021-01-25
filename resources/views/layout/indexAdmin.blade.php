@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
@@ -8,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Padhai is a creative education html template">
 
-    <title>Padhai - Education HTML Template</title>
+    <title>Janweb - Template</title>
     <!-- Favicon -->
     <script src="/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
     <!-- Bootstrap core CSS -->
@@ -42,18 +44,19 @@
         <div id="dashboard">
 
             <!-- Responsive Navigation Trigger -->
-            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>  
+            <a href="#" class="dashboard-responsive-nav-trigger">Dashboard Navigation</a>  
 
             <div class="dashboard-sticky-nav">
                 <div class="content-left pull-left">
-                    <h2><a href="index.html" class="white">Padhai</a></h2>
+                    <h2><a href="index.html" class="white">
+                        JanTeam</a></h2>
                 </div>
                 <div class="content-right pull-right">
                     <div class="search-bar">
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="search" placeholder="Search Now">
-                                <a href="#"><span class="search_btn"><i class="fa fa-search" aria-hidden="true"></i></span></a>
+                                <a href="#"><span class="search_btn"></i></span></a>
                             </div>
                         </form>
                     </div>
@@ -70,16 +73,15 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
-                            <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
-                            <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
-                            <li><a href="#"><i class="sl sl-icon-power"></i>Logout</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Change Password</a></li>
+                            <li><a href="#">Logout</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <div class="dropdown-item">
-                                <i class="sl sl-icon-envelope-open"></i>
                                 <span class="notify">3</span>
                             </div>
                         </a>
@@ -129,7 +131,6 @@
                     <div class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <div class="dropdown-item">
-                                <i class="sl sl-icon-bell"></i>
                                 <span class="notify">3</span>
                             </div>
                         </a>
@@ -181,37 +182,25 @@
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
                     <ul>
-                        <li class="active"><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                        <li class="active"><a href="dashboard.html">Dashboard</a></li>
                         <li>
-                            <a><i class="sl sl-icon-layers"></i>Lesson</a>
+                            <a>Lesson</a>
                             <ul> 
+                                <li><a href="{{route('post.index')}}">Lesson Overview</span></a></li>
                                 <li><a href="{{route('post.create')}}">Create Lesson</span></a></li>
-                                <li><a href="#">Create Script</span></a></li>
-                                <li><a href="{{route('post.create')}}">View Lesson</span></a></li>
+                                
                             </ul>   
                             
                         </li>
-                        <li>
-                            <a><i class="sl sl-icon-layers"></i>Questions</a>
-                            <ul>
-                                <li><a href="{{route('question.index')}}">All Questions</span></a></li>
-                                <li><a href="{{route('question.create')}}">Add New Questions</span></a></li>
-                            </ul>   
-                            
-                        </li>
-
-                        <li>
-                            <a><i class="sl sl-icon-layers"></i>Dictionary </a>
+                     <li>
+                            <a>Dictionary </a>
                             <ul>
                                 <li><a href="{{route('dictionary.index')}}">All Vocabulary</span></a></li>
                                 <li><a href="{{route('dictionary.create')}}">Add New Vocabulary</span></a></li>
                             </ul>   
                             
                         </li>
-                        <li><a href="dashboard-booking.html"><i class="sl sl-icon-list"></i>view</a></li>
-                        <li><a href="dashboard-history.html"><i class="sl sl-icon-folder"></i> History</a></li>
-                        <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
-                        <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        <li><a href="index.html">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -226,7 +215,7 @@
 
             <!-- Copyrights -->
             <div class="copyrights">
-                <p>2019 <i class="fa fa-copyright" aria-hidden="true"></i> Padhai by <a href="https://www.cyclonethemes.com" target="_blank">Cyclone Themes</a></p>
+                <p> 2021/2/1 <i class="fa fa-copyright" aria-hidden="true"></i><a href="https://www.cyclonethemes.com" target="_blank">Janteam</a></p>
             </div>
         </div>
         <!-- Dashboard / End -->
@@ -241,7 +230,9 @@
     <!-- Back to top ends -->
 
     <!-- *Scripts* -->
+    <script src="https://use.fontawesome.com/f315f446db.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/f315f446db.js"></script>
 
     <script src="{{ asset('node_modules/select2/dist/js/select2.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/select2.min.js')}}" type="text/javascript"></script>

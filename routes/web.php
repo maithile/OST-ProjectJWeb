@@ -13,13 +13,12 @@
 
 // Homepage
 
-//  Route::get('/', 'LessonController@index'); 
-
+//  
 
 // Layout 1
-Route::get('/basic', 'LessonController@basic'); 
-Route::get('/inter', 'LessonController@inter'); 
-Route::get('/advance', 'LessonController@advance'); 
+Route::get('/basic', 'LessonController@basic')->name('basic'); 
+Route::get('/inter', 'LessonController@inter')->name('inter'); 
+Route::get('/advance', 'LessonController@advance')->name('inter'); 
 
 // answe
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit"); 
@@ -28,18 +27,33 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
 // layout detail
 // Route::get('/{id}', 'LessonController@show');    
 
+Route::middleware('auth')->group(function(){
+    //All Routes which needs user to be logged in
+    });
+
 // Admin 
-Route::resource('/admin/post', 'AdminPostLessonCotroller');
-// request 
+Route::middleware('auth')->group(function(){
+
+ Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
+ Route::resource('/admin/dictionary', 'AdminDictionaryController')->middleware('admin');
+
+});
 
 
+// Route::resource('/admin/question', 'AdminQuestionController');
+// Route::resource('/admin/vocabulary', 'AdminVocabularyController');
 
-Route::resource('/admin/question', 'AdminQuestionController');
-Route::resource('/admin/dictionary', 'AdminDictionaryController');
-Route::resource('/admin/vocabulary', 'AdminVocabularyController');
 
+Route::get('/', 'LessonController@index')->name('welcome'); 
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('thoat', function(){
+    Auth::logout();
+    return redirect()->route('/');
+});
+
+

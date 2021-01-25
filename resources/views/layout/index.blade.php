@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
@@ -205,7 +207,6 @@
     <div class="container">               
         <div class="row">
 @yield('content')
-   
 
 </div>
 </div>
@@ -374,3 +375,4 @@
 <script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="d24e5d0efad4614245bc6604-|49" defer=""></script></body>
 
 </html>
+@endsection

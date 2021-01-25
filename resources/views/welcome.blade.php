@@ -1,4 +1,8 @@
 
+
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
@@ -56,8 +60,8 @@
                     <div class="top-bar-right pull-right">
                         <ul>
                             <li><a href="faq.html"><i class="fa fa-question-circle"></i> Ask a Question</a> </li>
-                            <li><a href="{{route('login')}}">Log In</a></li>
-                            <li><a href="{{route('register')}}">Register</a></li>
+                            <li><a href="register.html">Log In</a></li>
+                            <li><a href="register.html">Register</a></li>
                         </ul>                        
                     </div>
                 </div>
@@ -1350,3 +1354,4 @@
 <script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="6f99da5b342d2d8567d36aeb-|49" defer=""></script></body>
 
 </html>
+@endsection
