@@ -7,7 +7,7 @@
 
 
 {!! Form::open(['action' => 'AdminDictionaryController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
-{{ csrf_field() }}
+
 <div class="add-listing-section">
 
     <div class="add-listing-headline">

@@ -5,7 +5,7 @@
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif
 {!! Form::open(['action' => ['AdminDictionaryController@update', $dic->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
-{{ csrf_field() }}
+
 <div class="add-listing-section">
     <div class="add-listing-headline">
     <h3><i class="sl sl-icon-map"></i>Dictionaries Create</h3>

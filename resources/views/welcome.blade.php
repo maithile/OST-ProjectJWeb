@@ -1,16 +1,28 @@
 
-
-@extends('layouts.app')
-
-@section('content')
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+{{-- <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx"> --}}
 
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Padhai is a creative education html template">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Janweb') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="description" content="janweb">
 
     <title>Padhai - Education HTML Template</title>
     <!-- Favicon -->
@@ -60,8 +72,34 @@
                     <div class="top-bar-right pull-right">
                         <ul>
                             <li><a href="faq.html"><i class="fa fa-question-circle"></i> Ask a Question</a> </li>
-                            <li><a href="register.html">Log In</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            @guest
+                            <li class="nav-item">
+                                <a  href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li>
+                                <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
                         </ul>                        
                     </div>
                 </div>
@@ -1354,4 +1392,3 @@
 <script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="6f99da5b342d2d8567d36aeb-|49" defer=""></script></body>
 
 </html>
-@endsection
