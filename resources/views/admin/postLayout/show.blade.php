@@ -34,9 +34,9 @@
         
     @foreach ($questions as $value)
     <div><h2> {{$value->question}} </h2></div>
-    <div> {{$value->choice1}}</div>
-    <div> {{$value->choice2}}</div>
-    <div> {{$value->choice3}}</div>
+    <div> {{$value->answer1}}</div>
+    <div> {{$value->answer2}}</div>
+    <div> {{$value->answer3}}</div>
     <div> {{$value->correct_answerId}}</div>
     @endforeach  
 

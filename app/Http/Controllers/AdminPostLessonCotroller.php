@@ -112,7 +112,9 @@ class AdminPostLessonCotroller extends Controller
       if($question->save()){
         $answer = new answer;
         $answer->question_id = $question->id;
-        $answer->answer = $request->input('answer');
+        $answer->answer1 = $request->input('answer1');
+        $answer->answer2 = $request->input('answer2');
+        $answer->answer3 = $request->input('answer3');
         $answer->save();
       }
       // create vocab
@@ -234,10 +236,12 @@ class AdminPostLessonCotroller extends Controller
     $question->save();
  
   //  //for anwser
-  //    $answer = answer::find($id);
-  //   $answer->question_id = $request->input('question_id');
-  //  $answer->answer = $request->input('answer');
-  // $answer->save();
+    $answer = answer::find($id);
+    $answer->question_id = $request->input('question_id');
+    $answer->answer1 = $request->input('answer1');
+    $answer->answer2 = $request->input('answer2');
+    $answer->answer3 = $request->input('answer3');
+    $answer->save();
 
    // create vocab
         $newVocab = Vocabulary::find($id);

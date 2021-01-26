@@ -136,27 +136,27 @@
              {{-- answer choice--}}
 
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer1')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('answer','answer1')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group']) }}
+            {{Form::label('answer1','answer1')}}
+            {{Form::text('answer1', '', ['class' => 'form-group']) }}
             </div>
     
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer2')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('answer','answer2')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
+            {{Form::label('answer2','answer2')}}
+            {{Form::text('answer2', '', ['class' => 'form-group'])  }}
             </div>
     
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer3')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('answer','answer3')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
+            {{Form::label('answer3','answer3')}}
+            {{Form::text('answer3', '', ['class' => 'form-group'])  }}
             </div>
                       {{-- answer choice--}}
             <div class="col-md-8">

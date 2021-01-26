@@ -40,8 +40,10 @@ class updateReques extends FormRequest
 
            //for answer
 
-        //    'answer' => "required|array",
-        //    "answer.*"  => "required|string",
+           'answer1' => "required",
+           'answer2' => "required",
+           'answer3' => "required",
+      
 
            //for vocabulary
            'dictionary_id' => 'required|integer',

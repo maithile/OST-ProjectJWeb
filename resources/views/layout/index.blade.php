@@ -167,7 +167,6 @@
                 <div class="follow_us">
                     
                     <h2><a href="index.html">JanWeb</a></h2>
-
                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br><br>
                     <div class="textwidget">
                         <p class="white">Tokyo Japan</p>

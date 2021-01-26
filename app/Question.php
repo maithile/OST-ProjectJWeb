@@ -17,7 +17,7 @@ public function lessons(){
   }
 
   public function answer(){
-    return $this->hasMany(answer::class,'question_id','id' );
+    return $this->hasOne(answer::class,'question_id','id');
   }    
 
 

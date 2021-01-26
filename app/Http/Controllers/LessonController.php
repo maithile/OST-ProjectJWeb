@@ -46,6 +46,8 @@ class LessonController extends Controller
 
          $vocabulary = $lesson->vocabulary;
          $questions = $lesson->questions;
+
+        return $awner =  $questions->answer;
     
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
 

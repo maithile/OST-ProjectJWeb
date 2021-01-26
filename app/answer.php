@@ -12,9 +12,6 @@ class answer extends Model
     public function question(){
         return $this->belongsTo(Question::class, 'question_id', 'id');
       }
-      protected $casts = [
-       'answer' => 'array'   
-    ];
-    
+  
 
 }
