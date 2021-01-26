@@ -20,8 +20,13 @@ Route::get('/basic', 'LessonController@basic')->name('basic');
 Route::get('/inter', 'LessonController@inter')->name('inter'); 
 Route::get('/advance', 'LessonController@advance')->name('inter'); 
 
+
+ 
+ Route::get('/show/{id}', 'LessonController@show');
+
+
 // layout detail
-// Route::get('/{id}', 'LessonController@show');    
+//  
 
 // answe
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");

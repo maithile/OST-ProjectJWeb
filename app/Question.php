@@ -20,5 +20,5 @@ public function lessons(){
     return $this->hasMany(answer::class,'question_id','id' );
   }    
 
-  
+
 }

@@ -1,14 +1,11 @@
-@extends('layouts.app')
 
-@section('content')
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Padhai is a creative education html template">
+    <meta name="description" content="Welcome to our Admin">
 
     <title>Janweb - Template</title>
     <!-- Favicon -->
@@ -40,145 +37,156 @@
 
     <!-- start Container Wrapper -->
     <div id="container-wrapper">
-        <!-- Dashboard -->
+
         <div id="dashboard">
+        
+        <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+        <div class="dashboard-sticky-nav">
+        <div class="content-left pull-left">
+        <h2><a href="index.html" class="white">Padhai</a></h2>
+        </div>
+        <div class="content-right pull-right">
+        <div class="search-bar">
+        <form>
+        <div class="form-group">
+        <input type="text" class="form-control" id="search" placeholder="Search Now">
+        <a href="#"><span class="search_btn"><i class="fa fa-search" aria-hidden="true"></i></span></a>
+        </div>
+        </form>
+        </div>
+        <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        <div class="profile-sec">
+        <div class="dash-image">
+         
+        <img src="/storage/user_image/website.jpg" alt="">
+        </div>
+        <div class="dash-content">
+        <h4> {{ Auth::user()->name }}</h4>
+        <span> Admin</span>
+        </div>
+        </div>
+        </a>
+        <ul class="dropdown-menu">
+        <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
+        <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
+        <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
 
-            <!-- Responsive Navigation Trigger -->
-            <a href="#" class="dashboard-responsive-nav-trigger">Dashboard Navigation</a>  
+        
+        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>Logout</a></li>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+            </a>
 
-            <div class="dashboard-sticky-nav">
-                <div class="content-left pull-left">
-                    <h2><a href="index.html" class="white">
-                        JanTeam</a></h2>
-                </div>
-                <div class="content-right pull-right">
-                    <div class="search-bar">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="search" placeholder="Search Now">
-                                <a href="#"><span class="search_btn"></i></span></a>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            <div class="profile-sec">
-                                <div class="dash-image">
-                                    <img src="images/comment.jpg" alt="">
-                                </div>
-                                <div class="dash-content">
-                                    <h4>Loural Teak</h4>
-                                    <span>Post Manager</span>
-                                </div>
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Settings</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Change Password</a></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            <div class="dropdown-item">
-                                <span class="notify">3</span>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu notification-menu">
-                        <h4> 23 Messages</h4>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <div class="notification-item">
-                                        <div class="notification-image">
-                                            <img src="images/comment.jpg" alt="">
-                                        </div>
-                                        <div class="notification-content">
-                                            <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="notification-item">
-                                        <div class="notification-image">
-                                            <img src="images/comment.jpg" alt="">
-                                        </div>
-                                        <div class="notification-content">
-                                            <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="notification-item">
-                                        <div class="notification-image">
-                                            <img src="images/comment.jpg" alt="">
-                                        </div>
-                                        <div class="notification-content">
-                                            <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="all-noti"><a href="#">See all messages</a></p>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            <div class="dropdown-item">
-                                <span class="notify">3</span>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu notification-menu">
-                            <h4> 599 Notifications</h4>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <div class="notification-item">
-                                            <div class="notification-image">
-                                                <img src="images/comment.jpg" alt="">
-                                            </div>
-                                            <div class="notification-content">
-                                                <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="notification-item">
-                                            <div class="notification-image">
-                                                <img src="images/comment.jpg" alt="">
-                                            </div>
-                                            <div class="notification-content">
-                                                <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="notification-item">
-                                            <div class="notification-image">
-                                                <img src="images/comment.jpg" alt="">
-                                            </div>
-                                            <div class="notification-content">
-                                                <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p class="all-noti"><a href="#">See all notifications</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
+        </ul>
+        </div>
+        <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown-item">
+        <i class="sl sl-icon-envelope-open"></i>
+        <span class="notify">3</span>
+        </div>
+        </a>
+        <div class="dropdown-menu notification-menu">
+        <h4> 23 Messages</h4>
+        <ul>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+        <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+         <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+        <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+        <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        </ul>
+        <p class="all-noti"><a href="#">See all messages</a></p>
+        </div>
+        </div>
+        <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown-item">
+        <i class="sl sl-icon-bell"></i>
+        <span class="notify">3</span>
+        </div>
+        </a>
+        <div class="dropdown-menu notification-menu">
+        <h4> 599 Notifications</h4>
+        <ul>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+        <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+        <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <div class="notification-item">
+         <div class="notification-image">
+        <img src="images/comment.jpg" alt="">
+        </div>
+        <div class="notification-content">
+        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+        </div>
+        </div>
+        </a>
+        </li>
+        </ul>
+        <p class="all-noti"><a href="#">See all notifications</a></p>
+        </div>
+        </div>
+        </div>
+        </div>
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
                     <ul>

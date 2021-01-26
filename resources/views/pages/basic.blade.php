@@ -1,8 +1,6 @@
 @extends('layout.index')
 
 @section('content')
-
-   
 @foreach ($lesson as $value)
           <div class="col-md-4 col-sm-6 col-xs-6 item">
               <div class="featured-item">

@@ -1,8 +1,6 @@
 
-@extends('layout.index')
-
-@section('content')
-
+ @extends('layout.index')
+@section('content') 
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
@@ -39,10 +37,10 @@
       
         @foreach ($questions as $value)
            <p><b> {{$value->question}} </b></p>
-             @foreach ($value->answer as $item) 
+             {{-- @foreach ($value->answer as $item) 
                <input type="radio" id="male" name="mit[{{$item->question_id}}]" value="{{$value->id}}"> 
                 <p>{{$item->answer}}</p>
-              @endforeach 
+              @endforeach  --}}
             @endforeach
    
       <input  type="submit" name ="submit" value="Submit">
@@ -230,7 +228,7 @@
                     <div class="inner-heading">
                         <h3>Related This Topic</h3>
                     </div>
-                    
+         
             @foreach ($lesson_show as $item)
            
             <div class="col-md-4 col-sm-6 col-xs-12 item">
@@ -244,7 +242,7 @@
             <div class="overlayPort">
             <ul class="info text-center list-inline">
             <li>
-            <a href="/{{$item->id}}">
+            <a href="/inter/{{$item->id}}">
             <h4>Listen</h4>
             </a>
             </li>
@@ -268,9 +266,6 @@
             </div>
 
             @endforeach
-         
-
-
 
             </div>
             </div>
@@ -278,12 +273,5 @@
             </section>
             
 
+ @endsection 
 
-
-
-
-
-
-
-
-@endsection

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 use User;
-
 class CheckAdmin
 {
     /**
@@ -19,12 +18,13 @@ class CheckAdmin
     {
 
        if(Auth::check() && Auth::user()->is_admin == true){
-        
-        return $next($request); 
+        return redirect('/admin/post');
        }
-       return redirect('home');
+     
+       return $next($request); 
     }
     
  
 }
+
 

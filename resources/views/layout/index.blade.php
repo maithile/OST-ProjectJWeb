@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
@@ -8,9 +6,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Padhai is a creative education html template">
+    <meta name="description" content="Janweb">
 
-    <title>Padhai - Education HTML Template</title>
+    <title>Janweb</title>
 
     <!-- Favicon -->
     <script src="{{asset('/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js')}}"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
@@ -56,8 +54,7 @@
                     <div class="top-bar-right pull-right">
                         <ul>
                             <li><a href="faq.html"><i class="fa fa-question-circle"></i> Ask a Question</a> </li>
-                            <li><a href="register.html">Log In</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            {{-- <h4> {{ Auth::user()->name }}</h4> --}}
                         </ul>                        
                     </div>
                 </div>
@@ -375,4 +372,4 @@
 <script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="d24e5d0efad4614245bc6604-|49" defer=""></script></body>
 
 </html>
-@endsection
+

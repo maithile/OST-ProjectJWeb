@@ -37,17 +37,17 @@ class LessonController extends Controller
 
     public function show($id){
 
-        $lesson_show = Lesson::where('level_id','=', 1)->get();
-        $lesson = Lesson::find($id); 
+      $lesson_show = Lesson::where('level_id','=', 1)->get();
+      $lesson = Lesson::find($id); 
         $array1  = $lesson->talker; 
         $array2 = $lesson->script; 
-        $Array = array_combine($array2, $array1);
+      $Array = array_combine($array2, $array1);
 
-        $vocabulary = $lesson->vocabulary;
+         $vocabulary = $lesson->vocabulary;
         $questions = $lesson->questions;
     
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
-   
+
     }
 
 
