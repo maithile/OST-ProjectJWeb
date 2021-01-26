@@ -1,6 +1,5 @@
-
- @extends('layout.index')
-@section('content') 
+@extends('layout.index')
+@section('content')
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
@@ -33,7 +32,7 @@
 
     <div class="over-view">  
      <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> --}}
       
         @foreach ($questions as $value)
            <p><b> {{$value->question}} </b></p>
@@ -42,7 +41,6 @@
                 <p>{{$item->answer}}</p>
               @endforeach  --}}
             @endforeach
-   
       <input  type="submit" name ="submit" value="Submit">
    </form>
 </div>
@@ -87,9 +85,7 @@
         </div>
          </div>
                            {{-- comment--}}
-         
-                      
-
+   
         </div>
     </div>
 
@@ -272,6 +268,6 @@
             </div>
             </section>
             
+            @endsection
 
- @endsection 
 

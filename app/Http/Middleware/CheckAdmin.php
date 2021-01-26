@@ -18,13 +18,15 @@ class CheckAdmin
     {
 
        if(Auth::check() && Auth::user()->is_admin == true){
-        return redirect('/admin/post');
-       }
-     
+            
        return $next($request); 
+       
+       }
+    //    return redirect('/home');
     }
-    
- 
+  
+
+
 }
 
 

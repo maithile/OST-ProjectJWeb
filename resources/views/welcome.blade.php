@@ -1384,6 +1384,6 @@
     <!-- custom Popup video Jquery --><script src="{{asset('js/custom-modalvideo.js')}}" type="6f99da5b342d2d8567d36aeb-text/javascript"></script>
 
     <!-- main default Jquery --><script src="{{asset('js/main.js')}}" type="6f99da5b342d2d8567d36aeb-text/javascript"></script>
-<script src="{{asset('https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="6f99da5b342d2d8567d36aeb-|49" defer=""></script></body>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="6f99da5b342d2d8567d36aeb-|49" defer=""></script></body>
 
 </html>
