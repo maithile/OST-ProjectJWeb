@@ -1,6 +1,5 @@
 @extends('layout.indexAdmin')
 @section('content')
-
 @if(!empty(session('success')))
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif

@@ -11,8 +11,7 @@
     <title>Janweb</title>
 
     <!-- Favicon -->
-    {{-- <script src="{{asset('/cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js')}}"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> --}}
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 
