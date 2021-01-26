@@ -19,7 +19,8 @@ class LessonController extends Controller
 
     public function basic(){
 
-        $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
+         
+       $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
         return view('pages.basic',  compact('lesson'));
 
     }

@@ -1,7 +1,24 @@
 @extends('layout.index')
-
 @section('content')
+
 @foreach ($lesson as $value)
+<!-- breadcrumb -->
+<div class="breadcrumb-main">    
+    <div class="container">        
+        <ul class="breadcrumb">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/inter">{{$value->level->level}}</a></li>
+            <li class="active">Listening</li>
+        </ul>
+    </div>
+</div>
+<!-- End breadcrumb -->
+
+<!--* Services*-->
+<section id="mt_services" class="light-bg services-section section-inner">
+<div class="container">               
+    <div class="row">
+
           <div class="col-md-4 col-sm-6 col-xs-6 item">
               <div class="featured-item">
                   <div class="feat-img">
@@ -24,7 +41,7 @@
                   </div>
                   <div class="feat-inn">
                     
-                      <a href="courses-detail.html"><h3>{{$value->title}}</h3></a>
+                    <a href="/show/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
                       <div class="course-feat">
                           <div class="price-ft pull-left">
                              
@@ -40,34 +57,7 @@
               </div>
           </div>
           @endforeach
-          <div class="col-xs-12">
-            <div class="pagination-div pg-services text-center">
-                <ul class="pagination">
-                    <li class="prev">
-                        <a href="#"> &lt;&lt; </a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">...</a>
-                    </li>
-                    <li>
-                        <a href="#">10</a>
-                    </li>
-                    <li class="next">
-                        <a href="#"> &gt;&gt; </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
+          {{$lesson->links()}}
 @endsection
 
 
