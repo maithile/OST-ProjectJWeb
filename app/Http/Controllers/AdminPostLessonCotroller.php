@@ -175,7 +175,6 @@ class AdminPostLessonCotroller extends Controller
      */
     public function update(updateReques $request, $id)
     {
- 
 
     //upload image file 
 

@@ -22,8 +22,6 @@
     <link href="node_modules/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <link rel="stylesheet" href="{{ asset('css/select2.min.css')}}" type="text/css">
     <!--Plugin CSS-->
     <link href="{{ asset('css/plugin.css')}}" rel="stylesheet" type="text/css">
@@ -38,13 +36,12 @@
     <div id="container-wrapper">
         <!-- Dashboard -->
         <div id="dashboard">
-
             <!-- Responsive Navigation Trigger -->
             <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>  
 
             <div class="dashboard-sticky-nav">
                 <div class="content-left pull-left">
-                    <h2><a href="index.html" class="white">Padhai</a></h2>
+                    <h2><a href="/home" class="white">Janweb</a></h2>
                 </div>
                 <div class="content-right pull-right">
                     <div class="search-bar">
@@ -59,7 +56,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <div class="profile-sec">
                                 <div class="dash-image">
-                                    <img src="images/comment.jpg" alt="">
+                                    <img src="/storage/imagePage/about.png" alt="">
                                 </div>
                                 <div class="dash-content">
         <h4> {{ Auth::user()->name }}</h4>
@@ -68,12 +65,11 @@
         </div>
         </a>
         <ul class="dropdown-menu">
-        <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
-        <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
-        <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Change Password</a></li>
 
         
-        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>Logout</a></li>
+        <li><a href="{{ route('logout') }}"></i>Logout</a></li>
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -84,105 +80,20 @@
             </form>
 
         </ul>
+
         </div>
+
         <div class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
-        <div class="dropdown-item">
-        <i class="sl sl-icon-envelope-open"></i>
-        <span class="notify">3</span>
-        </div>
+     
         </a>
         <div class="dropdown-menu notification-menu">
-        <h4> 23 Messages</h4>
-        <ul>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-        <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-         <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
+       
+
         </div>
         </div>
-        </a>
-        </li>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-        <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-        </div>
-        </div>
-        </a>
-        </li>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-        <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-        </div>
-        </div>
-        </a>
-        </li>
-        </ul>
-        <p class="all-noti"><a href="#">See all messages</a></p>
-        </div>
-        </div>
-        <div class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown">
-        <div class="dropdown-item">
-        <i class="sl sl-icon-bell"></i>
-        <span class="notify">3</span>
-        </div>
-        </a>
-        <div class="dropdown-menu notification-menu">
-        <h4> 599 Notifications</h4>
-        <ul>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-        <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-        </div>
-        </div>
-        </a>
-        </li>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-        <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-        </div>
-        </div>
-        </a>
-        </li>
-        <li>
-        <a href="#">
-        <div class="notification-item">
-         <div class="notification-image">
-        <img src="images/comment.jpg" alt="">
-        </div>
-        <div class="notification-content">
-        <p>You have a notification.</p><span class="notification-time">2 hours ago</span>
-        </div>
-        </div>
-        </a>
-        </li>
-        </ul>
-        <p class="all-noti"><a href="#">See all notifications</a></p>
+
+      
         </div>
         </div>
         </div>
@@ -208,7 +119,7 @@
                             </ul>   
                             
                         </li>
-                        <li><a href="index.html">Logout</a></li>
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
                     </ul>
                 </div>
             </div>

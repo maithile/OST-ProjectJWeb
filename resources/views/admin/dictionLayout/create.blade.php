@@ -11,7 +11,7 @@
 <div class="add-listing-section">
 
     <div class="add-listing-headline">
-    <h3><i class="sl sl-icon-map"></i>Dictionaries Create</h3>
+    <h3>Dictionaries Create</h3>
     </div>
     
     <div class="row with-forms">
@@ -31,7 +31,7 @@
             @enderror
         {{Form::label('meaning','Meaning')}}
         {{Form::text('meaning', '', ['class' => 'form-group']) }}
-        {{Form::submit('Submit', ['class' => 'btn btn-default pull-right'])}}
+        {{Form::submit('Create', ['class' => 'btn btn-default pull-right'])}}
         {!! Form::close() !!}
         </div> 
        </div>

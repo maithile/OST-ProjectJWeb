@@ -4,7 +4,7 @@
 
 <div class="add-listing-section">
     <div class="add-listing-headline">
-    <h3><i class="sl sl-icon-map"></i>Vocabulary Detail</h3>
+    <h3>Vocabulary Detail</h3>
     </div>
     <div class="row with-forms">
 

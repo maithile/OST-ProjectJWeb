@@ -26,14 +26,14 @@
 
                     <img src = "/storage/images/{{$value->image}}"  width="360" height="230">
                       <div class="th-name">
-                          <a href="/{{$value->id}}">
+                          <a href="/show/{{$value->id}}">
                             <h4>Listen</h4>
                         </a>
                       </div>
                       <div class="overlayPort">
                           <ul class="info text-center list-inline">
                               <li>
-                                  <a href="/{{$value->id}}">
+                                  <a href="/show/{{$value->id}}">
                                       <h4>Listen</h4>
                                   </a>
                               </li>

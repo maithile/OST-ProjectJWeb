@@ -173,35 +173,6 @@
 
         <!-- Wrapper For Slides -->
         <div class="carousel-inner" role="listbox">
-
-            <!-- First Slide -->
-            <div class="item ">
-                <!-- Slide Background -->
-                <img src="{{asset('img/website.jpg') }}" alt="slider_01" />
-                <!-- Left Slide Text Layer -->
-                <div class="caption_slide1 fadeInRight" data-animation="animated fadeInRight">
-                    <h3>Welcome To Janweb</h3>
-                    <h1>Boosting Your Japanese Listening Skills</h1>
-                    <a class="mt_btn_white-bor" href="">Read More</a>
-                    <a class="mt_btn_yellow" href="">Contact Us</a>
-                </div><!-- /Left Slide Text Layer -->
-            </div><!-- /item -->
-            <!-- End of Slide -->
-
-            <!-- Second Slide -->
-            <div class="item">
-                <!-- Slide Background -->
-                <img src="{{asset('img/website.jpg') }}" alt="slider_02" />
-                <!-- Right Slide Text Layer -->
-                <div class="caption_slide1 caption_slide1_right wow fadeInLeft" data-animation="animated fadeInLeft">
-                     <h3>Welcome To  JanWeb</h3>
-                     <h1>Remember New Vocabulary After Listening</h1>
-                     <a class="mt_btn_white-bor" href="">Read More</a>
-                     <a class="mt_btn_yellow" href="">Contact Us</a>
-                </div><!-- /Right Slide Text Layer -->
-            </div><!-- /item -->
-            <!-- End of Slide -->
-
             <!-- Third Slide -->
             <div class="item active">
                 <!-- Slide Background -->
@@ -209,9 +180,8 @@
                 <!-- Center Slide Text Layer -->
                 <div class="caption_slide1 caption_slide1_center cap-new wow fadeInDown" data-animation="animated fadeInDown">
                      <h3>Welcome To JanWeb</h3>
-                     <h1>Explore Japan Culture</h1>
-                     <a class="mt_btn_white-bor" href="">Read More</a>
-                     <a class="mt_btn_yellow" href="">Contact Us</a>
+                     <h2>Listening Japanese</h2>
+                     
                 </div><!-- /Center Slide Text Layer -->
             </div><!-- /item -->
             <!-- End of Slide -->
@@ -238,8 +208,8 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
-                            <i class="fa fa-laptop mar-bottom-20"></i>
-                             <a href="/basic"><h3>Basic</h3></a>
+                            <i class="fa fa-users mar-bottom-20"></i>
+                             <a href="/basic"><h2>Basic</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
@@ -251,7 +221,7 @@
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
                             <i class="fa fa-users mar-bottom-20"></i>
-                            <a href="/inter"><h3>Intermediate</h3></a>
+                            <a href="/inter"><h2>Intermediate</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
@@ -263,7 +233,7 @@
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
                             <i class="fa fa-users mar-bottom-20"></i>
-                            <a href="/advance"><h3>Advance</h3></a>
+                            <a href="/advance"><h2>Advance</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
@@ -330,10 +300,7 @@
     <!--*Footer*-->
     <footer id="mt_footer">
         <div class="container">
-
-           
-
-            <div class="footer-main">
+   <div class="footer-main">
                 <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12">
                     <div class="follow_us">

@@ -43,7 +43,7 @@
          <input type="radio" id="male" name="answer" value="3"> 
          <p>{{$value->answer3}}</p>
         @endforeach  
-        <input  type="submit" name ="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" name ="submit" value="Submit">
    </form>
        {{-- submitansnwer end--}}
 
@@ -70,7 +70,7 @@
     @endforeach
     </div>
     </div>
-                             {{-- vocabulary end --}}
+                      {{-- vocabulary end --}}
        
         {{-- Script --}}
 
@@ -84,8 +84,6 @@
         <div id="menu3" class="tab-pane fade">
           cau hoi phu
          </div>
-
-
         </div>
          </div>
                            {{-- comment--}}
@@ -172,7 +170,7 @@
 
             </div>
             </div>
-
+            <br>
             {{-- lesson related to categories(Example Travel)--}}
             <div class="related-item">
             <div class="row inner-detail-p">
@@ -184,7 +182,7 @@
                     <ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded">
-                    <img src="/storage/icon_image/user.png" alt="image"> </div>
+                    <img src="/storage/imagePage/about.png" alt="image"> </div>
                     <div class="comment-body">
                     <h4 class="text-left"> NIKLOS DELSON &nbsp;&nbsp;
                         <small class="date-posted pull-right">18th Mar, 2018</small>

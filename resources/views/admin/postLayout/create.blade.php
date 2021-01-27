@@ -169,7 +169,7 @@
 
        <div class="add-listing-section">
            <div class="add-listing-headline">
-           <h3><i class="sl sl-icon-map"></i>Vocabularies</h3>
+           <h3>Vocabularies</h3>
            </div>
            
            <div class="row with-forms">
