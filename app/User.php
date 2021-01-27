@@ -42,12 +42,12 @@ class User extends Authenticatable
     public $timestamp= 'false';
 
 
-
    public function lesson(){
        return $this->belongstoMany(Lesson::class, 'manages', 'users_id', 'lesson_id'); // tra ve lessons
    }
 
-
-  
+   public function commnents(){
+       return $this->hasMany(Comment::class, 'user_id', 'id');
+   }
 
 }

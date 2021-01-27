@@ -9,7 +9,13 @@ class Lesson extends Model
     // 1-n
      protected $table = 'lessons';
     public $timestamp = false;
+
+    protected $casts = [
+        'script' => 'array',    
+        'talker' => 'array',
     
+    ];
+
    // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
 
 
@@ -35,11 +41,9 @@ class Lesson extends Model
    public function vocabularies(){
     return $this->hasMany(Dictionary::class, 'lesson_id', 'id');
 }
-   protected $casts = [
-    'script' => 'array',    
-    'talker' => 'array',
 
-];
-
+  public function comments(){
+      return $this->hasMany(Comment::class, 'lesson_id', 'id');
+  }
 
 }
