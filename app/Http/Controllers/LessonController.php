@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+use App\Http\Controllers\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Lesson;
@@ -53,7 +53,7 @@ class LessonController extends Controller
     public function answerSubmit(Request $request, $id)
          { 
 
-        return $inputed = $request->input('answer') ;
+        $inputed = $request->input('answer') ;
         $lesson = Lesson::find($id); 
         $questions = $lesson->questions->pluck('correct_answerId'); 
         return view('pages.show-anser', compact('lesson', 'questions','inputed')); 

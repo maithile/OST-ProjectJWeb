@@ -32,7 +32,7 @@
     <div class="over-view">  
 
          {{-- submitansnwer --}}
-     {{-- <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
+     <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         @foreach ($questions as $value)
         <div><h2> {{$value->question}} </h2></div>
@@ -44,39 +44,8 @@
          <p>{{$value->answer3}}</p>
         @endforeach  
         <input class="btn btn-primary" type="submit" name ="submit" value="Submit">
-   </form> --}}
+   </form>
        {{-- submitansnwer end--}}
-
-       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        @foreach ($questions as $value)
-        <div><h2> {{$value->question}} </h2></div>
-        <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} <br><br>
-        <input type="radio" id="male" name="answer" value="2"> {{ $value->answer2}} <br><br>
-        <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
-        @endforeach  
-        <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-
-<script>
-jQuery(document).ready(function($){
-  var correct_ans = $('#correct-ans').val();
-  var selected_ans = "";
-
-  $('#check-btn').click(function() {
-    selected_ans = $('input[name="answer"]:checked').val();
-    if(selected_ans == null) {
-      alert("Please answer the question.");
-    } else {
-      if(correct_ans == selected_ans) {
-        alert("Congratulation! Correct!");
-      } else {
-        alert("Nope! You're wrong -_-");
-      }
-    }
-  });
-
-});
-
-</script>
 
 </div>
 </div>
@@ -232,7 +201,7 @@ jQuery(document).ready(function($){
                     <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    <form action="{{ route('comment', $lesson->id) }}" method="GET">
+                    <form action="{{ route('comment', $lesson->id) }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     </div>
                     <div class="row">

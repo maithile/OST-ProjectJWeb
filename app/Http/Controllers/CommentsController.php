@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Lesson;
+use App\User;
+
 
 class CommentsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+ 
     public function index()
     {
         //
@@ -35,7 +46,19 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           
+        
+
+ 
+        $post = Lesson::findOrFail($request->id);
+ 
+        Comment::create([
+            'body' => $request->body,
+            'user_id' => Auth::id(),
+            'lesson_id' => $post ->id
+        ]);
+        return 1; //redirect()->route('posts.show', $post->id);
+    
     }
 
     /**
@@ -46,7 +69,8 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        
+       
     }
 
     /**

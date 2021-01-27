@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Janweb">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <title>Janweb</title>
     <!-- Favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -221,7 +224,7 @@
 
     <!--*Scripts*-->
 
-    <!-- Latest jquery --><script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+    <!-- Latest jquery --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js'"></script>
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
     <!-- latest Bootstrap --><script src="{{asset('js/bootstrap.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
@@ -245,6 +248,8 @@
     <!-- Appear Jquery --><script src="{{asset('js/jquery.appear.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
     <!-- isotope Jquery --><script src="{{asset('js/isotope.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
+
+    {{-- <!-- check answer Jquery --><script src="{{asset('js/myscript.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script> --}}
 
     <!-- div default Jquery --><script src="{{asset('js/main.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d24e5d0efad4614245bc6604-|49" defer=""></script></body>

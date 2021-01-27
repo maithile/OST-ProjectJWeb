@@ -23,8 +23,10 @@ Route::get('/advance', 'LessonController@advance')->name('inter');
 // layout detail
 Route::get('/show/{id}', 'LessonController@show')->name('show');
 
-// answe
+// answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
+
+ Route::get('/comment/{id}', 'CommentsController@store')->name("comment");
 
 // for Admin 
  Route::middleware('auth')->group(function(){
@@ -45,6 +47,7 @@ Auth::routes();
 
 //homepage
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 
