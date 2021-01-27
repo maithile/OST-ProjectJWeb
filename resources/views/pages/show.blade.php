@@ -29,20 +29,24 @@
     <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
     <div class="post_body">
-
     <div class="over-view">  
+
+         {{-- submitansnwer --}}
      <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
-        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> --}}
-      
+       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         @foreach ($questions as $value)
-           <p><b> {{$value->question}} </b></p>
-             {{-- @foreach ($value->answer as $item) 
-               <input type="radio" id="male" name="mit[{{$item->question_id}}]" value="{{$value->id}}"> 
-                <p>{{$item->answer}}</p>
-              @endforeach  --}}
-            @endforeach
-      <input  type="submit" name ="submit" value="Submit">
+        <div><h2> {{$value->question}} </h2></div>
+        <input type="radio" id="male" name="answer" value="1"> 
+         <p>{{ $value->answer1}}</p>
+         <input type="radio" id="male" name="answer" value="2"> 
+         <p>{{ $value->answer2}}</p>
+         <input type="radio" id="male" name="answer" value="3"> 
+         <p>{{$value->answer3}}</p>
+        @endforeach  
+        <input  type="submit" name ="submit" value="Submit">
    </form>
+       {{-- submitansnwer end--}}
+
 </div>
 </div>
 </div>

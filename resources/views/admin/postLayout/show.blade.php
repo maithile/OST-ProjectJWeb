@@ -31,15 +31,20 @@
     <div id="home" class="tab-pane fade in active">
     <div class="post_body">
     <div class="over-view">
-        
     @foreach ($questions as $value)
     <div><h2> {{$value->question}} </h2></div>
-    <div> {{$value->answer1}}</div>
-    <div> {{$value->answer2}}</div>
-    <div> {{$value->answer3}}</div>
+    <input type="radio" id="male" name="mit[]" value="1"> 
+     <p>{{ $value->answer1}}</p>
+     <input type="radio" id="male" name="mit[]" value="2"> 
+     <p>{{ $value->answer2}}</p>
+     <input type="radio" id="male" name="mit[]" value="3"> 
+     <p>{{$value->answer3}}</p>
     <div> {{$value->correct_answerId}}</div>
+    
+  
     @endforeach  
-
+    <input  type="submit" name ="submit" value="Submit">
+   
     </div>
     </div>
     </div>
@@ -78,9 +83,6 @@
 
     </div>
     </div>
-
-
-
     </div>
     </div>
     </div>

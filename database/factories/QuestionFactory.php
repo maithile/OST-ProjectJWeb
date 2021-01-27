@@ -9,9 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Question::class, function (Faker $faker) {
     return[
         'question' => $faker->title,
-        // 'choice1' => $faker->title,
-        // 'choice2' => $faker->title,
-        // 'choice3' => $faker->title,
         'correct_answerId' => $faker->title,
         'lesson_id' => factory(App\Lesson::class)
     ];

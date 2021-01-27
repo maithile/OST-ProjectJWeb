@@ -11,7 +11,6 @@ use App\Level;
 use App\Question;
 use App\Dictionary;
 use App\Vocabulary;
-use App\answer;
 
 class AdminPostLessonCotroller extends Controller
 {
@@ -93,36 +92,30 @@ class AdminPostLessonCotroller extends Controller
       $post_lesson->mp3_file = $fileMp3NameToStore;
       $post_lesson->script = $request->input('script');
       $post_lesson->talker = $request->input('talker');
-
       $post_lesson->image = $fileNameToStore;  
       $post_lesson->save();
       $post_lesson->id;
      
     //for question
+
+    if($post_lesson->save()){
        $question = new Question;
        $question->lesson_id =  $post_lesson->id;
        $question->question = $request->input('question');
+       $question->answer1 = $request->input('answer1');
+       $question->answer2 = $request->input('answer2');
+       $question->answer3 = $request->input('answer3');
        $question->correct_answerId = $request->input('correct_answerId');
        $question->save();
-       $question->id;
-       
+    }
 
-      //for anwser
-
-      if($question->save()){
-        $answer = new answer;
-        $answer->question_id = $question->id;
-        $answer->answer1 = $request->input('answer1');
-        $answer->answer2 = $request->input('answer2');
-        $answer->answer3 = $request->input('answer3');
-        $answer->save();
-      }
       // create vocab
+      if( $post_lesson->save()){
         $newVocab = new Vocabulary;
         $newVocab->lesson_id =  $post_lesson->id;
         $newVocab->dictionary_id = $request->input('dictionary_id');
         $newVocab->save();
-
+      }
    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }
@@ -232,17 +225,12 @@ class AdminPostLessonCotroller extends Controller
  //for question
     $question = Question::find($id);
     $question->question = $request->input('question');
+    $question->answer1 = $request->input('answer1');
+    $question->answer2 = $request->input('answer2');
+    $question->answer3 = $request->input('answer3');
     $question->correct_answerId = $request->input('correct_answerId');
     $question->save();
  
-  //  //for anwser
-    $answer = answer::find($id);
-    $answer->question_id = $request->input('question_id');
-    $answer->answer1 = $request->input('answer1');
-    $answer->answer2 = $request->input('answer2');
-    $answer->answer3 = $request->input('answer3');
-    $answer->save();
-
    // create vocab
         $newVocab = Vocabulary::find($id);
         $newVocab->dictionary_id = $request->input('dictionary_id');

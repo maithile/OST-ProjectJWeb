@@ -132,9 +132,6 @@
             {{Form::label('question','question')}}
             {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => 'Question'])  }}
             </div>
-
-             {{-- answer choice--}}
-
             <div class="col-md-8">
                 @error('answer1')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -142,7 +139,6 @@
             {{Form::label('answer1','answer1')}}
             {{Form::text('answer1', '', ['class' => 'form-group']) }}
             </div>
-    
             <div class="col-md-8">
                 @error('answer2')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -158,7 +154,6 @@
             {{Form::label('answer3','answer3')}}
             {{Form::text('answer3', '', ['class' => 'form-group'])  }}
             </div>
-                      {{-- answer choice--}}
             <div class="col-md-8">
                 @error('correct_answerId')
                 <div class="alert alert-danger">{{ $message }}</div>

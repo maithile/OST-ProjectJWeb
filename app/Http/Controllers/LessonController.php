@@ -7,11 +7,12 @@ use App\Lesson;
 use App\Level;
 use App\Question;
 use App\Dictionary;
-use App\answer;
 
 class LessonController extends Controller
 {
     public function index(){ 
+    
+        
       
         return view('welcome'); // ket noi controller voi view
     }
@@ -19,8 +20,8 @@ class LessonController extends Controller
 
     public function basic(){
 
-         
-       $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
+       
+        $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
         return view('pages.basic',  compact('lesson'));
 
     }
@@ -37,36 +38,25 @@ class LessonController extends Controller
     }
 
     public function show($id){
-        //dd($id);
+        
         $lesson_show = Lesson::where('level_id','=', 1)->get();
         $lesson = Lesson::find($id); 
+
         $array1  = $lesson->talker; 
         $array2 = $lesson->script; 
         $Array = array_combine($array2, $array1);
-
-         $vocabulary = $lesson->vocabulary;
-         $questions = $lesson->questions;
-
-        return $awner =  $questions->answer;
-    
+        $vocabulary = $lesson->vocabulary;
+        $questions = $lesson->questions; 
         return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
-
     }
 
     public function answerSubmit(Request $request, $id)
          { 
-       $inputed = $request->input('mit');
-     
 
+        return $inputed = $request->input('answer') ;
         $lesson = Lesson::find($id); 
-       
-        // $array1  = $lesson->talker; 
-        // $array2 = $lesson->script; 
-        // $Array = array_combine($array2, $array1);
-         $vocabulary = $lesson->vocabulary;
-        $questions = $lesson->questions->pluck('correct_answerId', 'id'); 
-        
-        return view('pages.show-anser', compact('lesson', 'questions','inputed', 'vocabulary')); 
+        $questions = $lesson->questions->pluck('correct_answerId'); 
+        return view('pages.show-anser', compact('lesson', 'questions','inputed')); 
     }
 
 

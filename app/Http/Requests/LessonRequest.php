@@ -37,13 +37,9 @@ class LessonRequest extends FormRequest
             //for question
             'question' => 'required',
             'correct_answerId' => 'required',
-
-           //for answer
-
             'answer1' => "required",
             'answer2' => "required",
             'answer3' => "required",
-
            //for vocabulary
            'dictionary_id' => 'required|integer'
         ];

@@ -44,9 +44,9 @@ class AdminQuestionController extends Controller
     
             'lesson_id' => 'required',
             'question' => 'required',
-            // 'choice1' => 'required',
-            // 'choice2' => 'required',
-            // 'choice3'=> 'required',
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3'=> 'required',
             'correct_answerId' => 'required'
         ]);
 
@@ -54,6 +54,9 @@ class AdminQuestionController extends Controller
         $question = new Question;
         $question->lesson_id = $request->input('lesson_id');
         $question->question = $request->input('question');
+        $question->question =  $request->input('answer1');
+        $question->question = $request->input('answer2');
+        $question->question = $request->input('answer3');
         $question->correct_answerId = $request->input('correct_answerId');
         $question->save();
         return redirect('/admin/question')->with('success', 'Created Ok Sir :))' );

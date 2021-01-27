@@ -12,7 +12,6 @@
                         {{--Lesson --}}
 {!! Form::open(['action' => ['AdminPostLessonCotroller@update', $lesson->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
  
- 
  <div class="col-lg-12 col-sm-12">
     <div id="add-listing">
     <div class="add-listing-section">
@@ -41,7 +40,6 @@
          {!!Form::select('level_id', [$level->id => $level->level]) !!}
         </div>
   </div>
-
     <div class="row with-forms">
         <div class="col-md-6">
 
@@ -118,30 +116,29 @@
             
 
              {{-- answer choice--}}
-            <div class="col-md-8">
-                @error('answer.*')
+             <div class="col-md-8">
+                @error('answer1')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('answer','answer1')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group']) }}
+            {{Form::label('answer1', 1)}}
+            {{Form::text('answer1', $item->answer1, ['class' => 'form-group']) }}
             </div>
-    
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer2')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('answer','answer2')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
+            {{Form::label('answer2', 2 )}}
+            {{Form::text('answer2', $item->answer2, ['class' => 'form-group'])  }}
             </div>
 
             <div class="col-md-8">
-                @error('answer.*')
+                @error('answer3')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            {{Form::label('choice3','answer3')}}
-            {{Form::text('answer[] ', '', ['class' => 'form-group'])  }}
+            {{Form::label('answer3',3)}}
+            {{Form::text('answer3', $item->answer3, ['class' => 'form-group'])  }}
             </div>
-                      {{-- answer choice--}}
+                    
             <div class="col-md-8">
                 @error('correct_answerId')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -153,7 +150,6 @@
         </div>
         @endforeach
                                      {{--End Question--}}  
-             
 {{--Vocabulary--}}
 
        <div class="add-listing-section">
@@ -172,9 +168,7 @@
                     @enderror  
 
                    @foreach ($vocabulary as $item) 
-                        
                     {!! Form::select('dictionary_id',[$item->dictionary_id => $item->dictionary->vocabulary] + $dictionary, null, ['class' => 'g']) !!}
-
                    @endforeach 
             </div>
         </div> 
@@ -184,15 +178,12 @@
             {!! Form::close() !!}
         
               </div>
-
-      
               </div>
           </div>
-
    <script type="text/javascript">
      $(document).ready(function() {
      $('.g').select2();
      });
- </script> --}}
+  </script> --}}
 @endsection
 
