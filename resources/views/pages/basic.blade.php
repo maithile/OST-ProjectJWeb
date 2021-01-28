@@ -1,7 +1,6 @@
 @extends('layout.index')
 @section('content')
 
-
 <!-- breadcrumb -->
 <div class="breadcrumb-main">    
     <div class="container">        

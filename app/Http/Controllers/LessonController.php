@@ -12,18 +12,11 @@ class LessonController extends Controller
 {
     public function index(){ 
     
-        
-      
         return view('welcome'); // ket noi controller voi view
     }
 
-
     public function basic(){
 
-     
-      
-         //return Auth::id();
-       
         $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
         return view('pages.basic',  compact('lesson'));
     
@@ -42,7 +35,8 @@ class LessonController extends Controller
 
     public function show($id){
         
-        $comment =Comment::where('lesson_id','=', $id)->get();
+        $comment = Comment::where('lesson_id','=', $id)->get();
+        
         $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
         $lesson = Lesson::find($id); 
 
@@ -64,17 +58,21 @@ class LessonController extends Controller
         return view('pages.show-anser', compact('lesson', 'questions','inputed')); 
     }
 
+    public function comment(Request $request)
+    {
+    
 
-//      public function comment(Request $request, $id)
-//     { 
+   $data = [
 
+      'lesson_id' =>$request->lesson_id,
+      'body' =>$request->body,
+      'name' =>$request->name
+   ];
 
+   Comment::create($data);
 
-//     return $inputed = $request->input('body') ;
-//     $lesson = Lesson::find($id); 
-   
-
-//    return view('pages.comment'); 
-// }
+   return redirect()->route('show', $request->lesson_id);
+//    return redirect()->route('show', $request->lesson_id);
+    }
 
 }

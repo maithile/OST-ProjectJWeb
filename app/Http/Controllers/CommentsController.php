@@ -48,7 +48,6 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
     
-
    $data = [
 
       'lesson_id' =>$request->lesson_id,
@@ -56,9 +55,9 @@ class CommentsController extends Controller
       'name' =>$request->name
    ];
 
-   Comment::create($data);
-
-   return redirect()->route('show', $request->lesson_id);
+//    Comment::create($data);
+   //return redirect()->back();
+return redirect()->route('show', $request->lesson_id);
     }
 
     /**
@@ -69,19 +68,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        
-              
-        $comment = Comment::where('lesson_id','=', $id)->get();
-        $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
-        $lesson = Lesson::find($id); 
-
-        $array1  = $lesson->talker; 
-        $array2 = $lesson->script; 
-        $Array = array_combine($array2, $array1);
-        $vocabulary = $lesson->vocabulary;
-        $questions = $lesson->questions; 
-
-        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment')); 
+     
 
     }
 

@@ -33,8 +33,8 @@
     <div class="over-view">
   
          {{-- submitansnwer --}}
-         <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+         {{-- <form action="{{ route('answer-submit', $lesson->id) }}" method="POST"> --}}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="correct-ans" />
              @foreach ($questions as $value)
              <div><h2> {{$value->question}} </h2></div>
              <input type="radio" id="male" name="answer" value="1"> 
@@ -44,10 +44,33 @@
               <input type="radio" id="male" name="answer" value="3"> 
               <p>{{$value->answer3}}</p>
              @endforeach  
-             <input class="btn btn-primary" type="submit" name ="submit" value="Submit">
-        </form>
+             <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
+        {{-- </form> --}}
             {{-- submitansnwer end--}}
    
+{{-- <script>
+jQuery(document).ready(function($){
+    alert("linhtinh");
+
+  var correct_ans = $('#correct-ans').val();
+  var selected_ans = "";
+
+  $('#check-btn').click(function() {
+    selected_ans = $('input[name="answer"]:checked').val();
+    if(selected_ans == null) {
+      alert("Please answer the question.");
+    } else {
+      if(correct_ans == selected_ans) {
+        alert("Congratulation! Correct!");
+      } else {
+        alert("Nope! You're wrong -_-");
+      }
+    }
+  });
+
+});
+</script> --}}
+
     </div>
     </div>
     </div>

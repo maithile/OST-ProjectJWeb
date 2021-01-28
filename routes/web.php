@@ -26,7 +26,7 @@ Route::get('/show/{id}', 'LessonController@show')->name('show');
 // answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
 
- Route::resource('/comment', 'CommentsController');
+ Route::post('/comment/{id}', 'LessonController@comment');
 
 // for Admin 
  Route::middleware('auth')->group(function(){

@@ -12,6 +12,9 @@
     {{-- <script src="cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> --}}
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <!--Default CSS-->
     <link href="{{ asset('css/default.css')}}" rel="stylesheet" type="text/css">

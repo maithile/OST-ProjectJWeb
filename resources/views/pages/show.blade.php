@@ -218,14 +218,13 @@ jQuery(document).ready(function($){
                     <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+                    {!! Form::open(['action' => ['LessonController@comment', $lesson->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="hidden" name="lesson_id" value="{{$lesson->id}}" /> 
 
                     </div>
                     <div class="row">
-
                       <div class="col-sm-6">
                         {{Form::label('name','Name')}}
                         {{Form::text('name', '', ['class' => 'form-group'])  }}
@@ -241,7 +240,11 @@ jQuery(document).ready(function($){
                     </div>
                     {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right'])}}
                     {!! Form::close() !!}
+                    <br>
+                  
+                     <h3>{{$comment->count()}} Comments</h3>
                     @foreach ($comment as $item) 
+
                     <ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded">
