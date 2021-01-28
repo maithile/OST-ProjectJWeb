@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
 use App\Lesson;
-use App\User;
-
+use App\Level;
+use App\Question;
+use App\Dictionary;
+use App\Comment;
 
 class CommentsController extends Controller
 {
@@ -20,7 +21,7 @@ class CommentsController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('auth');
+        //return $this->middleware('auth');
     }
  
     public function index()
@@ -46,19 +47,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-           
-        
-
- 
-        $post = Lesson::findOrFail($request->id);
- 
-        Comment::create([
-            'body' => $request->body,
-            'user_id' => Auth::id(),
-            'lesson_id' => $post ->id
-        ]);
-        return 1; //redirect()->route('posts.show', $post->id);
     
+
+   $data = [
+
+      'lesson_id' =>$request->lesson_id,
+      'body' =>$request->body,
+      'name' =>$request->name
+   ];
+
+   Comment::create($data);
+
+   return redirect()->route('show', $request->lesson_id);
     }
 
     /**
@@ -70,7 +70,19 @@ class CommentsController extends Controller
     public function show($id)
     {
         
-       
+              
+        $comment = Comment::where('lesson_id','=', $id)->get();
+        $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
+        $lesson = Lesson::find($id); 
+
+        $array1  = $lesson->talker; 
+        $array2 = $lesson->script; 
+        $Array = array_combine($array2, $array1);
+        $vocabulary = $lesson->vocabulary;
+        $questions = $lesson->questions; 
+
+        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment')); 
+
     }
 
     /**

@@ -58,9 +58,12 @@
                                 </li>
                             @endif
                         @else
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                  @if (Auth::check())
+                                  {{ Auth::user()->name }} 
+                                  @endif  <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -92,10 +95,10 @@
                 
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
-                        <li class="active">
-                            <a rel ="icon" href="#">Home <i class="fa fa-angle-down"></i></i></a> 
+                        <li >
+                            <a rel ="icon" href="/home">Home <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
-                                <li><a href="/basic">Basic</a></li>
+                                <li class="active"><a href="/basic">Basic</a></li>
                                 <li><a href="/inter">Intermediate</a></li>
                                 <li><a href="/advance">Advance</a></li>
                             </ul>

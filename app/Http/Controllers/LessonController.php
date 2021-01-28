@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Controllers;
-use App\Http\Controllers\Auth;
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Lesson;
 use App\Level;
 use App\Question;
 use App\Dictionary;
-
+use App\Comment;
 class LessonController extends Controller
 {
     public function index(){ 
@@ -20,10 +20,13 @@ class LessonController extends Controller
 
     public function basic(){
 
+     
+      
+         //return Auth::id();
        
         $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
         return view('pages.basic',  compact('lesson'));
-
+    
     }
     public function inter(){
 
@@ -39,6 +42,7 @@ class LessonController extends Controller
 
     public function show($id){
         
+        $comment =Comment::where('lesson_id','=', $id)->get();
         $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
         $lesson = Lesson::find($id); 
 
@@ -47,7 +51,8 @@ class LessonController extends Controller
         $Array = array_combine($array2, $array1);
         $vocabulary = $lesson->vocabulary;
         $questions = $lesson->questions; 
-        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show')); 
+        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment')); 
+        
     }
 
     public function answerSubmit(Request $request, $id)
@@ -60,13 +65,16 @@ class LessonController extends Controller
     }
 
 
-     public function comment(Request $request, $id)
-    { 
+//      public function comment(Request $request, $id)
+//     { 
 
-     return $inputed = $request->input('body') ;
-     $lesson = Lesson::find($id);
+
+
+//     return $inputed = $request->input('body') ;
+//     $lesson = Lesson::find($id); 
+   
 
 //    return view('pages.comment'); 
-}
+// }
 
 }

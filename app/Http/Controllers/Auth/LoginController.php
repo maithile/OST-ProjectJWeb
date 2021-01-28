@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/post';
+    protected $redirectTo = '/home';
   
     public function login(Request $request)
     {
@@ -37,14 +37,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        // if ($request->remember == trans('remember.Remember Me')) {
-        //     $remember = true;
-        // } else {
-        //     $remember = false;
-        // }
-        //kiểm tra trường remember có được chọn hay không
-        
-        if (Auth::attempt($arr)) {
+        if (Auth::attempt($arr)  ) {
 
             $userAdmin = auth()->user()->is_admin;
             if($userAdmin == '0') {

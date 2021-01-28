@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
+
+ protected $fillable = ['lesson_id', 'body', 'name'];
     
 
 public function lesson(){

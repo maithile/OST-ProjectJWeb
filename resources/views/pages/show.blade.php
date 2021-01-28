@@ -211,41 +211,53 @@ jQuery(document).ready(function($){
                             <div class="leave_review">
 
 
-                            <h3 class="blog_heading_border"> Discuss </h3>
+                  <h3 class="blog_heading_border"> Discuss </h3>
+
+                 
+                {{--  comment  --}}
+                    <div class="leave_review">
+                    <h3 class="blog_heading_border"> Leave a Comment </h3>
+
+                    {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="hidden" name="lesson_id" value="{{$lesson->id}}" /> 
+
+                    </div>
+                    <div class="row">
+
+                      <div class="col-sm-6">
+                        {{Form::label('name','Name')}}
+                        {{Form::text('name', '', ['class' => 'form-group'])  }}
+                      </div>
+                    <div class="col-sm-12">
+                      {{Form::label('body','Message')}}
+                      {{Form::textarea('body', '', ['class' => 'form-group'])  }}
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                    </div>
+                    {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right'])}}
+                    {!! Form::close() !!}
+                    @foreach ($comment as $item) 
                     <ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded">
                     <img src="/storage/Iconimage/about.png" alt="image"> </div>
                     <div class="comment-body">
-                    <h4 class="text-left"> NIKLOS DELSON &nbsp;&nbsp;
-                        <small class="date-posted pull-right">18th Mar, 2018</small>
+                    <h4 class="text-left">{{$item->name}} &nbsp;&nbsp;
+                        <small class="date-posted pull-right">{{$item->created_at}}</small>
                     </h4>
-                    <p> Duis a enim vel mauris ultrices, duis a enim vel mauris ultrices</p>
+                    <p>{{$item->body}}</p>
                     
                     <a href="#" class="pull-left">Reply</a>
                     <div class="clearfix"></div>
                     </div>
                     </li>
                     </ol>
-             
-                {{--  comment  --}}
-                    <div class="leave_review">
-                    <h3 class="blog_heading_border"> Leave a Comment </h3>
-
-                    <form action="{{ route('comment', $lesson->id) }}" method="GET">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-12">
-                    <textarea placeholder="Message" class="form-control" required=""></textarea>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-12">
-                    <button type="submit" class="mt_btn_yellow">Submit</button>
-                    </div>
-                    </div>
-                    </form>
+                    @endforeach
                     </div>  
                     
                     {{--  end comment  --}}

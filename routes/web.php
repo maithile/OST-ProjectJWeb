@@ -26,7 +26,7 @@ Route::get('/show/{id}', 'LessonController@show')->name('show');
 // answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
 
- Route::get('/comment/{id}', 'LessonController@answerSubmit')->name("comment");
+ Route::resource('/comment', 'CommentsController');
 
 // for Admin 
  Route::middleware('auth')->group(function(){
@@ -34,15 +34,9 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
  Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
  Route::resource('/admin/dictionary', 'AdminDictionaryController')->middleware('admin');
  Route::get('/logout', 'Auth\LoginController@logout');
-
 });
 
- Route::middleware('auth')->group(function(){
- Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
- Route::resource('/admin/dictionary', 'AdminDictionaryController')->middleware('admin');
- Route::get('/logout', 'Auth\LoginController@logout');
- 
- });
+
 Auth::routes();
 
 //homepage
