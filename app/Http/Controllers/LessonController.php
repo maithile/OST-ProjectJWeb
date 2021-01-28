@@ -39,7 +39,7 @@ class LessonController extends Controller
 
     public function show($id){
         
-        $lesson_show = Lesson::where('level_id','=', 1)->get();
+        $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
         $lesson = Lesson::find($id); 
 
         $array1  = $lesson->talker; 
@@ -59,5 +59,14 @@ class LessonController extends Controller
         return view('pages.show-anser', compact('lesson', 'questions','inputed')); 
     }
 
+
+     public function comment(Request $request, $id)
+    { 
+
+     return $inputed = $request->input('body') ;
+     $lesson = Lesson::find($id);
+
+//    return view('pages.comment'); 
+}
 
 }

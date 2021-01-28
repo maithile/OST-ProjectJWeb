@@ -215,7 +215,7 @@ jQuery(document).ready(function($){
                     <ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded">
-                    <img src="/storage/imagePage/about.png" alt="image"> </div>
+                    <img src="/storage/Iconimage/about.png" alt="image"> </div>
                     <div class="comment-body">
                     <h4 class="text-left"> NIKLOS DELSON &nbsp;&nbsp;
                         <small class="date-posted pull-right">18th Mar, 2018</small>
@@ -258,47 +258,7 @@ jQuery(document).ready(function($){
                     </div>
                 </div>
                 <br>
-                    <div class="inner-heading">
-                        <h3>Related This Topic</h3>
-                    </div>
-         
-            @foreach ($lesson_show as $item)
-           
-            <div class="col-md-4 col-sm-6 col-xs-12 item">
-            <div class="featured-item">
-
-            <div class="feat-img">
-            <img src="/storage/images/{{$item->image}}" alt="">
-            <div class="th-name">
-            <h5>Listen</h5>
-            </div>
-            <div class="overlayPort">
-            <ul class="info text-center list-inline">
-            <li>
-            <a href="/inter/{{$item->id}}">
-            <h4>Listen</h4>
-            </a>
-            </li>
-            </ul>
-            </div>
-             </div>
-            <div class="feat-inn">
-         
-            <a href="/{{$item->id}}"><h3>{{$item->title}}</h3></a>
-            <div class="course-feat">
-          
-            <div class="admin-ft pull-right">
-            <ul>
-            <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>31 comments</span></a></li>
-
-            </ul>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-
-            @endforeach
+               
 
             </div>
             </div>

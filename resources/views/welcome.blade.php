@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Janweb') }}</title>
+    <title>{{ config('app.name', 'OST') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,9 +23,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <meta name="description" content="janweb">
+    <meta name="description" content="OST">
 
-    <title>Janweb</title>
+    <title>OST</title>
     <!-- Favicon -->
     <script src="cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 
@@ -107,7 +107,7 @@
             <div class="container">
 
                 <div class="logo pull-left">
-                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->Janweb</a></h2>
+                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
                 </div>
                 
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
@@ -179,7 +179,7 @@
                 <img src="{{asset('img/website.jpg') }}" alt="slider_04" />
                 <!-- Center Slide Text Layer -->
                 <div class="caption_slide1 caption_slide1_center cap-new wow fadeInDown" data-animation="animated fadeInDown">
-                     <h3>Welcome To JanWeb</h3>
+                     <h3>Welcome To OST</h3>
                      <h2>Listening Japanese</h2>
                      
                 </div><!-- /Center Slide Text Layer -->
@@ -305,7 +305,7 @@
                 <div class="col-md-5 col-sm-12 col-xs-12">
                     <div class="follow_us">
                         
-                        <h2><a href="index.html">JanWeb</a></h2>
+                        <h2><a href="index.html">OST</a></h2>
 
                         <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br><br>
                         <div class="textwidget">
@@ -335,7 +335,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="copy_txt">
-                            <p class="mar-0 white">&copy; Copyright 2021 - JanWeb</p>
+                            <p class="mar-0 white">&copy; Copyright 2021 - OST</p>
                         </div>
                     </div>
                     <div class="col-sm-6">

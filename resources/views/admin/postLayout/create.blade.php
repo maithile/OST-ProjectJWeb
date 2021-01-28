@@ -109,6 +109,18 @@
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
         </div>
+
+        <div class="col-md-3">
+    
+        {{Form::label('talker', 'talker')}}
+        {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
+            </div>
+
+            <div class="col-md-8">
+        
+        {{Form::label('script', 'script')}}
+        {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
+            </div>
         </div>
        </div>
        </div>

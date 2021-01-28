@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Janweb">
+    <meta name="description" content="OST">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <title>Janweb</title>
+    <title>OST</title>
     <!-- Favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -87,7 +87,7 @@
             <div class="container">
 
                 <div class="logo pull-left">
-                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->Janweb</a></h2>
+                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
                 </div>
                 
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
@@ -147,17 +147,18 @@
         <!-- navbar end -->
     </header>
     <!--* End Header*-->
-
-    <!-- Banner -->
-    <div id="blog_banner">
-    
-        <div class="black-overlay"></div>
+ <!-- Banner -->
+ <div id="blog_banner">
+    <div class="page-title">
+        <div class="container">
+            <h2>Listening</h2>
+        </div>
     </div>
-    <!-- End banner -->  
+    <div class="black-overlay"></div>
+</div>
+<!-- End banner -->
 @yield('content')
-</div>
-</div>
-</section>
+
 <!--* End Services*-->
 
    <!--*Footer*-->
@@ -169,7 +170,7 @@
             <div class="col-md-5 col-sm-12 col-xs-12">
                 <div class="follow_us">
                     
-                    <h2><a href="/home">JanWeb</a></h2>
+                    <h2><a href="/home">OST</a></h2>
                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br><br>
                     <div class="textwidget">
                         <p class="white">Tokyo Japan</p>
@@ -198,7 +199,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="copy_txt">
-                        <p class="mar-0 white">&copy; Copyright 2021 - JanWeb</p>
+                        <p class="mar-0 white">&copy; Copyright 2021 - OST</p>
                     </div>
                 </div>
                 <div class="col-sm-6">

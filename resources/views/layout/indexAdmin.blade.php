@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Welcome to our Admin">
 
-    <title>Janweb - Template</title>
+    <title>OST - Template</title>
     <!-- Favicon -->
     {{-- <script src="cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> --}}
     <!-- Bootstrap core CSS -->
@@ -41,7 +41,7 @@
 
             <div class="dashboard-sticky-nav">
                 <div class="content-left pull-left">
-                    <h2><a href="/home" class="white">Janweb</a></h2>
+                    <h2><a href="/home" class="white">OST</a></h2>
                 </div>
                 <div class="content-right pull-right">
                     <div class="search-bar">
@@ -56,7 +56,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <div class="profile-sec">
                                 <div class="dash-image">
-                                    <img src="/storage/imagePage/about.png" alt="">
+                                    <img src="/storage/Iconimage/about.png" alt="">
                                 </div>
                                 <div class="dash-content">
         <h4> {{ Auth::user()->name }}</h4>
