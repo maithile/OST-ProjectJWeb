@@ -215,52 +215,64 @@ jQuery(document).ready(function($){
 
                  
                 {{--  comment  --}}
-                    <div class="leave_review">
+                    {{-- <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+                    {!! Form::open(['action' => ['LessonController@loadComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
 
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="hidden" name="lesson_id" value="{{$lesson->id}}" /> 
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
 
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
                         {{Form::label('name','Name')}}
-                        {{Form::text('name', '', ['class' => 'form-group'])  }}
+                        {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
                       </div>
                     <div class="col-sm-12">
                       {{Form::label('body','Message')}}
-                      {{Form::textarea('body', '', ['class' => 'form-group'])  }}
+                      {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
                     </div>
                     </div>
                     <div class="row">
                     <div class="col-md-12">
+                    </div>loadComment
                     </div>
-                    </div>
-                    {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right'])}}
-                    {!! Form::close() !!}
-                    <br>
+                    {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
+                    {!! Form::close() !!} --}}
                   
-                     <h3>{{$comment->count()}} Comments</h3>
-                    @foreach ($comment as $item) 
+                     {{--  display comment  --}}
+                <form> 
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <input type="hidden" name ="lesson_id"  id = "lesson_id" value="{{$lesson->id}}">
 
-                    <ol class="review-lists">
-                    <li class="comment">
-                    <div class="activity_rounded">
-                    <img src="/storage/Iconimage/about.png" alt="image"> </div>
-                    <div class="comment-body">
-                    <h4 class="text-left">{{$item->name}} &nbsp;&nbsp;
-                        <small class="date-posted pull-right">{{$item->created_at}}</small>
-                    </h4>
-                    <p>{{$item->body}}</p>
-                    
-                    <a href="#" class="pull-left">Reply</a>
-                    <div class="clearfix"></div>
+                    <div id="comment_show">   
+
                     </div>
-                    </li>
-                    </ol>
-                    @endforeach
+                 </form>         
+                  <script type="text/javascript"> 
+                    $(document).ready(function(){
+                       loadComment(); 
+                    function loadComment(){
+                     var lesson_id= $("#lesson_id").val();
+                     var _token = $('input[name="_token"]').val();
+                     $.ajax({
+                             method: "POST",
+                             url: "{{url('/loadComment')}}",
+                             dataType: "html",
+                             data: {_token:_token, lesson_id: lesson_id},
+                             
+                             success: function(data){
+                                $('#comment_show').html(data);
+
+                               }
+                              });
+                              }
+                            }); 
+                  </script>              
+                   {{--  end display comment  --}}
+
+
                     </div>  
                     
                     {{--  end comment  --}}

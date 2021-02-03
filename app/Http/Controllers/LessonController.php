@@ -53,4 +53,43 @@ class LessonController extends Controller
     }
 
 
+    public function loadComment(Request $request)
+    {
+        $lesson_id = $request->lesson_id;
+        $comment = Comment::where('lesson_id', $lesson_id)->get();
+        $output = '';   
+      foreach($comment as $key => $value){
+
+        $output .= ' <ol class="review-lists">
+                    <li class="comment">
+                    <div class="activity_rounded">      
+                    <div class="comment-body">
+                    <h4 class="text-left">Mit&nbsp;&nbsp;
+                        <small class="date-posted pull-right">12/2</small>
+                    </h4>
+                    <p>'.$value->name.'</p>
+                    <a href="#" class="pull-left">Reply</a>
+                    <div class="clearfix"></div>
+                    </div>
+                    </li>
+                    </ol>  ';
+      }
+
+      return $output;
+    }
+
+    public function addComment(Request $request)
+
+    {
+      $comment = new Comment();
+      $comment->name = $request->name;
+      $comment->body = $request->body;
+      $comment->lesson_id = $request->lesson_id;
+      $comment->save();
+      
+    return response()->json($comment);
+
+    }
+
+
 }
