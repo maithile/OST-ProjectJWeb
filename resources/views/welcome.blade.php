@@ -248,7 +248,6 @@
                 </div>
             </div>
         </div>
-
         <!-- navbar start -->
         <nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function navbar-arrow">
 

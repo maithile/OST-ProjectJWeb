@@ -8,6 +8,7 @@ use App\Level;
 use App\Question;
 use App\Dictionary;
 use App\Comment;
+use App\ReplyComment;
 
 class CommentsController extends Controller
 {
@@ -46,20 +47,30 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
-    
-   $data = [
+      $comment = new Comment();
+      $comment->name = $request->name;
+      $comment->body = $request->body;
+      $comment->lesson_id = $request->lesson_id;
+      $comment->save();
+      
+    return response()->json($comment);
 
-      'lesson_id' =>$request->lesson_id,
-      'body' =>$request->body,
-      'name' =>$request->name
-   ];
-
-//    Comment::create($data);
-   //return redirect()->back();
-return redirect()->route('show', $request->lesson_id);
     }
 
+    // public function ReplyComment(Request $request){
+     
+    //     $data =[
+    //         'comment_id' =>$request->comment_id,
+    //         'body'       =>$request->body,
+    //         'name'       =>$request->name
+    //     ];
+  
+    //     ReplyComment::create($data);
+    //     return redirect()->route('show', $request->comment_id);
+  
+    //  }
     /**
      * Display the specified resource.
      *
@@ -68,10 +79,11 @@ return redirect()->route('show', $request->lesson_id);
      */
     public function show($id)
     {
-     
-
+      
+       
     }
 
+  
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,4 +117,6 @@ return redirect()->route('show', $request->lesson_id);
     {
         //
     }
+
+
 }

@@ -23,7 +23,7 @@
     <li class="active"><a data-toggle="tab" href="#home">Question</a></li>
     <li><a data-toggle="tab" href="#menu1">Vocabulary</a></li>
     <li><a data-toggle="tab" href="#menu2">Script</a></li>
-    <li><a data-toggle="tab" href="#menu3">Reviews</a></li>
+    <li><a data-toggle="tab" href="#menu3">Discuss</a></li>
     </ul>
 
     <div class="tab-content">
@@ -218,7 +218,7 @@ jQuery(document).ready(function($){
                     <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    {!! Form::open(['action' => ['LessonController@comment', $lesson->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
+                    {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="hidden" name="lesson_id" value="{{$lesson->id}}" /> 
