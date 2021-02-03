@@ -11,7 +11,7 @@
 |
 */
 
-// Homepage
+// Homepage;
 // Route::get('/', 'LessonController@index')->name('welcome'); 
 
   // for users
@@ -29,6 +29,7 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
 // Route::resource('/comment', 'CommentsController');
 
 Route::post('/loadComment', 'LessonController@loadComment');
+Route::post('/addComment', 'LessonController@addComment');
 
 
 // for Admin 

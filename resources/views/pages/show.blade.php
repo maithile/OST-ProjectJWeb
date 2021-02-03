@@ -214,15 +214,14 @@ jQuery(document).ready(function($){
                   <h3 class="blog_heading_border"> Discuss </h3>
 
                  
-                {{--  comment  --}}
-                    {{-- <div class="leave_review">
+                {{--  add comment  --}}
+                    <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    {!! Form::open(['action' => ['LessonController@loadComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+                    {!! Form::open(['action' => ['LessonController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
-
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
@@ -236,13 +235,14 @@ jQuery(document).ready(function($){
                     </div>
                     <div class="row">
                     <div class="col-md-12">
-                    </div>loadComment
+                    </div>
                     </div>
                     {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
-                    {!! Form::close() !!} --}}
+                    {!! Form::close() !!}
+                    {{--  End add comment  --}}
                   
                      {{--  display comment  --}}
-                <form> 
+                  <form> 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <input type="hidden" name ="lesson_id"  id = "lesson_id" value="{{$lesson->id}}">
 
