@@ -26,7 +26,7 @@ Route::get('/show/{id}', 'LessonController@show')->name('show');
 // answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
 
-// Route::resource('/comment', 'CommentsController');
+// Route::resurce('/comment', 'CommentsController');
 
 Route::post('/loadComment', 'LessonController@loadComment');
 Route::post('/addComment', 'LessonController@addComment');

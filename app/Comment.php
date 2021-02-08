@@ -17,7 +17,7 @@ public function user(){
     return $this->BelongsTo(User::class, 'user_id', 'id');
 }
 public function replyComment(){
-    return $this->hasMany(ReplyComment::class, 'comment_id', 'id');
+    return $this->hasMany(ReplyComment::class, 'parrent_id');
 }
 
 

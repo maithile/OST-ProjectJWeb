@@ -67,6 +67,16 @@ class LessonController extends Controller
                     </h4>
                     <p>'.$value->body.'</p>
                     <a href="#" class="pull-left">Reply</a>
+                   <form method="post" action="">
+                    <div class="form-group">
+                        <input type="text" name="comment" class="form-control" />
+                        <input type="hidden" name="post_id" value="{{ $post_id }}" />
+                        <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
+                    </div>
+                </form>
                     <div class="clearfix"></div>
                     </div>
                     </li>
@@ -79,17 +89,22 @@ class LessonController extends Controller
     public function addComment(Request $request)
 
     {
-
       $lesson_id = $request->lesson_id;
-
       $comment = new Comment();
       $comment->name = $request->name;
       $comment->body = $request->body;
+      $comment->parrent_id = '0';
       $comment->lesson_id = $request->lesson_id;
       $comment->save();
-      
-    return redirect()->back();
+      return back();
     }
+
+   
+
+
+
+
+
 
 
 }

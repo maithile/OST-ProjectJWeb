@@ -60,7 +60,6 @@
 jQuery(document).ready(function($){
   var correct_ans = $('#correct-ans').val();
   var selected_ans = "";
-
   $('#check-btn').click(function() {
     selected_ans = $('input[name="answer"]:checked').val();
     if(selected_ans == null) {
@@ -73,9 +72,7 @@ jQuery(document).ready(function($){
       }
     }
   });
-
 });
-
 </script>
 
 </div>
@@ -218,28 +215,33 @@ jQuery(document).ready(function($){
                     <div class="leave_review">
                     <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                    {!! Form::open(['action' => ['LessonController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+                 {{--  add comment  --}}
+                 <div class="leave_review">
+                  <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
+                  {!! Form::open(['action' => ['LessonController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                      <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      {{Form::label('name','Name')}}
+                      {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        {{Form::label('name','Name')}}
-                        {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
-                      </div>
-                    <div class="col-sm-12">
-                      {{Form::label('body','Message')}}
-                      {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-12">
-                    </div>
-                    </div>
-                    {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
-                    {!! Form::close() !!}
-                    {{--  End add comment  --}}
+                  <div class="col-sm-12">
+                    {{Form::label('body','Message')}}
+                    {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-12">
+                  </div>
+                  </div>
+                  {{Form::submit('Submit', ['class' => 'send mt_btn_yellow pull-right', 'id' => 'submit'])}}
+                  {!! Form::close() !!}
+                  {{--  End add comment  --}}
+                
                   
                      {{--  display comment  --}}
                   <form> 
@@ -250,9 +252,20 @@ jQuery(document).ready(function($){
 
                     </div>
                  </form>         
-                  <script type="text/javascript"> 
+                  <script> 
+                  
+                  // var lesson_id= $("#lesson_id").val();
+                  //    var _token = $('input[name="_token"]').val();
+                  //    var name = $('#name').val();
+                  //    var body = $('#body').val();
+
                     $(document).ready(function(){
-                       loadComment(); 
+                 
+                
+                  $.ajaxSetup({
+                  headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+              });
+                      loadComment(); 
                     function loadComment(){
                      var lesson_id= $("#lesson_id").val();
                      var _token = $('input[name="_token"]').val();
@@ -264,7 +277,6 @@ jQuery(document).ready(function($){
                              
                              success: function(data){
                                 $('#comment_show').html(data);
-
                                }
                               });
                               }
@@ -293,5 +305,3 @@ jQuery(document).ready(function($){
             </section>
             
             @endsection
-
-
