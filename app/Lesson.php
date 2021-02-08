@@ -13,12 +13,10 @@ class Lesson extends Model
     protected $casts = [
         'script' => 'array',    
         'talker' => 'array',
-    
+
     ];
 
    // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
-
-
     public function questions(){
       
         return $this->hasMany(Question::class, 'lesson_id', 'id');// trả về kết quả của bảng question. khoa phu trong bang quention
@@ -32,12 +30,10 @@ class Lesson extends Model
        return $this->belongsTo(Level::class, 'level_id', 'id');
    }
 
-
    public function users(){
        return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');
    }
 
-   
    public function vocabularies(){
     return $this->hasMany(Dictionary::class, 'lesson_id', 'id');
 }
@@ -45,5 +41,9 @@ class Lesson extends Model
   public function comments(){
       return $this->hasMany(Comment::class, 'lesson_id', 'id');
   }
+
+  public function category(){
+    return $this->belongsto(Catefory::class, 'category_id');
+}
 
 }
