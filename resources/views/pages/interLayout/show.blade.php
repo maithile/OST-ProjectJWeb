@@ -55,25 +55,7 @@
         <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
         @endforeach  
         <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-        
- <script>
-jQuery(document).ready(function($){
-  var correct_ans = $('#correct-ans').val();
-  var selected_ans = "";
-  $('#check-btn').click(function() {
-    selected_ans = $('input[name="answer"]:checked').val();
-    if(selected_ans == null) {
-      alert("Please answer the question.");
-    } else {
-      if(correct_ans == selected_ans) {
-        alert("Congratulation! Correct!");
-      } else {
-        alert("Nope! You're wrong -_-");
-      }
-    }
-  });
-});
-</script>
+        <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}">
 
 </div>
 </div>

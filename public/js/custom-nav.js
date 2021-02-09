@@ -81,6 +81,19 @@ jQuery(document).ready(function () {
       $(".navbar-arrow ul ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-right'></i>");
     }
 
-
+    $('#check-btn').click(function() {
+      var correct_ans = $('#correct-ans').val();
+      var selected_ans = "";
+      selected_ans = $('input[name="answer"]:checked').val();
+      if(selected_ans == null) {
+        alert("Please answer the question.");
+      } else {
+        if(correct_ans == selected_ans) {
+          alert("Congratulation! Correct!");
+        } else {
+          alert("Nope! You're wrong -_-");
+        }
+      }
+    });
 });
 

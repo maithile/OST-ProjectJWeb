@@ -58,25 +58,7 @@
         <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
         @endforeach  
         <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-
-<script>
-jQuery(document).ready(function($){
-  var correct_ans = $('#correct-ans').val();
-  var selected_ans = "";
-  $('#check-btn').click(function() {
-    selected_ans = $('input[name="answer"]:checked').val();
-    if(selected_ans == null) {
-      alert("Please answer the question.");
-    } else {
-      if(correct_ans == selected_ans) {
-        alert("Congratulation! Correct!");
-      } else {
-        alert("Nope! You're wrong -_-");
-      }
-    }
-  });
-});
-</script>
+        <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}">
 
 </div>
 </div>
@@ -264,27 +246,22 @@ jQuery(document).ready(function($){
                              </ul>
                              <p>{{$value->body}} </p>
                               {{-- End Display comment--}}
-
-                                 @foreach ($value->replyComment as $reply)
-                                 <li class="comment">
-                                  <div class="activity_rounded">
-                                      <img src="images/blog/cmnt-1.jpg" alt="image"> </div>
-                                  <div class="comment-body">
-                                      <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
-                                          <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
-                                      </h4>
-                                      <p>{{ $reply->body}} </p>
-                                      
-                                 @endforeach
-
-
-
-
                              <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
                              <br>
-                             {{--//reply form--}}
+                             @foreach ($value->replyComment as $reply)
+                             <li class="replycomment">
+                              <div class="activity_rounded">
+                                  <img src="images/blog/cmnt-1.jpg" alt="image"> </div>
+                              <div class="comment-body">
+                                  <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
+                                      <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
+                                  </h4>
+                                  <p>{{ $reply->body}} </p>
+                                  <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
+                             @endforeach
+                             {{--reply form--}}
                              <div style="margin-left: 50px" class="reply-form-{{$value->id}} hidden">
-                            <div class="leave_review">
+                             <div class="leave_review">
                              <br>
                              <br>
                               {!! Form::open(['action' => ['CommentsController@replyComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}

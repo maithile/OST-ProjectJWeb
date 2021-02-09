@@ -47,29 +47,6 @@
              <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
         {{-- </form> --}}
             {{-- submitansnwer end--}}
-   
-{{-- <script>
-jQuery(document).ready(function($){
-    alert("linhtinh");
-
-  var correct_ans = $('#correct-ans').val();
-  var selected_ans = "";
-
-  $('#check-btn').click(function() {
-    selected_ans = $('input[name="answer"]:checked').val();
-    if(selected_ans == null) {
-      alert("Please answer the question.");
-    } else {
-      if(correct_ans == selected_ans) {
-        alert("Congratulation! Correct!");
-      } else {
-        alert("Nope! You're wrong -_-");
-      }
-    }
-  });
-
-});
-</script> --}}
 
     </div>
     </div>

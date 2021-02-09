@@ -5,26 +5,6 @@
     $(document).ready(function(){
     
         /*--------------------------------------------------*/
-        /*  Check Answer
-        /*--------------------------------------------------*/
-
-        var correct_ans = $('#correct-ans').val();
-        var selected_ans = "";
-        
-        $('#check-btn').click(function() {
-            selected_ans = $('input[name="answer"]:checked').val();
-            if(selected_ans == null) {
-            alert("Please answer the question.");
-            } else {
-            if(correct_ans == selected_ans) {
-                alert("Congratulation! Correct!");
-            } else {
-                alert("Nope! You're wrong -_-");
-            }
-            }
-        });
-    
-        /*--------------------------------------------------*/
         /*  Navigation
         /*--------------------------------------------------*/
         var jPanelMenu = $.jPanelMenu({

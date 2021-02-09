@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-
 protected $fillable = ['lesson_id', 'parrent_id', 'body', 'name', 'created_at',
 'updated_at'];
     
