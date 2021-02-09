@@ -126,31 +126,20 @@ jQuery(document).ready(function($){
             <input id="sidebar-search" placeholder="Search Courses" type="text">
             </form>
             </div>
+            
+            {{-- Categori--}}
             <div class="widget widget_categories">
             <h3 class="blog_heading_border">Categories </h3>
             <ul>
+            @foreach ($category as $value)
             <li>
-            <a href="#"> Travel</a>
-            <span class="categoryCount">(07)</span>
+            <a href="/displayCate/{{$value->id}}">{{$value->name}}</a>
+            <span class="categoryCount">(0 {{ $value->pots->count()}})</span>
             </li>
-             <li>
-            <a href="#"> Sports </a>
-            <span class="categoryCount">(18)</span>
-            </li>
-            <li>
-            <a href="#"> Cooking </a>
-            <span class="categoryCount">(08)</span>
-            </li>
-            <li>
-            <a href="#"> Banking Management </a>
-            <span class="categoryCount">(05)</span>
-            </li>
-            <li>
-            <a href="#"> Busines Studies </a>
-            <span class="categoryCount">(02)</span>
-            </li>
+            @endforeach
             </ul>
             </div>
+             {{-- End   Categori--}}
 
             <div class="widget widget_recent_entries">
             <h3 class="blog_heading_border"> Recent Lessons</h3>
@@ -207,14 +196,7 @@ jQuery(document).ready(function($){
                         <div class="col-sm-9">
                             <div class="leave_review">
 
-
                   <h3 class="blog_heading_border"> Discuss </h3>
-
-                 
-                {{--  add comment  --}}
-                    <div class="leave_review">
-                    <h3 class="blog_heading_border"> Leave a Comment </h3>
-
                  {{--  add comment  --}}
                  <div class="leave_review">
                   <h3 class="blog_heading_border"> Leave a Comment </h3>
@@ -260,10 +242,8 @@ jQuery(document).ready(function($){
                   //    var body = $('#body').val();
 
                     $(document).ready(function(){
-                 
-                
-                  $.ajaxSetup({
-                  headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+                 　　 $.ajaxSetup({
+                  　　headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
               });
                       loadComment(); 
                     function loadComment(){

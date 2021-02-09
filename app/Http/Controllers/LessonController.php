@@ -9,6 +9,7 @@ use App\Question;
 use App\Dictionary;
 use App\Comment;
 use App\ReplyComment;
+use App\Catefory;
 
 class LessonController extends Controller
 {
@@ -32,6 +33,7 @@ class LessonController extends Controller
         return view('pages.advance',  compact('lesson')); // ket noi controller voi view
     }
     public function show($id){
+        $category = Catefory::with('pots')->get();
         $comment = Comment::where('lesson_id','=', $id)->get();
         $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
         $lesson = Lesson::find($id); 
@@ -40,7 +42,15 @@ class LessonController extends Controller
         $Array = array_combine($array2, $array1);
         $vocabulary = $lesson->vocabulary;
         $questions = $lesson->questions; 
-        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment')); 
+        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
+    }
+
+
+ public function  displayCate($id){
+
+         $category = Catefory::where('id', '=', $id)->get();
+         $lesson = Lesson::where('category_id','=', $id)->paginate(5);  
+        return view('pages.displayCate', compact('lesson', 'category')); 
     }
 
     public function answerSubmit(Request $request, $id)
@@ -56,7 +66,7 @@ class LessonController extends Controller
         $comment = Comment::where('lesson_id', $lesson_id)->get();
         $output = '';   
         foreach($comment as $key => $value){
-        $output .= ' <ol class="review-lists">
+        $output .= '<ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded"> 
                     <img src="/storage/Iconimage/about.png" alt="image"> </div>     

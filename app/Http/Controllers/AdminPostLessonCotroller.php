@@ -11,6 +11,7 @@ use App\Level;
 use App\Question;
 use App\Dictionary;
 use App\Vocabulary;
+use App\Catefory;
 
 class AdminPostLessonCotroller extends Controller
 {
@@ -37,7 +38,9 @@ class AdminPostLessonCotroller extends Controller
         $dictionary = Dictionary::pluck('vocabulary','id')->all();
         $lesson = Lesson::pluck('title','id')->all();
         $level = Level::pluck('level','id')->all();
-        return view('admin.postLayout.create', compact('level', 'lesson', 'dictionary'));
+        $category = Catefory::pluck('name','id')->all();
+  
+        return view('admin.postLayout.create', compact('level', 'lesson', 'category', 'dictionary'));
     }
 
     /**
@@ -88,6 +91,7 @@ class AdminPostLessonCotroller extends Controller
     //create Post Lesson
       $post_lesson = new Lesson;
       $post_lesson->level_id = $request->input('level_id');
+      $post_lesson->category_id = $request->input('category_id');
       $post_lesson->title = $request->input('title');
       $post_lesson->mp3_file = $fileMp3NameToStore;
       $post_lesson->script = $request->input('script');
@@ -163,7 +167,9 @@ class AdminPostLessonCotroller extends Controller
         $vocabulary = $lesson->vocabulary;
         $dictionary = Dictionary::pluck('vocabulary','id')->all();
         $level = $lesson->level;
-        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'dictionary', 'vocabulary'));
+        $category = $lesson->category;
+
+        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'dictionary', 'vocabulary', 'category'));
     }
 
     /**
@@ -208,6 +214,7 @@ class AdminPostLessonCotroller extends Controller
     //create Post Lesson
        $post_lesson = Lesson::find($id);
        $post_lesson->level_id = $request->input('level_id');
+       $post_lesson->category_id = $request->input('category_id');
        $post_lesson->title = $request->input('title');
 
       if($request->hasFile('mp3_file')){

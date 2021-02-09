@@ -6,7 +6,12 @@
     <div class="container">        
         <ul class="breadcrumb">
             <li><a href="/home">Home</a></li>
-            <li><a href="/basic">Basic</a></li>
+            <li><a href="#">Topic</a></li>
+            @foreach ($category as $value)
+            <li><a href="#">{{$value->name}}</a></li>   
+            @endforeach
+            
+
         </ul>
     </div>
 </div>
@@ -23,7 +28,7 @@
                         <img src = "/storage/images/{{$value->image}}"  width="360" height="230">
                         <div class="th-name">
                             <a href="/show/{{$value->id}}">
-                                <h4>Listen</h4>
+                                <h4>{{$value->level->level}}</h4>
                             </a>
                         </div>
                         <div class="overlayPort">
@@ -50,7 +55,12 @@
                     </div>  
                 </div>
             </div>
-            @endforeach          
+         
+            @endforeach
+            
+          
+           
+            
         </div>
     </div>
 </section>

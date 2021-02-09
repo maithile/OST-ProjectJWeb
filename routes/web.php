@@ -22,6 +22,8 @@ Route::get('/advance', 'LessonController@advance')->name('inter');
 
 // layout detail
 Route::get('/show/{id}', 'LessonController@show')->name('show');
+Route::get('/displayCate/{id}', 'LessonController@displayCate')->name('displayCate');
+
 
 // answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");

@@ -39,6 +39,15 @@
          {{Form::label('level_id','Level')}} 
          {!!Form::select('level_id', [$level->id => $level->level]) !!}
         </div>
+        <div class="col-md-4">
+
+            @error('level_id')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+   
+            {{Form::label('category_id','Level')}} 
+            {!!Form::select('category_id', [$category->id => $category->name]) !!}
+           </div>
   </div>
     <div class="row with-forms">
         <div class="col-md-6">

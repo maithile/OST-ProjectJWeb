@@ -10,7 +10,7 @@ class Catefory extends Model
     protected $table = 'catefories';
 
 public function pots(){
-    return $this->hasMany(Catefory::class, 'category_id');
+    return $this->hasMany(Lesson::class, 'category_id');
 }
   
 }
