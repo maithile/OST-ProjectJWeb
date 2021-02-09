@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
                  <div class="leave_review">
                   <h3 class="blog_heading_border"> Leave a Comment </h3>
 
-                  {!! Form::open(['action' => ['LessonController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+                  {!! Form::open(['action' => ['CommentsController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                       <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 

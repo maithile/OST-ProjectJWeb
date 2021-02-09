@@ -31,6 +31,7 @@ class LessonRequest extends FormRequest
             'script' => "required|array",
             "script.*"  => "required|string",
             'level_id' =>  'required|integer',
+            'category_id' =>  'required|integer',
             'talker' => "required|array",
             "talker.*"  => "required|string",
 

@@ -34,7 +34,7 @@ class LessonController extends Controller
     }
     public function showBasic($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->get(); 
+        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
         $lesson      = Lesson::find($id); 
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
@@ -52,25 +52,21 @@ class LessonController extends Controller
 
        public function showInter($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->get(); 
-        $lesson      = Lesson::find($id); 
+        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
+        $lesson      = Lesson::find($id);
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
         $Array       = array_combine($array2, $array1);
         $vocabulary  = $lesson->vocabulary;
         $questions   = $lesson->questions; 
-        $lesson_show = Lesson::where([
-                                     ['id', 'not like', $id],
-                                     ['level_id', '=', '2'],
-                                     ])->latest()->paginate(4);
+      
 
         return view('pages.interLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
     }
 
-
     public function showAdvance($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->get(); 
+        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
         $lesson      = Lesson::find($id); 
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
@@ -98,58 +94,7 @@ class LessonController extends Controller
         $questions  = $lesson->questions->pluck('correct_answerId'); 
         return view('pages.show-anser', compact('lesson', 'questions','inputed')); 
     }
-    public function loadComment(Request $request)
-    {
-        $lesson_id  = $request->lesson_id;
-        $comment    = Comment::where('lesson_id', $lesson_id)->get();
-        $output     = '';   
-        foreach($comment as $key => $value){
-        $output .= '<ol class="review-lists">
-                    <li class="comment">
-                    <div class="activity_rounded"> 
-                    <img src="/storage/Iconimage/about.png" alt="image"> </div>     
-                    <div class="comment-body">
-                    <h4 class="text-left">'.$value->name.'&nbsp;&nbsp;
-                     <small class="date-posted pull-right">'.$value->created_at.'</small>
-                    </h4>
-                    <p>'.$value->body.'</p>
-                    <a href="#" class="pull-left">Reply</a>
-                   <form method="post" action="">
-                    <div class="form-group">
-                        <input type="text" name="comment" class="form-control" />
-                        <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
-                    </div>
-                </form>
-                    <div class="clearfix"></div>
-                    </div>
-                    </li>
-                    </ol>  ';
-      }
-
-      return $output;
-    }
-
-    public function addComment(Request $request)
-    {
-        $lesson_id           = $request->lesson_id;
-        $comment             = new Comment();
-        $comment->name       = $request->name;
-        $comment->body       = $request->body;
-        $comment->parrent_id = '0';
-        $comment->lesson_id  = $request->lesson_id;
-        $comment->save();
-        return back();
-    }
-
    
-
-
-
-
-
-
+   
 
 }

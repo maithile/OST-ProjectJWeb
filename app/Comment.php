@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
 
-protected $fillable = ['lesson_id', 'body', 'name'];
+protected $fillable = ['lesson_id', 'body', 'name', 'created_at',
+'updated_at'];
     
 public function lesson(){
     return $this->BelongsTo(Lesson::class, 'lesson_id', 'id');

@@ -14,7 +14,7 @@
 // Homepage;
 // Route::get('/', 'LessonController@index')->name('welcome'); 
 
-  // for users
+
 // Layout 1
 Route::get('/basic', 'LessonController@basic')->name('basic'); 
 Route::get('/inter', 'LessonController@inter')->name('inter'); 
@@ -25,16 +25,16 @@ Route::get('/showBasic/{id}', 'LessonController@showBasic')->name('showBasic');
 Route::get('/showInter/{id}', 'LessonController@showInter')->name('showInter');
 Route::get('/showAdvance/{id}', 'LessonController@showAdvance')->name('showAdvance');
 
+// layout Topics
 Route::get('/displayCate/{id}', 'LessonController@displayCate')->name('displayCate');
-
 
 // answer
 Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
 
 // Route::resurce('/comment', 'CommentsController');
 
-Route::post('/loadComment', 'LessonController@loadComment');
-Route::post('/addComment', 'LessonController@addComment');
+Route::post('/loadComment', 'CommentsController@loadComment');
+Route::post('/addComment', 'CommentsController@addComment');
 
 
 // for Admin 
