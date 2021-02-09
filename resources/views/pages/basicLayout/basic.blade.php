@@ -1,12 +1,12 @@
 @extends('layout.index')
 @section('content')
+
 <!-- breadcrumb -->
 <div class="breadcrumb-main">    
     <div class="container">        
         <ul class="breadcrumb">
             <li><a href="/home">Home</a></li>
             <li><a href="/basic">Basic</a></li>
-            <li class="#">Detail</li>
         </ul>
     </div>
 </div>
@@ -29,7 +29,7 @@
                         <div class="overlayPort">
                             <ul class="info text-center list-inline">
                                 <li>
-                                    <a href="/show/{{$value->id}}">
+                                    <a href="/showBasic/{{$value->id}}">
                                         <h4>Listen</h4>
                                     </a>
                                 </li>
@@ -37,15 +37,7 @@
                         </div>
                     </div>
                     <div class="feat-inn">
-                        <span>(20 Reviws)</span>
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <a href="/show/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
+                        <a href="/showBasic/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
                         <div class="course-feat">
                         
                             <div class="admin-ft pull-right">
@@ -58,8 +50,7 @@
                     </div>  
                 </div>
             </div>
-            @endforeach
-            
+            @endforeach          
         </div>
     </div>
 </section>
@@ -68,3 +59,6 @@
 
 @endsection
 
+
+
+        

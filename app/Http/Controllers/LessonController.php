@@ -19,52 +19,90 @@ class LessonController extends Controller
     }
 
     public function basic(){
-        $lesson = Lesson::where('level_id','=', 1)->paginate(5);   
-        return view('pages.basic',  compact('lesson'));
+        $lesson    = Lesson::where('level_id','=', 1)->paginate(5);   
+        return view('pages.basicLayout.basic',  compact('lesson'));
 
     }
     public function inter(){
-        $lesson = Lesson::where('level_id','=', 2)->paginate(5);  
-        return view('pages.inter',  compact('lesson')); // ket noi controller voi view
+        $lesson    = Lesson::where('level_id','=', 2)->paginate(5);  
+        return view('pages.interLayout.inter',  compact('lesson')); 
 
     }
     public function advance(){
-        $lesson = Lesson::where('level_id','=', 3)->paginate(5);
-        return view('pages.advance',  compact('lesson')); // ket noi controller voi view
+        $lesson    = Lesson::where('level_id','=', 3)->paginate(5);
+        return view('pages.advanceLayout.advance',  compact('lesson'));
     }
-    public function show($id){
-        $category = Catefory::with('pots')->get();
-        $comment = Comment::where('lesson_id','=', $id)->get();
-        $lesson_show = Lesson::where('level_id','=', 1)->latest()->paginate(4);
-        $lesson = Lesson::find($id); 
-        $array1  = $lesson->talker; 
-        $array2 = $lesson->script; 
-        $Array = array_combine($array2, $array1);
-        $vocabulary = $lesson->vocabulary;
-        $questions = $lesson->questions; 
-        return view('pages.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
+    public function showBasic($id){
+        $category    = Catefory::with('pots')->get();
+        $comment     = Comment::where('lesson_id','=', $id)->get(); 
+        $lesson      = Lesson::find($id); 
+        $array1      = $lesson->talker; 
+        $array2      = $lesson->script; 
+        $Array       = array_combine($array2, $array1);
+        $vocabulary  = $lesson->vocabulary;
+        $questions   = $lesson->questions; 
+        $lesson_show = Lesson::where([
+                                     ['id', 'not like', $id],
+                                     ['level_id', '=', '1'],
+                                     ])->latest()->paginate(4);
+
+        return view('pages.basicLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
     }
 
 
- public function  displayCate($id){
+       public function showInter($id){
+        $category    = Catefory::with('pots')->get();
+        $comment     = Comment::where('lesson_id','=', $id)->get(); 
+        $lesson      = Lesson::find($id); 
+        $array1      = $lesson->talker; 
+        $array2      = $lesson->script; 
+        $Array       = array_combine($array2, $array1);
+        $vocabulary  = $lesson->vocabulary;
+        $questions   = $lesson->questions; 
+        $lesson_show = Lesson::where([
+                                     ['id', 'not like', $id],
+                                     ['level_id', '=', '2'],
+                                     ])->latest()->paginate(4);
 
-         $category = Catefory::where('id', '=', $id)->get();
-         $lesson = Lesson::where('category_id','=', $id)->paginate(5);  
+        return view('pages.interLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
+    }
+
+
+    public function showAdvance($id){
+        $category    = Catefory::with('pots')->get();
+        $comment     = Comment::where('lesson_id','=', $id)->get(); 
+        $lesson      = Lesson::find($id); 
+        $array1      = $lesson->talker; 
+        $array2      = $lesson->script; 
+        $Array       = array_combine($array2, $array1);
+        $vocabulary  = $lesson->vocabulary;
+        $questions   = $lesson->questions; 
+        $lesson_show = Lesson::where([
+                                     ['id', 'not like', $id],
+                                     ['level_id', '=', '3'],
+                                     ])->latest()->paginate(4);
+
+        return view('pages.advanceLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category')); 
+    }
+    public function  displayCate($id){
+
+        $category    = Catefory::where('id', '=', $id)->get();
+        $lesson      = Lesson::where('category_id','=', $id)->paginate(5);  
         return view('pages.displayCate', compact('lesson', 'category')); 
     }
 
     public function answerSubmit(Request $request, $id)
          { 
-        $inputed = $request->input('answer') ;
-        $lesson = Lesson::find($id); 
-        $questions = $lesson->questions->pluck('correct_answerId'); 
+        $inputed    = $request->input('answer') ;
+        $lesson     = Lesson::find($id); 
+        $questions  = $lesson->questions->pluck('correct_answerId'); 
         return view('pages.show-anser', compact('lesson', 'questions','inputed')); 
     }
     public function loadComment(Request $request)
     {
-        $lesson_id = $request->lesson_id;
-        $comment = Comment::where('lesson_id', $lesson_id)->get();
-        $output = '';   
+        $lesson_id  = $request->lesson_id;
+        $comment    = Comment::where('lesson_id', $lesson_id)->get();
+        $output     = '';   
         foreach($comment as $key => $value){
         $output .= '<ol class="review-lists">
                     <li class="comment">
@@ -95,16 +133,15 @@ class LessonController extends Controller
     }
 
     public function addComment(Request $request)
-
     {
-      $lesson_id = $request->lesson_id;
-      $comment = new Comment();
-      $comment->name = $request->name;
-      $comment->body = $request->body;
-      $comment->parrent_id = '0';
-      $comment->lesson_id = $request->lesson_id;
-      $comment->save();
-      return back();
+        $lesson_id           = $request->lesson_id;
+        $comment             = new Comment();
+        $comment->name       = $request->name;
+        $comment->body       = $request->body;
+        $comment->parrent_id = '0';
+        $comment->lesson_id  = $request->lesson_id;
+        $comment->save();
+        return back();
     }
 
    

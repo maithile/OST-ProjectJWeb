@@ -1,6 +1,5 @@
 @extends('layout.index')
 @section('content')
-
 <!-- breadcrumb -->
 <div class="breadcrumb-main">    
     <div class="container">        
@@ -10,8 +9,6 @@
             @foreach ($category as $value)
             <li><a href="#">{{$value->name}}</a></li>   
             @endforeach
-            
-
         </ul>
     </div>
 </div>

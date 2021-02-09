@@ -21,7 +21,10 @@ Route::get('/inter', 'LessonController@inter')->name('inter');
 Route::get('/advance', 'LessonController@advance')->name('inter'); 
 
 // layout detail
-Route::get('/show/{id}', 'LessonController@show')->name('show');
+Route::get('/showBasic/{id}', 'LessonController@showBasic')->name('showBasic');
+Route::get('/showInter/{id}', 'LessonController@showInter')->name('showInter');
+Route::get('/showAdvance/{id}', 'LessonController@showAdvance')->name('showAdvance');
+
 Route::get('/displayCate/{id}', 'LessonController@displayCate')->name('displayCate');
 
 
