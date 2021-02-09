@@ -243,9 +243,10 @@ jQuery(document).ready(function($){
 
                     </div>
                  </form>          --}}
-            
-                 <h3 class="review_heading">Reviews (4)</h3>
+                       {{--Display comment--}}
+                 <h3 class="review_heading">Comments ({{$comment->count()}})</h3>
                  <ol class="review-lists">
+
                    @foreach ($comment as $value)
                      <li class="comment">
                          <div class="activity_rounded">
@@ -262,7 +263,23 @@ jQuery(document).ready(function($){
                                  <li><i class="fa fa-star"></i></li>
                              </ul>
                              <p>{{$value->body}} </p>
-                             {{-- <a href="#" class="pull-left mt_btn_yellow">Reply</a> --}}
+                              {{-- End Display comment--}}
+
+                                 @foreach ($value->replyComment as $reply)
+                                 <li class="comment">
+                                  <div class="activity_rounded">
+                                      <img src="images/blog/cmnt-1.jpg" alt="image"> </div>
+                                  <div class="comment-body">
+                                      <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
+                                          <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
+                                      </h4>
+                                      <p>{{ $reply->body}} </p>
+                                      
+                                 @endforeach
+
+
+
+
                              <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
                              <br>
                              {{--//reply form--}}
@@ -270,9 +287,10 @@ jQuery(document).ready(function($){
                             <div class="leave_review">
                              <br>
                              <br>
-                              {!! Form::open(['action' => ['CommentsController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+                              {!! Form::open(['action' => ['CommentsController@replyComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
                                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                   <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
+                                  <input type="hidden" name="comment_id" value="{{$value->id}}" /> 
                               </div>
                               <div class="row">
                                 <div class="col-sm-6">
@@ -294,7 +312,7 @@ jQuery(document).ready(function($){
                                 <div class="col-md-12">
                                 </div>
                                 </div>
-                              {{Form::submit('Submit', ['class' => 'send mt_btn_yellow pull-right', 'id' => 'submit'])}}
+                              {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
                               {!! Form::close() !!}
                             </div>
                              
@@ -310,9 +328,7 @@ jQuery(document).ready(function($){
                   function toggleReply(commentId){
                       $('.reply-form-'+commentId).toggleClass('hidden');
                   }
-              </script>
-
-
+                 </script>
 {{-- 
                   <script> 
                     $(document).ready(function(){

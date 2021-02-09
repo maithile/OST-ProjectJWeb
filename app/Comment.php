@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
 
-protected $fillable = ['lesson_id', 'body', 'name', 'created_at',
+protected $fillable = ['lesson_id', 'parrent_id', 'body', 'name', 'created_at',
 'updated_at'];
     
 public function lesson(){
@@ -18,7 +18,7 @@ public function user(){
     return $this->BelongsTo(User::class, 'user_id', 'id');
 }
 public function replyComment(){
-    return $this->hasMany(ReplyComment::class, 'parrent_id');
+    return $this->hasMany(Comment::class, 'parrent_id');
 }
 
 

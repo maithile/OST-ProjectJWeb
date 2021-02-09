@@ -34,7 +34,10 @@ class LessonController extends Controller
     }
     public function showBasic($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
+        $comment = Comment::where([
+            ['lesson_id', '=', $id],
+            ['parrent_id', '=', '0'],
+            ])->orderBy('created_at','desc')->limit(5)->get();
         $lesson      = Lesson::find($id); 
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
@@ -52,7 +55,11 @@ class LessonController extends Controller
 
        public function showInter($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
+        $comment = Comment::where([
+            ['lesson_id', '=', $id],
+            ['parrent_id', '=', '0'],
+            ])->orderBy('created_at','desc')->limit(5)->get();
+
         $lesson      = Lesson::find($id);
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
@@ -66,7 +73,10 @@ class LessonController extends Controller
 
     public function showAdvance($id){
         $category    = Catefory::with('pots')->get();
-        $comment     = Comment::where('lesson_id','=', $id)->orderBy('created_at','desc')->limit(5)->get();
+        $comment = Comment::where([
+            ['lesson_id', '=', $id],
+            ['parrent_id', '=', '0'],
+            ])->orderBy('created_at','desc')->limit(5)->get();
         $lesson      = Lesson::find($id); 
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 

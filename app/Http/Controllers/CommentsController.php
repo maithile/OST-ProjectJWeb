@@ -72,16 +72,31 @@ class CommentsController extends Controller
            'body' => 'required',
        ]);
         $lesson_id           = $request->lesson_id;
-        $comment             = new Comment();
+        $comment             = new Comment;
         $comment->name       = $request->input('name');
         $comment->body       = $request->input('body');
         $comment->parrent_id = '0';
         $comment->lesson_id  = $request->lesson_id;
         $comment->save();
 
-        return back()->with('success', 'Comment'); ;
+        return back()->with('success', 'Comment'); 
     }
 
+
+    public function replyComment(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'body' => 'required',
+        ]);
+        $lesson_id    = $request->lesson_id;
+        $reply        = new Comment();
+        $reply->body  = $request->get('body');
+        $reply->name  = $request->get('name');
+        $reply->parrent_id = $request->get('comment_id');
+        $reply->lesson_id  = $request->lesson_id;
+        $reply->save();
+        return back()->with('success', 'Comment'); 
+    }
 
     /**
      * Show the form for creating a new resource.

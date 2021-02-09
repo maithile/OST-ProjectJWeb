@@ -35,6 +35,7 @@ Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answe
 
 Route::post('/loadComment', 'CommentsController@loadComment');
 Route::post('/addComment', 'CommentsController@addComment');
+Route::post('/replyComment', 'CommentsController@replyComment');
 
 
 // for Admin 

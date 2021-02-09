@@ -124,8 +124,6 @@ class AdminPostLessonCotroller extends Controller
 
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -236,7 +234,6 @@ class AdminPostLessonCotroller extends Controller
     $question->answer3 = $request->input('answer3');
     $question->correct_answerId = $request->input('correct_answerId');
     $question->save();
- 
    // create vocab
         $newVocab = Vocabulary::find($id);
         $newVocab->dictionary_id = $request->input('dictionary_id');
