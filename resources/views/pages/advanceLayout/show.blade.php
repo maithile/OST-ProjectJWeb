@@ -1,5 +1,8 @@
 @extends('layout.index')
 @section('content')
+@if(session('success'))
+    <h1>{{session('success')}}</h1>
+@endif
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
@@ -30,22 +33,6 @@
     <div id="home" class="tab-pane fade in active">
     <div class="post_body">
     <div class="over-view">  
-
-         {{-- submitansnwer --}}
-     {{-- <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
-       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        @foreach ($questions as $value)
-        <div><h2> {{$value->question}} </h2></div>
-        <input type="radio" id="male" name="answer" value="1"> 
-         <p>{{ $value->answer1}}</p>
-         <input type="radio" id="male" name="answer" value="2"> 
-         <p>{{ $value->answer2}}</p>
-         <input type="radio" id="male" name="answer" value="3"> 
-         <p>{{$value->answer3}}</p>
-        @endforeach  
-        <input class="btn btn-primary" type="submit" name ="submit" value="Submit">
-   </form> --}}
-       {{-- submitansnwer end--}}
 
        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         @foreach ($questions as $value)
@@ -96,10 +83,10 @@
          </div>
         </div>
          </div>
-                           {{-- comment--}}
+    {{-- comment--}}
    
         </div>
-    </div>
+       </div>
 
          {{-- side bar--}}
             <aside class="col-md-4 col-sm-12">
@@ -120,6 +107,7 @@
             </li>
             @endforeach
             </ul>
+
             </div>
              {{-- End   Categori--}}
 
@@ -130,16 +118,15 @@
             <li>
             <img src="/storage/images/{{$value->image}}" alt="image" height="60%" width="22%">
             <h4>
-            <a href="#">{{$value->title}}</a>
+            <a href="/showBasic/{{$value->id}}">{{$value->title}}</a>
             </h4>
             <p>{{$value->updated_at}} |
-            <span> 5 comment</span>
+            <span>{{$value->comments_count}} Comments</span>
             </p>
             </li>
             @endforeach
             </ul>
             </div>
-
             <div class="widget widget_tag_cloud">
             <h3 class="blog_heading_border"> Lesson Tags </h3>
             <ul>
@@ -164,7 +151,6 @@
             </ul>
             </div>
             </aside>
-
                   {{-- side bar end --}}
 
             </div>
@@ -184,16 +170,21 @@
                   <h3 class="blog_heading_border"> Leave a Comment </h3>
 
                   {!! Form::open(['action' => ['CommentsController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
-
                       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                       <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
                   </div>
                   <div class="row">
                     <div class="col-sm-6">
+                      @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror 
                       {{Form::label('name','Name')}}
                       {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
                     </div>
                   <div class="col-sm-12">
+                    @error('body')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror 
                     {{Form::label('body','Message')}}
                     {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
                   </div>
@@ -205,24 +196,85 @@
                   {{Form::submit('Submit', ['class' => 'send mt_btn_yellow pull-right', 'id' => 'submit'])}}
                   {!! Form::close() !!}
                   {{--  End add comment  --}}
-                
-                  
-                     {{--  display comment  --}}
-                  <form> 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <input type="hidden" name ="lesson_id"  id = "lesson_id" value="{{$lesson->id}}">
+            
+                 {{--Display comment--}}
+                 <h3 class="review_heading">Comments ({{$comment_count->count()}})</h3>
+                 <ol class="review-lists">
+                   @foreach ($comment as $value)
+                     <li class="comment">
+                         <div class="activity_rounded">
+                             <img src="/storage/icon/icon.jpg" alt="image"> </div>
+                         <div class="comment-body">
+                             <h4 class="text-left">{{$value->name}} &nbsp;&nbsp;
+                                 <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($value->created_at)->diffForHumans() }}</small>
+                             </h4>
+                             <ul class="post-review">
+                                 <li><i class="fa fa-star"></i></li>
+                                 <li><i class="fa fa-star"></i></li>
+                                 <li><i class="fa fa-star"></i></li>
+                                 <li><i class="fa fa-star"></i></li>
+                                 <li><i class="fa fa-star"></i></li>
+                             </ul>
+                             <p>{{$value->body}} </p>
+                             <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
+                              {{-- End Display comment--}}
+                             <br>
+                             {{-- Display Reply--}}
+                             @foreach ($value->replyComment as $reply)
+                                  <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
+                                      <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
+                                  </h4>
+                                  <p>{{ $reply->body}} </p>
+                                  <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
+                             @endforeach
+                             {{-- End Display Reply--}}
+                             <br>
+                            {{--reply form--}}
+                             <div style="margin-left: 50px" class="reply-form-{{$value->id}} hidden">
+                             <div class="leave_review">
+                             <br>
+                             <br>
+                              {!! Form::open(['action' => ['CommentsController@replyComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
+                                  <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                  <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
+                                  <input type="hidden" name="comment_id" value="{{$value->id}}" /> 
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  @error('name')
+                                  <div class="alert alert-danger">{{ $message }}</div>
+                                  @enderror 
+                                  {{Form::label('name','Name')}}
+                                  {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
+                                </div>
+                              <div class="col-sm-12">
+                                @error('body')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror 
+                                {{Form::label('body','Message')}}
+                                {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-12">
+                                </div>
+                                </div>
+                              {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
+                              {!! Form::close() !!}
+                            </div>
+                           {{--End Reply form--}}
 
-                    <div id="comment_show">   
-
-                    </div>
-                 </form>         
+                         </div>
+                     </li>         
+                     @endforeach
+                 </ol>
+                 <script>
+                  function toggleReply(commentId){
+                      $('.reply-form-'+commentId).toggleClass('hidden');
+                  }
+                 </script>
+{{-- 
                   <script> 
-                  
-                  // var lesson_id= $("#lesson_id").val();
-                  //    var _token = $('input[name="_token"]').val();
-                  //    var name = $('#name').val();
-                  //    var body = $('#body').val();
-
                     $(document).ready(function(){
                  　　 $.ajaxSetup({
                   　　headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
@@ -243,12 +295,9 @@
                               });
                               }
                             }); 
-                  </script>              
+                  </script>               --}}
                    {{--  end display comment  --}}
-
-
-                    </div>  
-                    
+                    </div>          
                     {{--  end comment  --}}
 
                      

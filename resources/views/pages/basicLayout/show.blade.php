@@ -34,22 +34,6 @@
     <div class="post_body">
     <div class="over-view">  
 
-         {{-- submitansnwer --}}
-     {{-- <form action="{{ route('answer-submit', $lesson->id) }}" method="POST">
-       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        @foreach ($questions as $value)
-        <div><h2> {{$value->question}} </h2></div>
-        <input type="radio" id="male" name="answer" value="1"> 
-         <p>{{ $value->answer1}}</p>
-         <input type="radio" id="male" name="answer" value="2"> 
-         <p>{{ $value->answer2}}</p>
-         <input type="radio" id="male" name="answer" value="3"> 
-         <p>{{$value->answer3}}</p>
-        @endforeach  
-        <input class="btn btn-primary" type="submit" name ="submit" value="Submit">
-   </form> --}}
-       {{-- submitansnwer end--}}
-
        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         @foreach ($questions as $value)
         <div><h2> {{$value->question}} </h2></div>
@@ -99,10 +83,9 @@
          </div>
         </div>
          </div>
-                           {{-- comment--}}
-   
+    {{-- comment--}}
         </div>
-    </div>
+       </div>
 
          {{-- side bar--}}
             <aside class="col-md-4 col-sm-12">
@@ -134,16 +117,15 @@
             <li>
             <img src="/storage/images/{{$value->image}}" alt="image" height="60%" width="22%">
             <h4>
-            <a href="#">{{$value->title}}</a>
+            <a href="/showBasic/{{$value->id}}">{{$value->title}}</a>
             </h4>
             <p>{{$value->updated_at}} |
-            <span> 5 comment</span>
+            <span>{{$value->comments_count}} Comments</span>
             </p>
             </li>
             @endforeach
             </ul>
             </div>
-
             <div class="widget widget_tag_cloud">
             <h3 class="blog_heading_border"> Lesson Tags </h3>
             <ul>
@@ -168,7 +150,6 @@
             </ul>
             </div>
             </aside>
-
                   {{-- side bar end --}}
 
             </div>
@@ -214,25 +195,14 @@
                   {{Form::submit('Submit', ['class' => 'send mt_btn_yellow pull-right', 'id' => 'submit'])}}
                   {!! Form::close() !!}
                   {{--  End add comment  --}}
-                
-                  
-                     {{--  display comment  --}}
-                  {{-- <form> 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <input type="hidden" name ="lesson_id"  id = "lesson_id" value="{{$lesson->id}}">
-
-                    <div id="comment_show">   
-
-                    </div>
-                 </form>          --}}
-                       {{--Display comment--}}
-                 <h3 class="review_heading">Comments ({{$comment->count()}})</h3>
+            
+                 {{--Display comment--}}
+                 <h3 class="review_heading">Comments ({{$comment_count->count()}})</h3>
                  <ol class="review-lists">
-
                    @foreach ($comment as $value)
                      <li class="comment">
                          <div class="activity_rounded">
-                             <img src="images/blog/cmnt-1.jpg" alt="image"> </div>
+                             <img src="/storage/icon/icon.jpg" alt="image"> </div>
                          <div class="comment-body">
                              <h4 class="text-left">{{$value->name}} &nbsp;&nbsp;
                                  <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($value->created_at)->diffForHumans() }}</small>
@@ -245,21 +215,20 @@
                                  <li><i class="fa fa-star"></i></li>
                              </ul>
                              <p>{{$value->body}} </p>
-                              {{-- End Display comment--}}
                              <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
+                              {{-- End Display comment--}}
                              <br>
+                             {{-- Display Reply--}}
                              @foreach ($value->replyComment as $reply)
-                             <li class="replycomment">
-                              <div class="activity_rounded">
-                                  <img src="images/blog/cmnt-1.jpg" alt="image"> </div>
-                              <div class="comment-body">
                                   <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
                                       <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
                                   </h4>
                                   <p>{{ $reply->body}} </p>
                                   <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
                              @endforeach
-                             {{--reply form--}}
+                             {{-- End Display Reply--}}
+                             <br>
+                            {{--reply form--}}
                              <div style="margin-left: 50px" class="reply-form-{{$value->id}} hidden">
                              <div class="leave_review">
                              <br>
@@ -292,15 +261,12 @@
                               {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
                               {!! Form::close() !!}
                             </div>
-                             
                            {{--End Reply form--}}
 
                          </div>
-                     </li>
-                     
+                     </li>         
                      @endforeach
                  </ol>
-
                  <script>
                   function toggleReply(commentId){
                       $('.reply-form-'+commentId).toggleClass('hidden');
@@ -330,10 +296,7 @@
                             }); 
                   </script>               --}}
                    {{--  end display comment  --}}
-
-
-                    </div>  
-                    
+                    </div>          
                     {{--  end comment  --}}
 
                      
