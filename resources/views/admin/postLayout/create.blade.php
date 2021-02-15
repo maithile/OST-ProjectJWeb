@@ -128,6 +128,7 @@
         {{Form::label('script', 'script')}}
         {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
             </div>
+            <input class="btn btn-default pull-right" id="add-line" type="submit" value="Add 1 line">
         </div>
        </div>
        </div>

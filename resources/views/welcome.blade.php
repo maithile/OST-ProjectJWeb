@@ -326,7 +326,7 @@
                 <img src="{{asset('img/website.jpg') }}" alt="slider_04" />
                 <!-- Center Slide Text Layer -->
                 <div class="caption_slide1 caption_slide1_center cap-new wow fadeInDown" data-animation="animated fadeInDown">
-                     <h3>Welcome To OST</h3>
+                     <h3>Welcome To Janweb</h3>
                      <h2>Listening Japanese</h2>
                      
                 </div><!-- /Center Slide Text Layer -->

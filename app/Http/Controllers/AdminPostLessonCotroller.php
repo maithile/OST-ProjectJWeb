@@ -12,7 +12,6 @@ use App\Question;
 use App\Dictionary;
 use App\Vocabulary;
 use App\Catefory;
-
 class AdminPostLessonCotroller extends Controller
 {
     /**
@@ -89,30 +88,28 @@ class AdminPostLessonCotroller extends Controller
         $$fileMp3NameToStore  = 'nofile.jpg'; 
  }
     //create Post Lesson
-      $post_lesson = new Lesson;
-      $post_lesson->level_id = $request->input('level_id');
-      $post_lesson->category_id = $request->input('category_id');
-      $post_lesson->title = $request->input('title');
-      $post_lesson->mp3_file = $fileMp3NameToStore;
-      $post_lesson->script = $request->input('script');
-      $post_lesson->talker = $request->input('talker');
-      $post_lesson->image = $fileNameToStore;  
-      $post_lesson->save();
-      $post_lesson->id;
-     
+        $post_lesson = new Lesson;
+        $post_lesson->level_id = $request->input('level_id');
+        $post_lesson->category_id = $request->input('category_id');
+        $post_lesson->title = $request->input('title');
+        $post_lesson->mp3_file = $fileMp3NameToStore;
+        $post_lesson->script = $request->input('script');
+        $post_lesson->talker = $request->input('talker');
+        $post_lesson->image = $fileNameToStore;  
+        $post_lesson->save();
+        $post_lesson->id; 
     //for question
 
     if($post_lesson->save()){
-       $question = new Question;
-       $question->lesson_id =  $post_lesson->id;
-       $question->question = $request->input('question');
-       $question->answer1 = $request->input('answer1');
-       $question->answer2 = $request->input('answer2');
-       $question->answer3 = $request->input('answer3');
-       $question->correct_answerId = $request->input('correct_answerId');
-       $question->save();
+        $question = new Question;
+        $question->lesson_id =  $post_lesson->id;
+        $question->question = $request->input('question');
+        $question->answer1 = $request->input('answer1');
+        $question->answer2 = $request->input('answer2');
+        $question->answer3 = $request->input('answer3');
+        $question->correct_answerId = $request->input('correct_answerId');
+        $question->save();
     }
-
       // create vocab
       if( $post_lesson->save()){
         $newVocab = new Vocabulary;
@@ -120,7 +117,8 @@ class AdminPostLessonCotroller extends Controller
         $newVocab->dictionary_id = $request->input('dictionary_id');
         $newVocab->save();
       }
-   return redirect('/admin/post')->with('success', 'Create lesson success'); 
+
+    return redirect('/admin/post')->with('success', 'Create lesson success'); 
 
     }
 
@@ -132,18 +130,12 @@ class AdminPostLessonCotroller extends Controller
      */
     public function show($id)
     {
-        $lesson = Lesson::find($id); 
-
-        // $collection = collect($array1 );
-        // $combined = $collection->combine($array2 );
-        // $combined->all();
-
+         $lesson = Lesson::find($id);
          $array1  = $lesson->talker; 
          $array2 = $lesson->script; 
          $Array = array_combine($array2, $array1);
-
-        $questions= $lesson->questions;
-        $vocabulary = $lesson->vocabulary;
+         $questions= $lesson->questions;
+         $vocabulary = $lesson->vocabulary;
 
         return view('admin.postLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array'));  // tao sau
     }
@@ -160,13 +152,11 @@ class AdminPostLessonCotroller extends Controller
         $array1  = $lesson->talker; 
         $array2 = $lesson->script; 
         $Array = array_combine($array2, $array1);
-
         $questions= $lesson->questions;
         $vocabulary = $lesson->vocabulary;
         $dictionary = Dictionary::pluck('vocabulary','id')->all();
         $level = $lesson->level;
         $category = $lesson->category;
-
         return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'dictionary', 'vocabulary', 'category'));
     }
 
@@ -179,7 +169,6 @@ class AdminPostLessonCotroller extends Controller
      */
     public function update(updateReques $request, $id)
     {
-
     //upload image file 
 
     if($request->hasFile('image')){
@@ -216,13 +205,13 @@ class AdminPostLessonCotroller extends Controller
        $post_lesson->title = $request->input('title');
 
       if($request->hasFile('mp3_file')){
-      $post_lesson->mp3_file = $fileMp3NameToStore;
+        $post_lesson->mp3_file = $fileMp3NameToStore;
     }
-      $post_lesson->script = $request->input('script');
-      $post_lesson->talker = $request->input('talker');
+        $post_lesson->script = $request->input('script');
+        $post_lesson->talker = $request->input('talker');
       
       if($request->hasFile('image')){
-      $post_lesson->image = $fileNameToStore;  
+        $post_lesson->image = $fileNameToStore;  
     }
       $post_lesson->save();
 
@@ -235,10 +224,9 @@ class AdminPostLessonCotroller extends Controller
     $question->correct_answerId = $request->input('correct_answerId');
     $question->save();
    // create vocab
-        $newVocab = Vocabulary::find($id);
-        $newVocab->dictionary_id = $request->input('dictionary_id');
-        $newVocab->save();
-
+    $newVocab = Vocabulary::find($id);
+    $newVocab->dictionary_id = $request->input('dictionary_id');
+    $newVocab->save();
       return redirect('/admin/post')->with('success', 'update succeed'); 
     }
 
