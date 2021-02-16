@@ -4,9 +4,9 @@
 <div class="breadcrumb-main">    
     <div class="container">        
         <ul class="breadcrumb">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/advance">Advance</a></li>
-          
+            <li><a href="/home">ホームページ</a></li>
+            <li><a href="/advance">上級</a></li>
+           
         </ul>
     </div>
 </div>
@@ -22,14 +22,14 @@
                     <div class="feat-img">
                         <img src = "/storage/images/{{$value->image}}"  width="360" height="230">
                         <div class="th-name">
-                            <a href="/showInter/{{$value->id}}">
+                            <a href="/show/{{$value->id}}">
                                 <h4>Listen</h4>
                             </a>
                         </div>
                         <div class="overlayPort">
                             <ul class="info text-center list-inline">
                                 <li>
-                                    <a href="/showInter/{{$value->id}}">
+                                    <a href="/show/{{$value->id}}">
                                         <h4>Listen</h4>
                                     </a>
                                 </li>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="feat-inn">
-                        <a href="/showInter/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
+                        <a href="/show/{{$value->id}}"><h3>{{$value->title}}</h3> </a>
                         <div class="course-feat">
                         
                             <div class="admin-ft pull-right">
@@ -50,11 +50,7 @@
                     </div>  
                 </div>
             </div>
-         
             @endforeach
-            
-          
-           
             
         </div>
     </div>

@@ -69,8 +69,8 @@
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">Login</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Register</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home">ログイン</a></li>
+                    <li><a data-toggle="tab" href="#menu1">登録</a></li>
                   </ul>
                   
                   <div class="tab-content">
@@ -224,14 +224,14 @@
               
                     <div class="top-bar-right pull-right">
                         <ul>
-                            <li><a href="faq.html">Become a Member </a> </li>
+                            {{-- <li><a href="faq.html">Become a Member </a> </li> --}}
                             @guest
                             <li class="nav-item">
                                 <a  href="" data-toggle="modal" data-target="#exampleModal">{{ __('Login') }} / {{ __('Register') }}</a>
                             </li>
                         @else
                             <span >{{ Auth::user()->name }} </span>            
-                        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>Logout</a></li>
+                        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>ログアウト</a></li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -260,36 +260,17 @@
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
                         <li class="active">
-                            <a rel ="icon" href="#">Home <i class="fa fa-angle-down"></i></i></a> 
+                            <a rel ="icon" href="#">ホームページ <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
-                                <li><a href="/basic">Basic</a></li>
-                                <li><a href="/inter">Intermediate</a></li>
-                                <li><a href="/advance">Advance</a></li>
+                                <li><a href="/basic">基本</a></li>
+                                <li><a href="/inter">中級</a></li>
+                                <li><a href="/advance">上級</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">Topics <i class="fa fa-angle-down"></i></a>
+                            <a href="#">私たちに関しては<i class="fa fa-angle-down"></i></a>
                             <ul>
-                                <li><a href="courses.html">Travel</a></li>
-                                <li><a href="courses-slider.html">Cooking</a></li>
-                                <li class="active"><a href="courses-detail.html">Dramma</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="#">Video <i class="fa fa-angle-down"></i></a>
-                            <ul>
-                                <li><a href="courses.html">Basic</a></li>
-                                <li><a href="courses.html">Intermediate</a></li>
-                                <li><a href="courses.html">Advance</a></li> 
-                            </ul>
-                        </li>
-                
-                        <li>
-                            <a href="#">About Us <i class="fa fa-angle-down"></i></a>
-                            <ul>
-                                <li><a href="blog-listing-left.html">Our Team </a></li>
-                                <li><a href="blog-listing.html">Contact Us</a></li>
+                                <li><a href="blog-listing.html">連絡</a></li>
                             </ul>
                         </li>
                         <li>
@@ -326,8 +307,8 @@
                 <img src="{{asset('img/website.jpg') }}" alt="slider_04" />
                 <!-- Center Slide Text Layer -->
                 <div class="caption_slide1 caption_slide1_center cap-new wow fadeInDown" data-animation="animated fadeInDown">
-                     <h3>Welcome To Janweb</h3>
-                     <h2>Listening Japanese</h2>
+                    
+                     <h2>日本語を聞きましょう</h2>
                      
                 </div><!-- /Center Slide Text Layer -->
             </div><!-- /item -->
@@ -356,11 +337,11 @@
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
                             <i class="fa fa-users mar-bottom-20"></i>
-                             <a href="/basic"><h2>Basic</h2></a>
+                             <a href="/basic"><h2>基本</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
-                            <a href="/basic" class="mt_btn_yellow">View List</a>
+                            <a href="/basic" class="mt_btn_yellow">リスト</a>
                         </div>
                     </div>
                 </div>
@@ -368,11 +349,11 @@
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
                             <i class="fa fa-users mar-bottom-20"></i>
-                            <a href="/inter"><h2>Intermediate</h2></a>
+                            <a href="/inter"><h2>中級</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
-                            <a href="/inter" class="mt_btn_yellow">View List</a>
+                            <a href="/inter" class="mt_btn_yellow">リスト</a>
                         </div>
                     </div>
                 </div>
@@ -380,11 +361,11 @@
                     <div class="inner-grid text-center">                        
                         <div class="text-courses">
                             <i class="fa fa-users mar-bottom-20"></i>
-                            <a href="/advance"><h2>Advance</h2></a>
+                            <a href="/advance"><h2>上級</h2></a>
                         </div>
                         <div class="courses-content">
                             <p class="mar-top-20">Auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
-                            <a href="/advance" class="mt_btn_yellow">View List</a>
+                            <a href="/advance" class="mt_btn_yellow">リスト</a>
                         </div>
                     </div>
                 </div>
@@ -411,7 +392,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="about-edu-bg">
-                            <img src="storage/imagePage/about.png" alt="About">
+                            <img src="storage/icon/images.jpg" alt="About">
                         </div>
                         
                     </div>

@@ -4,11 +4,9 @@
 <div class="breadcrumb-main">    
     <div class="container">        
         <ul class="breadcrumb">
-            <li><a href="/home">Home</a></li>
-            <li><a href="#">Topic</a></li>
-            @foreach ($category as $value)
-            <li><a href="#">{{$value->name}}</a></li>   
-            @endforeach
+            <li><a href="/home">ホームページ</a></li>
+            <li><a href="/inter">中級</a></li>
+          
         </ul>
     </div>
 </div>
@@ -25,7 +23,7 @@
                         <img src = "/storage/images/{{$value->image}}"  width="360" height="230">
                         <div class="th-name">
                             <a href="/show/{{$value->id}}">
-                                <h4>{{$value->level->level}}</h4>
+                                <h4>Listen</h4>
                             </a>
                         </div>
                         <div class="overlayPort">
@@ -51,8 +49,13 @@
                         </div>
                     </div>  
                 </div>
-            </div>        
-            @endforeach       
+            </div>
+         
+            @endforeach
+            
+          
+           
+            
         </div>
     </div>
 </section>
@@ -61,6 +64,3 @@
 
 @endsection
 
-
-
-        

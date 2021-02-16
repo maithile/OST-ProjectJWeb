@@ -19,9 +19,7 @@ Route::get('/inter', 'LessonController@inter')->name('inter');
 Route::get('/advance', 'LessonController@advance')->name('inter'); 
 
 // layout detail
-Route::get('/showBasic/{id}', 'LessonController@showBasic')->name('showBasic');
-Route::get('/showInter/{id}', 'LessonController@showInter')->name('showInter');
-Route::get('/showAdvance/{id}', 'LessonController@showAdvance')->name('showAdvance');
+Route::get('/show/{id}', 'LessonController@show')->name('show');
 
  // Search funtion
  Route::any('/search', 'LessonController@search')->name("search");

@@ -23,10 +23,10 @@
     <div class="course-tabs">
     <div class="nav-content-c">
     <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Question</a></li>
-    <li><a data-toggle="tab" href="#menu1">Vocabulary</a></li>
-    <li><a data-toggle="tab" href="#menu2">Script</a></li>
-    <li><a data-toggle="tab" href="#menu3">Discuss</a></li>
+    <li class="active"><a data-toggle="tab" href="#home">質問</a></li>
+    <li><a data-toggle="tab" href="#menu1">言葉</a></li>
+    <li><a data-toggle="tab" href="#menu2">脚本</a></li>
+   
     </ul>
     <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
@@ -89,9 +89,9 @@
                     {{ csrf_field() }}
                     <div class="input-group">
                         <input type="text" class="form-control" name="q"
-                            placeholder="Search..."> <span class="input-group-btn">
+                            placeholder="検索..."> <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">
-                                <span> Search</span>
+                                <span> 検索</span>
                             </button>
                         </span>
                     </div>
@@ -100,7 +100,7 @@
             </div>   
             {{-- Categori--}}
             <div class="widget widget_categories">
-            <h3 class="blog_heading_border">Categories </h3>
+            <h3 class="blog_heading_border">テーマ</h3>
             <ul>
             @foreach ($category as $value)
             <li>
@@ -112,13 +112,13 @@
             </div>
              {{-- End   Categori--}}
             <div class="widget widget_recent_entries">
-            <h3 class="blog_heading_border"> Recent Lessons</h3>
+            <h3 class="blog_heading_border"> 最近のレッスン</h3>
             <ul>
                 @foreach ($lesson_show as $value)  
             <li>
             <img src="/storage/images/{{$value->image}}" alt="image" height="60%" width="22%">
             <h4>
-            <a href="/showBasic/{{$value->id}}">{{$value->title}}</a>
+            <a href="/show/{{$value->id}}">{{$value->title}}</a>
             </h4>
             <p>{{$value->updated_at}} |
             <span>{{$value->comments_count}} Comments</span>
@@ -127,29 +127,7 @@
             @endforeach
             </ul>
             </div>
-            <div class="widget widget_tag_cloud">
-            <h3 class="blog_heading_border"> Lesson Tags </h3>
-            <ul>
-            <li>
-            <a href="#">Travel  </a>
-            </li>
-            <li>
-            <a href="#"> Business </a>
-            </li>
-            <li>
-            <a href="#"> Onsen </a>
-            </li>
-            <li>
-            <a href="#"> Teachers </a>
-            </li>
-            <li>
-            <a href="#"> Engineering </a>
-             </li>
-            <li>
-            <a href="#"> Cooking </a>
-            </li>
-            </ul>
-            </div>
+        
             </aside>
             {{-- side bar end --}}
             </div>
@@ -162,11 +140,10 @@
                     <div class="review-wrap">
                         <div class="col-sm-9">
                             <div class="leave_review">
-                  <h3 class="blog_heading_border"> Discuss </h3>
+                  
                  {{--  add comment  --}}
                  <div class="leave_review">
-                  <h3 class="blog_heading_border"> Leave a Comment </h3>
-
+                  <h3 class="blog_heading_border"> コメント </h3>
                   {!! Form::open(['action' => ['CommentsController@addComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
                       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                       <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
@@ -176,14 +153,14 @@
                       @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
                       @enderror 
-                      {{Form::label('name','Name')}}
+                      {{Form::label('name','名前')}}
                       {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
                     </div>
                   <div class="col-sm-12">
                     @error('body')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror 
-                    {{Form::label('body','Message')}}
+                    {{Form::label('body','メッセージ')}}
                     {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
                   </div>
                   </div>
@@ -194,10 +171,9 @@
                   {{Form::submit('Submit', ['class' => 'send mt_btn_yellow pull-right', 'id' => 'submit'])}}
                   {!! Form::close() !!}
                   {{--  End add comment  --}}
-                   <div id ="comment_show">
-                    </div> 
                  {{--Display comment--}} 
                  <ol class="review-lists">
+      
                 @foreach ($comment as $value)
                     <li class="comment">
                         <div class="activity_rounded">
@@ -207,7 +183,7 @@
                                 <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($value->created_at)->diffForHumans() }}</small>
                             </h4>
                             <p>{{$value->body}} </p>
-                            <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">Reply</button>
+                            <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">返事</button>
                             {{-- ENd Display comment--}}
                         
                             <br>
@@ -255,7 +231,7 @@
                                      <small lass="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
                                  </h4>
                                  <p>{{ $reply->body}} </p>
-                                 <button class=" mt_btn_yellow" onclick="toggleReply('{{$reply->id}}')">Reply</button>
+                                 <button class=" mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">返事</button>
                              @endforeach
                              {{-- End Display Reply--}}
                     </li>         

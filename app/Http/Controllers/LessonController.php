@@ -18,19 +18,19 @@ class LessonController extends Controller
     public function basic(){
         
         $lesson    = Lesson::where('level_id','=', 1)->withCount('comments')->paginate(5);   
-        return view('pages.basicLayout.basic',  compact('lesson'));
+        return view('pages.layouts.basic',  compact('lesson'));
 
     }
     public function inter(){
         $lesson    = Lesson::where('level_id','=', 2)->withCount('comments')->paginate(5); 
-        return view('pages.interLayout.inter',  compact('lesson')); 
+        return view('pages.layouts.inter',  compact('lesson')); 
 
     }
     public function advance(){
         $lesson    = Lesson::where('level_id','=', 3)->withCount('comments')->paginate(5); 
-        return view('pages.advanceLayout.advance',  compact('lesson'));
+        return view('pages.layouts.advance',  compact('lesson'));
     }
-    public function showBasic($id){
+    public function show($id){
         $category    = Catefory::with('pots')->get();
         $lesson      = Lesson::find($id); 
         $array1      = $lesson->talker; 
@@ -44,55 +44,22 @@ class LessonController extends Controller
                                     ['parrent_id', '=', '0'],
                                     ])->orderBy('created_at','desc')->limit(5)->get();
         $lesson_show = Lesson::where([
-                                     ['id', 'not like', $id],
-                                     ['level_id', '=', '1'],
+                                     ['id', 'not like', $id]
                                      ])->withCount('comments')->latest()->paginate(4);
-        return view('pages.basicLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
+        return view('pages.layoutDetail.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
     }
-       public function showInter($id){
-        $category      = Catefory::with('pots')->get();
-        $comment_count = Comment::where('lesson_id', '=', $id)->get();
-        $comment       = Comment::where([
-                        ['lesson_id', '=', $id],
-                        ['parrent_id', '=', '0'],
-                        ])->orderBy('created_at','desc')->limit(5)->get();
-        $lesson       = Lesson::find($id);
-        $array1       = $lesson->talker; 
-        $array2       = $lesson->script; 
-        $Array        = array_combine($array2, $array1);
-        $vocabulary   = $lesson->vocabulary;
-        $questions    = $lesson->questions; 
-        return view('pages.interLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
-    }
-    public function showAdvance($id){
-        $category      = Catefory::with('pots')->get();
-        $comment       = Comment::where([
-                                    ['lesson_id', '=', $id],
-                                    ['parrent_id', '=', '0'],
-                                    ])->orderBy('created_at','desc')->limit(5)->get();
-        $comment_count = Comment::where('lesson_id', '=', $id)->get();
-        $lesson        = Lesson::find($id); 
-        $array1        = $lesson->talker; 
-        $array2        = $lesson->script; 
-        $Array         = array_combine($array2, $array1);
-        $vocabulary    = $lesson->vocabulary;
-        $questions     = $lesson->questions; 
-        $lesson_show   = Lesson::where([
-                                     ['id', 'not like', $id],
-                                     ['level_id', '=', '3'],
-                                     ])->latest()->paginate(4);
-        return view('pages.advanceLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
-    }
+
     public function  displayCate($id){
+        $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $category       = Catefory::where('id', '=', $id)->get();
         $lesson         = Lesson::where('category_id','=', $id)->paginate(5);  
-        return view('pages.displayCate', compact('lesson', 'category')); 
+        return view('pages.displayCate', compact('lesson', 'category', 'comment_count')); 
     }
     public function search(Request $request ){
        
         $search = $request->input('q');
         if($search != '')
-         $lesson = Lesson::Where('title', 'LIKE', '%'. $search .'%')
+        $lesson = Lesson::Where('title', 'LIKE', '%'. $search .'%')
                          ->orWhere('script', 'LIKE', '%'. $search .'%')
                          ->get();  
         if(count($lesson) > 0)

@@ -6,7 +6,7 @@
 @foreach ($lesson as $value)  
 <div class="row">
     <div class="col-sm-4">
-      <div class="image">
+     <div class="image">
           <img src="/storage/images/{{$value->image}}" width="50%">
       </div>
       <br>
@@ -16,7 +16,6 @@
       <div >{{ implode(",", $value->script)}}</div>
     {{-- <div> {{ str_replace('/(' . $search . ')/i', "<h1>$search</h1>", implode(",", $value->script) )}}
     </div> --}}
-    
     </div>
   </div>
   @endforeach
@@ -25,7 +24,7 @@
          @endif
 </div>
 
-  <style>
+  {{-- <style>
   .highlight { background-color: #ffa; }  
-  </style>
+  </style> --}}
  @endsection

@@ -199,7 +199,6 @@
               
                     <div class="top-bar-right pull-right">
                         <ul>
-                            <li><a href="faq.html">Become a Member </a> </li>
                             @guest
                             <li class="nav-item">
                                 <a  href="" data-toggle="modal" data-target="#exampleModal">{{ __('Login') }} / {{ __('Register') }}</a>
@@ -243,36 +242,18 @@
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
                         <li >
-                            <a rel ="icon" href="/home">Home <i class="fa fa-angle-down"></i></i></a> 
+                            <a rel ="icon" href="/home">ホームページ <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
-                                <li class="active"><a href="/basic">Basic</a></li>
-                                <li><a href="/inter">Intermediate</a></li>
-                                <li><a href="/advance">Advance</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Topics <i class="fa fa-angle-down"></i></a>
-                            <ul>
-                                <li><a href="courses.html">Travel</a></li>
-                                <li><a href="courses-slider.html">Cooking</a></li>
-                                <li class="active"><a href="courses-detail.html">Dramma</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="#">Video <i class="fa fa-angle-down"></i></a>
-                            <ul>
-                                <li><a href="courses.html">Basic</a></li>
-                                <li><a href="courses.html">Intermediate</a></li>
-                                <li><a href="courses.html">Advance</a></li> 
+                                <li class="active"><a href="/basic">基本</a></li>
+                                <li><a href="/inter">中級</a></li>
+                                <li><a href="/advance">上級</a></li>
                             </ul>
                         </li>
                 
                         <li>
-                            <a href="#">About Us <i class="fa fa-angle-down"></i></a>
+                            <a href="#">私に関しては <i class="fa fa-angle-down"></i></a>
                             <ul>
-                                <li><a href="blog-listing-left.html">Our Team </a></li>
-                                <li><a href="blog-listing.html">Contact Us</a></li>
+                                <li><a href="blog-listing.html">連絡</a></li>
                             </ul>
                         </li>
                         <li>
@@ -300,9 +281,6 @@
  <!-- Banner -->
  <div id="blog_banner">
     <div class="page-title">
-        <div class="container">
-            <h2>Listening</h2>
-        </div>
     </div>
     <div class="black-overlay"></div>
 </div>
