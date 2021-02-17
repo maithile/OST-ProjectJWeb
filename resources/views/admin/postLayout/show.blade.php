@@ -1,6 +1,5 @@
 @extends('layout.indexAdmin')
 @section('content')
- 
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
@@ -61,7 +60,7 @@
     </section>
     <div class="col-md-10">
     <a href="{{ route('post.index')}}" class="btn btn-primary " >Back</a>
-    <a href="{{ route('post.edit', $lesson->id) }}" class="btn btn-primary pull-right" >Edit</a>
+    <a href="{{ route('post.edit', $lesson->id) }}" class="btn btn-primary pull-right" >修正</a>
 
     </div>
 

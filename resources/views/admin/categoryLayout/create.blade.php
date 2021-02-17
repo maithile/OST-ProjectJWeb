@@ -4,16 +4,12 @@
 @if(!empty(session('success')))
   <div class="alert alert-success"> {{ session('success') }}</div>
 @endif
-
-
 {!! Form::open(['action' => 'AdminDictionaryController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
-
 <div class="add-listing-section">
 
     <div class="add-listing-headline">
     <h3>Dictionaries Create</h3>
     </div>
-    
     <div class="row with-forms">
 
         <div class="col-md-4">

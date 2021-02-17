@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Lesson;
 use App\Level;
 use App\Question;
-use App\Dictionary;
 use App\Comment;
 use App\Catefory;
 class LessonController extends Controller
@@ -39,7 +38,6 @@ class LessonController extends Controller
         $array1      = $lesson->talker; 
         $array2      = $lesson->script; 
         $Array       = array_combine($array2, $array1);
-        $vocabulary  = $lesson->vocabulary;
         $questions   = $lesson->questions; 
         $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $comment = Comment::where([
@@ -49,7 +47,7 @@ class LessonController extends Controller
         $lesson_show = Lesson::where([
                                      ['id', 'not like', $id]
                                      ])->withCount('comments')->latest()->paginate(4);
-        return view('pages.layoutDetail.show', compact('lesson', 'questions', 'vocabulary', 'Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
+        return view('pages.layoutDetail.show', compact('lesson', 'questions','Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
     }
 
     public function  displayCate($id){
@@ -60,12 +58,14 @@ class LessonController extends Controller
         $lesson         = Lesson::where('category_id','=', $id)->paginate(5);  
         return view('pages.layoutDetail.displayCate', compact('lesson', 'category', 'comment_count', 'categoryDetail')); 
     }
-    public function search(Request $request){
 
+    public function search(Request $request){
+        
         $this->validate($request, [
             'q' => 'required'
         ]);
-       
+
+        $category = Catefory::all();
         $search = $request->input('q');
         if($search != '')
         $lesson = Lesson::Where('title', 'LIKE', '%'. $search .'%')
@@ -73,9 +73,9 @@ class LessonController extends Controller
                          ->get();  
         
         if(count($lesson) > 0)
-         return view ('pages.layoutDetail.search', compact('lesson', 'search'))->withDetails($lesson)->withQuery($search);
+         return view ('pages.layoutDetail.search', compact('lesson', 'search', 'category'))->withDetails($lesson)->withQuery($search);
         else  
-        return view ('pages.layoutDetail.search')->withMessage('No result! Try agian!'); 
+        return view ('pages.layoutDetail.search', compact('category', 'search', 'lesson'))->withMessage('No result! Try agian!'); 
     }
 }
 

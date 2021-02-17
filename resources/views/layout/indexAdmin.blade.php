@@ -1,20 +1,17 @@
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Welcome to our Admin">
 
-    <title>OST - Template</title>
+    <title>OST</title>
     <!-- Favicon -->
     {{-- <script src="cdn-cgi/apps/head/aXeeT3C8FEVE2uMUPMMUDxVnKrs.js"></script><link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> --}}
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <!--Default CSS-->
     <link href="{{ asset('css/default.css')}}" rel="stylesheet" type="text/css">
@@ -40,9 +37,7 @@
         <!-- Dashboard -->
         <div id="dashboard">
             <!-- Responsive Navigation Trigger -->
-            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>  
-
-            <div class="dashboard-sticky-nav">
+           <div class="dashboard-sticky-nav">
                 <div class="content-left pull-left">
                     <h2><a href="/home" class="white">OST</a></h2>
                 </div>
@@ -63,21 +58,16 @@
                                 </div>
                                 <div class="dash-content">
         <h4> {{ Auth::user()->name }}</h4>
-        <span> Admin</span>
+        <span> 管理</span>
         </div>
         </div>
         </a>
         <ul class="dropdown-menu">
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Change Password</a></li>
-
-        
-        <li><a href="{{ route('logout') }}"></i>Logout</a></li>
+        <li><a href="{{ route('logout') }}"></i>ログアウト</a></li>
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
             </a>
-
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -91,12 +81,8 @@
      
         </a>
         <div class="dropdown-menu notification-menu">
-       
-
         </div>
         </div>
-
-      
         </div>
         </div>
         </div>
@@ -104,25 +90,23 @@
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
                     <ul>
-                        <li class="active"><a href="dashboard.html">Dashboard</a></li>
-                        <li>
-                            <a>Lesson</a>
+                        <li>    <a> レッスン</a>
                             <ul> 
-                                <li><a href="{{route('post.index')}}">Lesson Overview</span></a></li>
-                                <li><a href="{{route('post.create')}}">Create Lesson</span></a></li>
+                                <li><a href="{{route('post.index')}}"> レッスン管理</span></a></li>
+                                <li><a href="{{route('post.create')}}">レッスン作成</span></a></li>
                                 
                             </ul>   
                             
                         </li>
                      <li>
-                            <a>Dictionary </a>
+                            <a>テーマ</a>
                             <ul>
-                                <li><a href="{{route('dictionary.index')}}">All Vocabulary</span></a></li>
-                                <li><a href="{{route('dictionary.create')}}">Add New Vocabulary</span></a></li>
+                                <li><a href="{{route('category.index')}}">テーマ管理</span></a></li>
+                                <li><a href="{{route('category.create')}}">テーマ作成</span></a></li>
                             </ul>   
                             
                         </li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                        <li><a href="{{ route('logout') }}">ログアウト</a></li>
                     </ul>
                 </div>
             </div>
@@ -156,8 +140,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/f315f446db.js"></script>
 
-    <script src="/node_modules/select2/dist/js/select2.min.js'" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
-    <script src="{{ asset('js/select2.min.js')}}" type="text/javascript"></script>
 
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
@@ -167,7 +149,6 @@
     <script src="{{ asset('js/counterup.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/dashboard-custom.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
     <script src="{{ asset('js/jpanelmenu.min.js')}}" type="8c7c28a0a27045965419e5b0-text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="8c7c28a0a27045965419e5b0-|49" defer=""></script></body>
 </html>

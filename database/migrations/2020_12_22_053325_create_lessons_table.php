@@ -15,9 +15,11 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->bigInteger('level_id')->unsigned();
             $table->foreign('level_id')->references('id')->on('levels');
+
+            // $table->bigInteger('category_id')->unsigned();
+            // $table->foreign('category_id')->references('id')->on('catefories')->onDelete('cascade');
             
             $table->string('title');
             $table->string('mp3_file');

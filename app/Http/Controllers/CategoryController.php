@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Catefory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = Catefory::all();
+        return view('admin.categoryLayout.index', compact('category'));
     }
 
     /**
@@ -45,7 +47,10 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $category = Catefory::find($id);
+        $lesson = $category->pots;
+        return view('admin.categoryLayout.show', compact('category', 'lesson'));
     }
 
     /**
@@ -79,6 +84,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Catefory::find($id);
+        $category->delete();
+        return redirect('/admin/category')->with('success', 'Ⅾeleted category success'); 
     }
 }

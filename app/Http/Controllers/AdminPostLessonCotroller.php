@@ -9,8 +9,7 @@ use App\File;
 use App\Lesson;
 use App\Level;
 use App\Question;
-use App\Dictionary;
-use App\Vocabulary;
+use App\Comment;
 use App\Catefory;
 class AdminPostLessonCotroller extends Controller
 {
@@ -21,9 +20,9 @@ class AdminPostLessonCotroller extends Controller
      */
     public function index()
     {
-
+        $comment = Comment::all();
         $lesson = Lesson::orderBy('created_at','desc')->paginate(5);
-        return view('admin.postLayout.index', compact('lesson'));
+        return view('admin.postLayout.index', compact('lesson', 'comment'));
     }
 
     /**
@@ -34,11 +33,11 @@ class AdminPostLessonCotroller extends Controller
     public function create()
 
     {
-        $dictionary = Dictionary::pluck('vocabulary','id')->all();
+    
         $lesson = Lesson::pluck('title','id')->all();
         $level = Level::pluck('level','id')->all();
         $category = Catefory::pluck('name','id')->all();
-        return view('admin.postLayout.create', compact('level', 'lesson', 'category', 'dictionary'));
+        return view('admin.postLayout.create', compact('level', 'lesson', 'category'));
     }
 
     /**
@@ -50,7 +49,6 @@ class AdminPostLessonCotroller extends Controller
 
     public function store(LessonRequest $request)
     {
-        dd($request->input());
     //upload image file 
 
     if($request->hasFile('image')){
@@ -98,20 +96,28 @@ class AdminPostLessonCotroller extends Controller
         $post_lesson->save();
         $post_lesson->id; 
     //for question
-
     if($post_lesson->save()){
-        foreach ($request->input('question') as $key => $value) {
-            $question = new Question;
+        // foreach ($request->input('question') as $key => $value) {
+        //     $question = new Question;
+        //     $question->lesson_id =  $post_lesson->id;
+        //     $question->question = $value;
+        //     $question->answer1 = $request->input('answer1')[$key];
+        //     $question->answer2 = $request->input('answer2')[$key];
+        //     $question->answer3 = $request->input('answer3')[$key];
+        //     $question->correct_answerId = $request->input('correct_answerId')[$key];
+        //     $question->save();
+        // }
+
+          $question = new Question;
             $question->lesson_id =  $post_lesson->id;
-            $question->question = $value;
-            $question->answer1 = $request->input('answer1')[$key];
-            $question->answer2 = $request->input('answer2')[$key];
-            $question->answer3 = $request->input('answer3')[$key];
-            $question->correct_answerId = $request->input('correct_answerId')[$key];
+            $question->question = $request->input('question');;
+            $question->answer1 = $request->input('answer1');
+            $question->answer2 = $request->input('answer2');
+            $question->answer3 = $request->input('answer3');
+            $question->correct_answerId = $request->input('correct_answerId');
             $question->save();
-        }
     }
- 
+    return redirect('/admin/post')->with('success', 'Create lesson success'); 
     }
 
     /**
@@ -127,9 +133,7 @@ class AdminPostLessonCotroller extends Controller
          $array2 = $lesson->script; 
          $Array = array_combine($array2, $array1);
          $questions= $lesson->questions;
-         $vocabulary = $lesson->vocabulary;
-
-        return view('admin.postLayout.show', compact('lesson', 'questions', 'vocabulary', 'Array'));  // tao sau
+        return view('admin.postLayout.show', compact('lesson', 'questions', 'Array'));  // tao sau
     }
     /**
      * Show the form for editing the specified resource.
@@ -145,11 +149,9 @@ class AdminPostLessonCotroller extends Controller
         $array2 = $lesson->script; 
         $Array = array_combine($array2, $array1);
         $questions= $lesson->questions;
-        $vocabulary = $lesson->vocabulary;
-        $dictionary = Dictionary::pluck('vocabulary','id')->all();
         $level = $lesson->level;
         $category = $lesson->category;
-        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'dictionary', 'vocabulary', 'category'));
+        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'category'));
     }
 
     /**
@@ -205,18 +207,19 @@ class AdminPostLessonCotroller extends Controller
       if($request->hasFile('image')){
         $post_lesson->image = $fileNameToStore;  
     }
-      $post_lesson->save();
+    $post_lesson->save();
 
- //for question
-    $question = Question::find($id);
-    $question->question = $request->input('question');
-    $question->answer1 = $request->input('answer1');
-    $question->answer2 = $request->input('answer2');
-    $question->answer3 = $request->input('answer3');
-    $question->correct_answerId = $request->input('correct_answerId');
-    $question->save();
+    //for question
+       $question = Question::find($id);
+       $question->question = $request->input('question');
+       $question->answer1 = $request->input('answer1');
+       $question->answer2 = $request->input('answer2');
+       $question->answer3 = $request->input('answer3');
+       $question->correct_answerId = $request->input('correct_answerId');
+       $question->save();
+        return redirect('/admin/post')->with('success', 'update succeed'); 
+       
     }
-
     /**
      * Remove the specified resource from storage.
      *
