@@ -16,19 +16,22 @@ class LessonController extends Controller
         return view('welcome'); // ket noi controller voi view
     }
     public function basic(){
-        
+
+        $category = Catefory::all();
         $lesson    = Lesson::where('level_id','=', 1)->withCount('comments')->paginate(5);   
-        return view('pages.layouts.basic',  compact('lesson'));
+        return view('pages.layouts.basic',  compact('lesson', 'category'));
 
     }
     public function inter(){
+        $category = Catefory::all();
         $lesson    = Lesson::where('level_id','=', 2)->withCount('comments')->paginate(5); 
-        return view('pages.layouts.inter',  compact('lesson')); 
+        return view('pages.layouts.inter',  compact('lesson', 'category')); 
 
     }
     public function advance(){
+        $category = Catefory::all();
         $lesson    = Lesson::where('level_id','=', 3)->withCount('comments')->paginate(5); 
-        return view('pages.layouts.advance',  compact('lesson'));
+        return view('pages.layouts.advance',  compact('lesson', 'category'));
     }
     public function show($id){
         $category    = Catefory::with('pots')->get();
@@ -50,23 +53,29 @@ class LessonController extends Controller
     }
 
     public function  displayCate($id){
-        $comment_count = Comment::where('lesson_id', '=', $id)->get();
-        $category       = Catefory::where('id', '=', $id)->get();
+
+        $category       = Catefory::all();
+        $comment_count  = Comment::where('lesson_id', '=', $id)->get();
+        $categoryDetail = Catefory::where('id', '=', $id)->get();
         $lesson         = Lesson::where('category_id','=', $id)->paginate(5);  
-        return view('pages.displayCate', compact('lesson', 'category', 'comment_count')); 
+        return view('pages.layoutDetail.displayCate', compact('lesson', 'category', 'comment_count', 'categoryDetail')); 
     }
-    public function search(Request $request ){
+    public function search(Request $request){
+
+        $this->validate($request, [
+            'q' => 'required'
+        ]);
        
         $search = $request->input('q');
         if($search != '')
         $lesson = Lesson::Where('title', 'LIKE', '%'. $search .'%')
                          ->orWhere('script', 'LIKE', '%'. $search .'%')
                          ->get();  
+        
         if(count($lesson) > 0)
-         return view ('pages.search', compact('lesson', 'search'))->withDetails($lesson)->withQuery($search);
+         return view ('pages.layoutDetail.search', compact('lesson', 'search'))->withDetails($lesson)->withQuery($search);
         else  
-         return view ('pages.search')->withMessage('No result! Try agian!'); 
-
+        return view ('pages.layoutDetail.search')->withMessage('No result! Try agian!'); 
     }
 }
 

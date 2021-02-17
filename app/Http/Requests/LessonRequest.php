@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
 class LessonRequest extends FormRequest
 {
     /**
@@ -23,6 +21,7 @@ class LessonRequest extends FormRequest
      */
     public function rules()
     {
+     
         return [     
             // for post
             'title' => 'required',
@@ -41,8 +40,7 @@ class LessonRequest extends FormRequest
             'answer1' => "required",
             'answer2' => "required",
             'answer3' => "required",
-           //for vocabulary
-           'dictionary_id' => 'required|integer'
+           
         ];
     }
 }

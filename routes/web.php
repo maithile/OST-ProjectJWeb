@@ -39,7 +39,7 @@ Route::post('/replyComment', 'CommentsController@replyComment');
  Route::middleware('auth')->group(function(){
 
  Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
- Route::resource('/admin/category', 'AdminPostLessonCotroller')->middleware('admin');
+//  Route::resource('/admin/category', 'AdminPostLessonCotroller')->middleware('admin');
  Route::resource('/admin/dictionary', 'AdminDictionaryController')->middleware('admin');
  Route::get('/logout', 'Auth\LoginController@logout');
 });

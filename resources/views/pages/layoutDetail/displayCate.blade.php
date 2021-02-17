@@ -6,7 +6,7 @@
         <ul class="breadcrumb">
             <li><a href="/home">ホームページ</a></li>
             <li><a href="#">テーマ</a></li>
-            @foreach ($category as $value)
+            @foreach ($categoryDetail as $value)
             <li><a href="#">{{$value->name}}</a></li>   
             @endforeach
         </ul>

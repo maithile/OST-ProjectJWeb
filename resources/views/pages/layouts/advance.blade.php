@@ -42,8 +42,8 @@
                         
                             <div class="admin-ft pull-right">
                                 <ul>
-                                    <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#" tabindex="-1"><i class="fa fa-heart"></i><span>10</span></a></li>
+                                    <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>{{$value->comments_count}}</span></a></li>
+                                    {{-- <li><a href="#" tabindex="-1"><i class="fa fa-heart"></i><span>10</span></a></li> --}}
                                 </ul>
                             </div>
                         </div>

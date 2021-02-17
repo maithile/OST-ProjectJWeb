@@ -16,7 +16,6 @@ class AdminDictionaryController extends Controller
     {
 
          $dic = Dictionary::paginate(5);
-
          return view('admin.dictionLayout.index', compact('dic'));
     }
 

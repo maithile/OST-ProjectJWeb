@@ -41,8 +41,7 @@ class updateReques extends FormRequest
             'answer1' => "required",
             'answer2' => "required",
             'answer3' => "required",
-           //for vocabulary
-           'dictionary_id' => 'required|integer'
+    
         ];
     }
 }

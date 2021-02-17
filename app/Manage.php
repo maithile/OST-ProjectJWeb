@@ -12,9 +12,6 @@ class Manage extends Model
     public function users(){
         return $this->belongstoMany(User::class, 'manages','user_id', 'lesson_id');
     }
-
-
-    
    public function lesson(){
     return $this->belongstoMany(Lesson::class, 'manages', 'user_id', 'lesson_id'); // tra ve lessons
 }

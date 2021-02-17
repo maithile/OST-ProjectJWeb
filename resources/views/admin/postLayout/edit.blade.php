@@ -161,27 +161,6 @@
                                      {{--End Question--}}  
 {{--Vocabulary--}}
 
-       <div class="add-listing-section">
-           <div class="add-listing-headline">
-           <h3></i>Vocabularies</h3>
-           </div>
-           
-           <div class="row with-forms">
-               <div class="col-md-6">
-                </div>
-            </div>
-                <div class="row with-forms">
-                <div class="col-md-4">
-                    @error('vocabulary')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror  
-
-                   @foreach ($vocabulary as $item) 
-                    {!! Form::select('dictionary_id',[$item->dictionary_id => $item->dictionary->vocabulary] + $dictionary, null, ['class' => 'g']) !!}
-                   @endforeach 
-            </div>
-        </div> 
-    </div>
     {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Update', ['class' => 'btn btn-success pull-right'])}}
             {!! Form::close() !!}
@@ -189,10 +168,5 @@
               </div>
               </div>
           </div>
-   <script type="text/javascript">
-     $(document).ready(function() {
-     $('.g').select2();
-     });
-  </script> --}}
 @endsection
 

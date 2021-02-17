@@ -38,7 +38,6 @@ class AdminPostLessonCotroller extends Controller
         $lesson = Lesson::pluck('title','id')->all();
         $level = Level::pluck('level','id')->all();
         $category = Catefory::pluck('name','id')->all();
-  
         return view('admin.postLayout.create', compact('level', 'lesson', 'category', 'dictionary'));
     }
 
@@ -51,7 +50,7 @@ class AdminPostLessonCotroller extends Controller
 
     public function store(LessonRequest $request)
     {
-    
+        dd($request->input());
     //upload image file 
 
     if($request->hasFile('image')){
@@ -88,7 +87,7 @@ class AdminPostLessonCotroller extends Controller
         $$fileMp3NameToStore  = 'nofile.jpg'; 
  }
     //create Post Lesson
-        $post_lesson = new Lesson;
+        $post_lesson = new Lesson; 
         $post_lesson->level_id = $request->input('level_id');
         $post_lesson->category_id = $request->input('category_id');
         $post_lesson->title = $request->input('title');
@@ -101,25 +100,18 @@ class AdminPostLessonCotroller extends Controller
     //for question
 
     if($post_lesson->save()){
-        $question = new Question;
-        $question->lesson_id =  $post_lesson->id;
-        $question->question = $request->input('question');
-        $question->answer1 = $request->input('answer1');
-        $question->answer2 = $request->input('answer2');
-        $question->answer3 = $request->input('answer3');
-        $question->correct_answerId = $request->input('correct_answerId');
-        $question->save();
+        foreach ($request->input('question') as $key => $value) {
+            $question = new Question;
+            $question->lesson_id =  $post_lesson->id;
+            $question->question = $value;
+            $question->answer1 = $request->input('answer1')[$key];
+            $question->answer2 = $request->input('answer2')[$key];
+            $question->answer3 = $request->input('answer3')[$key];
+            $question->correct_answerId = $request->input('correct_answerId')[$key];
+            $question->save();
+        }
     }
-      // create vocab
-      if( $post_lesson->save()){
-        $newVocab = new Vocabulary;
-        $newVocab->lesson_id =  $post_lesson->id;
-        $newVocab->dictionary_id = $request->input('dictionary_id');
-        $newVocab->save();
-      }
-
-    return redirect('/admin/post')->with('success', 'Create lesson success'); 
-
+ 
     }
 
     /**
@@ -223,11 +215,6 @@ class AdminPostLessonCotroller extends Controller
     $question->answer3 = $request->input('answer3');
     $question->correct_answerId = $request->input('correct_answerId');
     $question->save();
-   // create vocab
-    $newVocab = Vocabulary::find($id);
-    $newVocab->dictionary_id = $request->input('dictionary_id');
-    $newVocab->save();
-      return redirect('/admin/post')->with('success', 'update succeed'); 
     }
 
     /**

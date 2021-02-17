@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="OST">
 
+ <!-- Share SNS -->
+ <meta property="og:url" content="http://127.0.0.1:8000/show/2" />
+ <meta property="og:type" content="website" />
+<meta property="og:title"  content="Practice" />
+<meta property="og:description" content="Xin chao" />
+<meta property="og:image" content="http://127.0.0.1:8000/show/2" />
+ <!-- End Share SNS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
@@ -29,7 +36,6 @@
 
     <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-
 <body class="page">
     <!--PRELOADER-->          
     <div id="preloader">
@@ -249,7 +255,14 @@
                                 <li><a href="/advance">上級</a></li>
                             </ul>
                         </li>
-                
+                        <li>
+                            <a href="#">テーマ<i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                @foreach ($category as $value)
+                                <li><a href="/displayCate/{{$value->id}}">{{$value->name}}</a></li>   
+                                @endforeach
+                            </ul>
+                        </li>
                         <li>
                             <a href="#">私に関しては <i class="fa fa-angle-down"></i></a>
                             <ul>
@@ -353,7 +366,9 @@
 
     <!--*Scripts*-->
 
-    <!-- Latest jquery --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js'"></script>
+
+    <div id="fb-root"></div>
+    <!-- Facebook share--><script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="jMalUWvI"></script>
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>
 
     <!-- latest Bootstrap --><script src="{{asset('js/bootstrap.min.js')}}" type="d24e5d0efad4614245bc6604-text/javascript"></script>

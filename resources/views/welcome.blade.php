@@ -69,8 +69,8 @@
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">ログイン</a></li>
-                    <li><a data-toggle="tab" href="#menu1">登録</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home">Login</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Register</a></li>
                   </ul>
                   
                   <div class="tab-content">
@@ -224,14 +224,14 @@
               
                     <div class="top-bar-right pull-right">
                         <ul>
-                            {{-- <li><a href="faq.html">Become a Member </a> </li> --}}
+                            <li><a href="faq.html">Become a Member </a> </li>
                             @guest
                             <li class="nav-item">
                                 <a  href="" data-toggle="modal" data-target="#exampleModal">{{ __('Login') }} / {{ __('Register') }}</a>
                             </li>
                         @else
                             <span >{{ Auth::user()->name }} </span>            
-                        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>ログアウト</a></li>
+                        <li><a href="{{ route('logout') }}"><i class="sl sl-icon-power"></i>Logout</a></li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -260,7 +260,7 @@
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
                         <li class="active">
-                            <a rel ="icon" href="#">ホームページ <i class="fa fa-angle-down"></i></i></a> 
+                            <a rel ="icon" href="#">Home <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
                                 <li><a href="/basic">基本</a></li>
                                 <li><a href="/inter">中級</a></li>
@@ -268,7 +268,15 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">私たちに関しては<i class="fa fa-angle-down"></i></a>
+                            <a href="#">テーマ<i class="fa fa-angle-down"></i></a>
+                            <ul>
+                                @foreach ($category as $value)
+                                <li><a href="/displayCate/{{$value->id}}">{{$value->name}}</a></li>   
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">私に関しては <i class="fa fa-angle-down"></i></a>
                             <ul>
                                 <li><a href="blog-listing.html">連絡</a></li>
                             </ul>
@@ -307,8 +315,8 @@
                 <img src="{{asset('img/website.jpg') }}" alt="slider_04" />
                 <!-- Center Slide Text Layer -->
                 <div class="caption_slide1 caption_slide1_center cap-new wow fadeInDown" data-animation="animated fadeInDown">
-                    
-                     <h2>日本語を聞きましょう</h2>
+                     <h3>Welcome To OST</h3>
+                     <h2>Listening Japanese</h2>
                      
                 </div><!-- /Center Slide Text Layer -->
             </div><!-- /item -->
@@ -392,19 +400,10 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="about-edu-bg">
-                            <img src="storage/icon/images.jpg" alt="About">
-                        </div>
-                        
+                            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="message" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+                        </div>   
                     </div>
-                    <div class="col-xs-12">
-                        <div class="about-form">
-                            <div class="col-sm-9">
-                                <div class="about-sch-form">
-                                    <div class="event-title">
-                                        <h2>Connect to Facebook</h2>
-                                        <h3 class="white">Fall 2019 applications are now open</h3>
-                                        
-                                    </div> <!-- event title -->                                    
+                                                   
                                 </div>
                             </div>
                             
@@ -417,14 +416,6 @@
     </section>
     <!--*EndAbout*-->
 
-   
-    
-   
-
-  
-
-    
-    
     <!--*Footer*-->
     <footer id="mt_footer">
         <div class="container">
@@ -489,7 +480,11 @@
 
     <!--*Scripts*-->
 
-        <!-- Latest jquery --><script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script src="{{asset('js/jquery-3.2.1.min.js')}}" type="6f99da5b342d2d8567d36aeb-text/javascript"></script>
+
+                              <div id="fb-root"></div>
+    <!-- Facebook connect --> <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="RU3QnnCg"></script>
+
+    <!-- Latest jquery --><script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script src="{{asset('js/jquery-3.2.1.min.js')}}" type="6f99da5b342d2d8567d36aeb-text/javascript"></script>
 
     <!-- latest Bootstrap --><script src="{{asset('js/bootstrap.min.js')}}" type="6f99da5b342d2d8567d36aeb-text/javascript"></script>
 

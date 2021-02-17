@@ -98,7 +98,7 @@ body {
     width: 150px;
     height: 150px;
     margin: 0 auto;
-    background: url(../images/loader.gif);
+    /* background: url(../images/loader.gif); */
 /*    background-color: #fff;*/
     opacity: 1;
     visibility: visible;

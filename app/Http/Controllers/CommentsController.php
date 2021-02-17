@@ -27,31 +27,31 @@ class CommentsController extends Controller
         //
     }
     
-    // public function loadComment(Request $request)
-    // {
-    //     $lesson_id  = $request->lesson_id;
-    //     $comment = Comment::where([
-    //         ['lesson_id', '=', $lesson_id],
-    //         ['parrent_id', '=', '0'],
-    //         ])->orderBy('created_at','desc')->limit(5)->get();
-    //     $output     = '';   
-    //     foreach($comment as $key => $value){
-    //     $output .= '<ol class="review-lists">
-    //                 <li class="comment">
-    //                 <div class="activity_rounded"> 
-    //                 <img src="/storage/Iconimage/about.png" alt="image"> </div>     
-    //                 <div class="comment-body">
-    //                 <h4 class="text-left">'.$value->name.'&nbsp;&nbsp;
-    //                  <small class="date-posted pull-right">'.$value->created_at.'</small>
-    //                 </h4>
-    //                 <p>'.$value->body.'</p>
-    //                 <button class="pull-left mt_btn_yellow" onclick="toggleReply('.$value->id.')">Reply</button>
-    //                 </div>
-    //                 </li>
-    //                 </ol>  ';
-    //   }
-    //   return $output;
-    // }
+    public function loadComment(Request $request)
+    {
+        $lesson_id  = $request->lesson_id;
+        $comment = Comment::where([
+            ['lesson_id', '=', $lesson_id],
+            ['parrent_id', '=', '0'],
+            ])->orderBy('created_at','desc')->limit(5)->get();
+        $output     = '';   
+        foreach($comment as $key => $value){
+        $output .= '<ol class="review-lists">
+                    <li class="comment">
+                    <div class="activity_rounded"> 
+                    <img src="/storage/Iconimage/about.png" alt="image"> </div>     
+                    <div class="comment-body">
+                    <h4 class="text-left">'.$value->name.'&nbsp;&nbsp;
+                     <small class="date-posted pull-right">'.$value->created_at.'</small>
+                    </h4>
+                    <p>'.$value->body.'</p>
+                    <button class="pull-left mt_btn_yellow" onclick="toggleReply('.$value->id.')">Reply</button>
+                    </div>
+                    </li>
+                    </ol>  ';
+      }
+      return $output;
+    }
     public function addComment(Request $request)
     {
 
@@ -66,7 +66,7 @@ class CommentsController extends Controller
         $comment->parrent_id = '0';
         $comment->lesson_id  = $request->lesson_id;
         $comment->save();
-        return redirect()->back();
+        return redirect('show/'.$lesson_id);
     }
     public function replyComment(Request $request){
 
@@ -81,7 +81,7 @@ class CommentsController extends Controller
         $reply->parrent_id = $request->get('comment_id');
         $reply->lesson_id  = $request->lesson_id;
         $reply->save();
-     return back()->with('success', 'Comment'); 
+        return redirect('show/'.$lesson_id);
     }
 
     /**
