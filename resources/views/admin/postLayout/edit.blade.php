@@ -2,6 +2,7 @@
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 
 @if(!empty(session('success')))
@@ -63,27 +64,15 @@
     <div class="add-listing-headline">
         <h3>Script</h3>
         </div>   
-
         <div class="row with-forms">
-
-                @error('talker.*')
+                @error('script')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-                @error('script.*')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            @foreach($Array as $key => $values)
-
-            <div class="col-md-3">
-                {{Form::label('talker', '会話者')}}
-                {{Form::text('talker[]', $values , ['id' =>'summary', 'class' => 'WYSIWYG'])}}
-            </div>
-
+            
             <div class="col-md-8">
                 {{Form::label('script', 'テスト')}}
-                {{Form::text('script[]',  $key, ['class' => 'WYSIWYG' ])}}
+                {!! Form::textarea('script',  $lesson->script, ['id' => 'editor']) !!}
             </div>
-                @endforeach
         </div>
 </div>
           
@@ -133,14 +122,11 @@
                 {{Form::label('correct_answer','correct_answer')}}
                 {{Form::text('correct_answerId', $item->correct_answerId, ['class' => 'form-group'])  }}
     </div>
-
-</div> 
-
-</div> 
+  </div> 
+  </div> 
 </div> 
         @endforeach
        {{--End Question--}}                              
-
     {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Update', ['class' => 'btn btn-success pull-right'])}}
             {!! Form::close() !!}
@@ -148,4 +134,11 @@
               </div>
               </div>
           </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

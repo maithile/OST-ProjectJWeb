@@ -6,9 +6,7 @@
 <section id="mt_services" class="light-bg services-section section-inner">
     <div class="container">
     <div class="course-detail">
-
     <div class="row">   
-
     <div class="col-md-8 col-sm-12">
         <div class="post_title">
         <h2>{{$lesson->title}}</h2>
@@ -22,11 +20,9 @@
             <source src="/storage/audioFile/{{$lesson->mp3_file}}" type="audio/mpeg">
         </audio>    
     </div>
-   
     <div class="share pull-right " >
         <div class="fb-share-button" data-href="http://127.0.0.1:8000/home" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
     </div>
-
     <div class="course-tabs">
     <div class="nav-content-c">
     <ul class="nav nav-tabs">
@@ -51,11 +47,9 @@
 </div>
 </div>
         {{-- Script --}}
-        <div id="menu2" class="tab-pane fade">
-                @foreach($Array as $key => $values)
-                <b>{!! $values  !!}</b> : {!!$key !!} <br>
-            @endforeach  </p> 
-            </div>
+    <div id="menu2" class="tab-pane fade">
+        {!! $lesson->script !!}
+    </div>
         {{-- Script  end --}}
         </div>
          </div>
@@ -154,7 +148,6 @@
             {{--  End add comment  --}}
 
     {{-- <div id="comment_show"></div> --}}
-
    {{--Display comment--}} 
    <ol class="review-lists">
       
@@ -171,8 +164,6 @@
                 {{-- ENd Display comment--}}
                 <br>
                 <br>
-
-
         {{--reply form--}}
     <div style="margin-left: 50px" class="reply-form-{{$value->id}} hidden">
     <div class="leave_review">
@@ -181,10 +172,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
             <input type="hidden" name="comment_id" value="{{$value->id}}" /> 
-      
-
     <div class="row">
-
      <div class="col-sm-6">
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -203,9 +191,7 @@
         {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
         {!! Form::close() !!}
     </div>
-
    </div>
-
  </div>
 </div>
         {{--End Reply form--}}

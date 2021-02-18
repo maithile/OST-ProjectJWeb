@@ -8,18 +8,13 @@ class Lesson extends Model
 {
     // 1-n
      protected $table = 'lessons';
-    public $timestamp = false;
+     public $timestamp = false;
+     protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
 
-    protected $casts = [
-        'script' => 'array',    
-        'talker' => 'array',
 
-    ];
-
-   // protected $fillable = ['level_id', 'title','mp3_file', 'script', 'image', 'id'];
     public function questions(){
       
-        return $this->hasMany(Question::class, 'lesson_id', 'id');// trả về kết quả của bảng question. khoa phu trong bang quention
+        return $this->hasMany(Question::class, 'lesson_id', 'id');
     }
 
     public function vocabulary(){

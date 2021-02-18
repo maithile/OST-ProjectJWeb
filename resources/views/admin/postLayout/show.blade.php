@@ -41,10 +41,8 @@
 </div>
         {{-- Script --}}
         <div id="menu2" class="tab-pane fade">
-                @foreach($Array as $key => $values)
-                <b>{!! $values  !!}</b> : {!!$key !!} <br>
-            @endforeach  </p> 
-            </div>
+          {!! $lesson->script !!} 
+        </div>
     </div>
     </div>
     </div>

@@ -41,8 +41,7 @@
     @endforeach
     </table>
     </div>
-    </div>
-
+    </div>W
     </div>
     </div>
     </div>

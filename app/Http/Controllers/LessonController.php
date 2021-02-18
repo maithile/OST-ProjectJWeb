@@ -35,9 +35,6 @@ class LessonController extends Controller
     public function show($id){
         $category    = Catefory::with('pots')->get();
         $lesson      = Lesson::find($id); 
-        $array1      = $lesson->talker; 
-        $array2      = $lesson->script; 
-        $Array       = array_combine($array2, $array1);
         $questions   = $lesson->questions; 
         $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $comment = Comment::where([
@@ -47,7 +44,7 @@ class LessonController extends Controller
         $lesson_show = Lesson::where([
                                      ['id', 'not like', $id]
                                      ])->withCount('comments')->latest()->paginate(4);
-        return view('pages.layoutDetail.show', compact('lesson', 'questions','Array', 'lesson_show', 'comment', 'category', 'comment_count')); 
+        return view('pages.layoutDetail.show', compact('lesson', 'questions', 'lesson_show', 'comment', 'category', 'comment_count')); 
     }
 
     public function  displayCate($id){

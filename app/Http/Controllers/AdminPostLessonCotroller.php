@@ -91,7 +91,6 @@ class AdminPostLessonCotroller extends Controller
         $post_lesson->title = $request->input('title');
         $post_lesson->mp3_file = $fileMp3NameToStore;
         $post_lesson->script = $request->input('script');
-        $post_lesson->talker = $request->input('talker');
         $post_lesson->image = $fileNameToStore;  
         $post_lesson->save();
         $post_lesson->id; 
@@ -129,11 +128,8 @@ class AdminPostLessonCotroller extends Controller
     public function show($id)
     {
          $lesson = Lesson::find($id);
-         $array1  = $lesson->talker; 
-         $array2 = $lesson->script; 
-         $Array = array_combine($array2, $array1);
          $questions= $lesson->questions;
-        return view('admin.postLayout.show', compact('lesson', 'questions', 'Array'));  // tao sau
+        return view('admin.postLayout.show', compact('lesson', 'questions'));  // tao sau
     }
     /**
      * Show the form for editing the specified resource.
@@ -145,13 +141,10 @@ class AdminPostLessonCotroller extends Controller
     {
 
         $lesson = Lesson::find($id); 
-        $array1  = $lesson->talker; 
-        $array2 = $lesson->script; 
-        $Array = array_combine($array2, $array1);
         $questions= $lesson->questions;
         $level = $lesson->level;
         $category = $lesson->category;
-        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'Array', 'category'));
+        return view('admin.postLayout.edit', compact('lesson', 'level','questions', 'category'));
     }
 
     /**
@@ -202,7 +195,6 @@ class AdminPostLessonCotroller extends Controller
         $post_lesson->mp3_file = $fileMp3NameToStore;
     }
         $post_lesson->script = $request->input('script');
-        $post_lesson->talker = $request->input('talker');
       
       if($request->hasFile('image')){
         $post_lesson->image = $fileNameToStore;  

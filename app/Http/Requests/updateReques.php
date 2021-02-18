@@ -28,13 +28,9 @@ class updateReques extends FormRequest
             'title' => 'required',
              //'mp3_file' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             //'image' => 'required|mimes:jpeg,png,gif,jpg,svg|max:2048',
-            'script' => "required|array",
-            "script.*"  => "required|string",
+            'script' => "required|string",
             'level_id' =>  'required|integer',
             'category_id' =>  'required|integer',
-            'talker' => "required|array",
-            "talker.*"  => "required|string",
-
             //for question
             'question' => 'required',
             'correct_answerId' => 'required',

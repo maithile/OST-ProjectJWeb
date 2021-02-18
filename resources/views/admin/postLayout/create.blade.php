@@ -2,7 +2,7 @@
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 
 @if(!empty(session('success')))
@@ -43,7 +43,6 @@
         {!!Form::select('category_id', ['id' => 'テーマ選択'] +  $category) !!} 
            </div>
     </div>
-
     <div class="row with-forms">
         <div class="col-md-6">
             @error('mp3_file')
@@ -69,66 +68,20 @@
         </div>
         <div class="submit-section">
             <div class="row with-forms">
-                    @error('talker.*')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    @error('script.*')
+                    @error('script')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
 
-               <div class="col-md-3">  
-                    {{Form::label('talker', 'talker')}}
-                    {{Form::text('talker[]', '', ['id' =>'summary', 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-                </div>
-
                 <div class="col-md-8">
                     {{Form::label('script', 'テスト')}}
-                    {{Form::text('script[]', '', ['class' => 'WYSIWYG'  ])}}
+                    {{Form::textarea('script', '', ['id' => 'editor'])}}
                 </div>
-
-                <div class="col-md-3">
-                    {{Form::label('talker.*', '会話者')}}
-                    {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-                </div>
-
-                <div class="col-md-8">
-                    {{Form::label('script', 'テスト')}}
-                    {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
-                </div>
-            
-                <div class="col-md-3">
-                    {{Form::label('talker', '会話者')}}
-                    {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-                </div>
-
-                <div class="col-md-8">
-                    {{Form::label('script', 'テスト')}}
-                    {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
-                </div>
-
-            <div class="script-form">
-                <div class="script-add">
-
-                <div class="col-md-3">
-                    {{Form::label('talker', '会話者')}}
-                    {{Form::text('talker[]', '', [ 'class' => 'WYSIWYG', 'placeholder' => 'talker'])}}
-                </div>
-
-                <div class="col-md-8">
-                    {{Form::label('script', 'テスト')}}
-                    {{Form::text('script[]', '', ['class' => 'WYSIWYG'])}}
-                </div>
-            </div>
-            </div>
         </div>
-            <input type="button" onclick="Addscript()" value="追加">
             </div>
        </div>
     </div>        
  {{--End Lesson--}}
-
 　{{--Question--}}  
-
     <div class="add-listing-section">
         <div class="add-listing-headline">
         <h3>質問</h3>
@@ -184,16 +137,26 @@
        {{--End Question--}}  
         {{Form::submit('作成', ['class' => 'btn btn-success pull-right'])}}
             {!! Form::close() !!}
-　@endsection　　
-    <script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+<script>
     function addNew(){
         let html = $('.question-item').html();
         $('.question-list').append(html);
     }
-    </script>
-    <script>
-        function Addscript(){
-            let html = $('.script-add').html();
-            $('.script-form').append(html)
-        }
-　　</script>
+</script>
+
+
+　@endsection　
+　
+ 
+
+
+
