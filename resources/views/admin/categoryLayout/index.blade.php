@@ -1,10 +1,9 @@
 @extends('layout.indexAdmin')
 @section('content')
-
-@if(!empty(session('success')))
-  <div class="alert alert-success"> {{ session('success') }}
-  </div>
-@endif
+    @if(!empty(session('success')))
+    <div class="alert alert-success"> {{ session('success') }}
+    </div>
+    @endif
 <div class="col-lg-12 col-md-12">
     <div class="dashboard-list-box">
     <h4 class="gray">テーマ分類</h4>
@@ -29,7 +28,6 @@
             詳細
             </button></a></td> 
         <td>
-            
        {!!Form::open(['action' => ['CategoryController@destroy', $value->id], 'method' => 'POST'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-primary'])}}
@@ -41,7 +39,6 @@
        <tr>
     </tbody>
     @endforeach
-  
     </table>
     </div>
     </div>

@@ -11,16 +11,14 @@
 
   <div class="col-sm-4">
      <div class="image">
-          <img src="/storage/images/{{$value->image}}" width="50%">
+      <a href="/show/{{$value->id}}"><img src="/storage/images/{{$value->image}}" width="50%"></a>
       </div>
       <br>  
   </div>
-
   <div class="col-sm-8">
-      <div>  <h3>{!! $value->title = preg_replace("/($search)/i","<span class='highlight'>$1</span>", $value->title) !!}</h3></div>
+      <div> <a href="/show/{{$value->id}}"><h3>{!! $value->title = preg_replace("/($search)/i","<span class='highlight'>$1</span>", $value->title) !!}</h3></a> </div>
       <div>{!! preg_replace("/($search)/i","<span class='highlight'>$1</span>", implode(",", $value->script)) !!}</div>   
   </div>
-
   @endforeach
   @elseif(isset($Message))
          <p>{{$Message}}</p>
