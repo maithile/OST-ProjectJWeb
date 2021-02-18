@@ -199,9 +199,7 @@
         <div class="topbar-section">
             <div class="container">
                 <div class="topbar-inner">
-              
-              
-                    <div class="top-bar-right pull-right">
+                  <div class="top-bar-right pull-right">
                         <ul>
                             @guest
                             <li class="nav-item">

@@ -25,7 +25,6 @@
   @endif
  </div>
 </div>
-
   <style>
   .highlight { background-color: #ffa; }  
   </style>
