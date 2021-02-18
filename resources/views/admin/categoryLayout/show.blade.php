@@ -18,17 +18,16 @@
         <th>削除</th>
         </tr>
         </thead>
-   @foreach ($lesson  as $value)
+   @foreach ($lesson as $value)
     <tbody>
     <tr>
         <td>{{$value->id}}</td>
         <td>{{$value->title}}</td>
       
-        <td><a href="{{route('category.show', $value->id)}}"><button class="btn btn-default" type="button">
+        <td><a href="{{route('post.show', $value->id)}}"><button class="btn btn-default" type="button">
             詳細
             </button></a></td> 
         <td>
-            
        {!!Form::open(['action' => ['AdminPostLessonCotroller@destroy', $value->id], 'method' => 'POST'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-primary'])}}

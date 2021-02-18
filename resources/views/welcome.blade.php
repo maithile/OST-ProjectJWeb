@@ -260,7 +260,7 @@
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
                         <li class="active">
-                            <a rel ="icon" href="#">Home <i class="fa fa-angle-down"></i></i></a> 
+                            <a rel ="icon" href="#">ホームページ <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
                                 <li><a href="/basic">基本</a></li>
                                 <li><a href="/inter">中級</a></li>
@@ -323,18 +323,6 @@
             <!-- End of Slide -->
 
         </div><!-- End of Wrapper For Slides -->
-
-        <!-- Left Control -->
-        <a class="left carousel-control" href="#home-banner" role="button" data-slide="prev">
-            <span class="fa fa-angle-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <!-- Right Control -->
-        <a class="right carousel-control" href="#home-banner" role="button" data-slide="next">
-            <span class="fa fa-angle-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div> <!-- End Slider -->
 
     <!-- About Courses -->

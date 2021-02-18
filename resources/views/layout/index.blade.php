@@ -240,7 +240,7 @@
             <div class="container">
 
                 <div class="logo pull-left">
-                    <h2><a href="index.html"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
+                    <h2><a href="/home"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
                 </div>
                 
                 <div id="navbar" class="navbar-nav-wrapper pull-right">

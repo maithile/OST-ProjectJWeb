@@ -1,8 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Catefory;
+use App\Lesson;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -86,8 +85,6 @@ class CategoryController extends Controller
     {
         $category = Catefory::find($id);
         $category->delete();
-        return redirect('/admin/category')->with('success', 'Ⅾeleted category success'); 
-
-        
+        return redirect('/admin/category')->with('success', 'Ⅾeleted category success');     
     }
 }

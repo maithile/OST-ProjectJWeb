@@ -221,7 +221,7 @@ class AdminPostLessonCotroller extends Controller
 
     public function destroy($id)
     {
-        $lesson =Lesson::find($id);
+        $lesson = Lesson::find($id);
 
         if(isset($lesson->image)){
             Storage::delete('public/images/' .$lesson->image);

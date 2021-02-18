@@ -32,7 +32,6 @@
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-primary'])}}
         {!!Form::close()!!} 
-     
         </div>
         </td>
         </tr>
@@ -41,7 +40,7 @@
     @endforeach
     </table>
     </div>
-    </div>W
+    </div>
     </div>
     </div>
     </div>
