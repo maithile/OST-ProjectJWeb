@@ -4,7 +4,7 @@
 <div class="breadcrumb-main">    
     <div class="container">        
         <ul class="breadcrumb">
-            <li><a href="/home">ホームページ</a></li>
+            <li><a href="/">ホームページ</a></li>
             <li><a href="/inter">中級</a></li>
           
         </ul>

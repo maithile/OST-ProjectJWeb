@@ -35,22 +35,22 @@
     <div class="over-view">      
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-    @foreach ($questions as $value)
+    {{-- @foreach ($questions as $value)
     <div><h2> {{$value->question}} </h2></div>
     <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} <br><br>
     <input type="radio" id="male" name="answer" value="2"> {{ $value->answer2}} <br><br>
     <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
     @endforeach  
     <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-    <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}">
+    <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}"> --}}
 </div>
 </div>
 </div>
-        {{-- Script --}}
+  
     <div id="menu2" class="tab-pane fade">
         {!! $lesson->script !!}
     </div>
-        {{-- Script  end --}}
+        
         </div>
          </div>
     {{-- comment--}}
@@ -146,109 +146,46 @@
                     </div>
                 </div>
             {{--  End add comment  --}}
-
-    {{-- <div id="comment_show"></div> --}}
-   {{--Display comment--}} 
-   <ol class="review-lists">
-      
-    @foreach ($comment as $value)
-        <li class="comment">
-            <div class="activity_rounded">
-                <img src="/storage/icon/icon.jpg" alt="image"> </div>
-            <div class="comment-body">
-                <h4 class="text-left">{{$value->name}} &nbsp;&nbsp;
-                    <small class="date-posted pull-right">{{ \Carbon\Carbon::parse($value->created_at)->diffForHumans() }}</small>
-                </h4>
-                <p>{{$value->body}} </p>
-                <button class="pull-left mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">返事</button>
-                {{-- ENd Display comment--}}
-                <br>
-                <br>
-        {{--reply form--}}
-    <div style="margin-left: 50px" class="reply-form-{{$value->id}} hidden">
-    <div class="leave_review">
-        <br>
-        {!! Form::open(['action' => ['CommentsController@replyComment'], 'method' => 'POST', 'id' => 'postForm' ]) !!}
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-            <input type="hidden" id ="lesson_id" name="lesson_id" value="{{$lesson->id}}" /> 
-            <input type="hidden" name="comment_id" value="{{$value->id}}" /> 
-    <div class="row">
-     <div class="col-sm-6">
-            @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror 
-        {{Form::label('name','Name')}}
-        {{Form::text('name', '', ['class' => 'form-group', 'id' => 'name' ])  }}
-     </div>
-     <div class="col-sm-12">
-            @error('body')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror 
-        {{Form::label('body','Message')}}
-        {{Form::textarea('body', '', ['class' => 'form-group', 'id' => 'body'])  }}
-     </div>
-    <div class="col-md-12">  
-        {{Form::submit('Submit', ['class' => 'mt_btn_yellow pull-right', 'id' => 'submit'])}}
-        {!! Form::close() !!}
-    </div>
-   </div>
- </div>
-</div>
-        {{--End Reply form--}}
-
-            
-              {{-- Display Reply--}} 
-                     @foreach ($value->replyComment as $reply)
-                    <div class="">
-                     <h4 class="text-left">{{ $reply->name}} &nbsp;&nbsp;
-                         <small lass="date-posted pull-right">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</small>
-                     </h4>
-                     <p>{{ $reply->body}} </p>
-                     <button class=" mt_btn_yellow" onclick="toggleReply('{{$value->id}}')">返事</button>
-                 @endforeach
-                 {{-- End Display Reply--}}
-        </li>         
-        @endforeach
-     </ol>
+    <div id="comment_show"></div>
+{{-- 
                  <script>
                   function toggleReply(commentId){
                       $('.reply-form-'+commentId).toggleClass('hidden');
                   }
-                 </script>
-
-                  <script> 
-                    $(document).ready(function(){
-                 　　 $.ajaxSetup({
-                  　　headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+                 </script> --}}
+<script> 
+    $(document).ready(function(){
+    　　 $.ajaxSetup({
+    　　headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+     });
+        loadComment(); 
+    function loadComment(){
+        var lesson_id= $("#lesson_id").val();
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+                method: "POST",
+                url: "{{url('/loadComment')}}",
+                dataType: "html",
+                data: {_token:_token, lesson_id: lesson_id},     
+                success: function(data){
+                $('#comment_show').html(data);
+                }
                 });
-                      loadComment(); 
-                    function loadComment(){
-                     var lesson_id= $("#lesson_id").val();
-                     var _token = $('input[name="_token"]').val();
-                     $.ajax({
-                             method: "POST",
-                             url: "{{url('/loadComment')}}",
-                             dataType: "html",
-                             data: {_token:_token, lesson_id: lesson_id},     
-                             success: function(data){
-                                $('#comment_show').html(data);
-                               }
-                              });
-                              }
-                            }); 
-                  </script>              
-                   {{--  end display comment  --}}
-                    </div>          
-                    {{--  end comment  --}}  
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-                <br>
-            </div>
-            </div>
-            </div>
+                }
+            }); 
+ </script>              
+                
+        </div>          
+    
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
+        </div>
+        </div>
             </section>         
             @endsection

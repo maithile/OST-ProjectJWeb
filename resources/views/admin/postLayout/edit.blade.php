@@ -1,6 +1,5 @@
 @extends('layout.indexAdmin')
 @section('content')
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
@@ -93,28 +92,7 @@
                     @foreach ($questions as $item)
                 {{Form::label('question','question')}}
                 {{Form::text('question', $item->question, ['class' => 'form-group', 'placeholder' => 'Question'])  }}
-        </div>
-        <div class="col-md-8">
-                    @error('answer1')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer1', 1)}}
-                {{Form::text('answer1', $item->answer1, ['class' => 'form-group']) }}
-        </div>
-        <div class="col-md-8">
-                    @error('answer2')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer2', 2 )}}
-                {{Form::text('answer2', $item->answer2, ['class' => 'form-group'])  }}
-        </div>
-        <div class="col-md-8">
-                    @error('answer3')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer3',3)}}
-                {{Form::text('answer3', $item->answer3, ['class' => 'form-group'])  }}
-        </div>                  
+        </div>                
         <div class="col-md-8">
                     @error('correct_answerId')
                     <div class="alert alert-danger">{{ $message }}</div>

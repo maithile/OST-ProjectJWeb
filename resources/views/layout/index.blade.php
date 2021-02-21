@@ -238,13 +238,13 @@
             <div class="container">
 
                 <div class="logo pull-left">
-                    <h2><a href="/home"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
+                    <h2><a href="/"><!-- <img  class="logo-img" src="images/w-logo.png" alt=""> -->OST</a></h2>
                 </div>
                 
                 <div id="navbar" class="navbar-nav-wrapper pull-right">
                     <ul class="nav navbar-nav navbar-right" id="responsive-menu">
                         <li >
-                            <a rel ="icon" href="/home">ホームページ <i class="fa fa-angle-down"></i></i></a> 
+                            <a rel ="icon" href="/">ホームページ <i class="fa fa-angle-down"></i></i></a> 
                             <ul>
                                 <li class="active"><a href="/basic">基本</a></li>
                                 <li><a href="/inter">中級</a></li>
@@ -307,7 +307,7 @@
             <div class="col-md-5 col-sm-12 col-xs-12">
                 <div class="follow_us">
                     
-                    <h2><a href="/home">OST</a></h2>
+                    <h2><a href="/">OST</a></h2>
                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br><br>
                     <div class="textwidget">
                         <p class="white">Tokyo Japan</p>

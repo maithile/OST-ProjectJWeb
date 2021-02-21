@@ -27,18 +27,21 @@ Route::get('/show/{id}', 'LessonController@show')->name('show');
 // layout Topics
 Route::get('/displayCate/{id}', 'LessonController@displayCate')->name('displayCate');
 
-// answer
-Route::post('/answer-submit/{id}', 'LessonController@answerSubmit')->name("answer-submit");
+// quetion and answer
+Route::get('/question/{id}', 'LessonController@question')->name('question');
 
 // Route::resurce('/comment', 'CommentsController');
 Route::post('/loadComment', 'CommentsController@loadComment');
 Route::post('/addComment', 'CommentsController@addComment');
 Route::post('/replyComment', 'CommentsController@replyComment');
 
+//for question 
+
 // for Admin 
  Route::middleware('auth')->group(function(){
 
  Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
+ Route::resource('/admin/question', 'QuestionsController')->middleware('admin');
  Route::resource('/admin/category', 'CategoryController')->middleware('admin');
  Route::get('/logout', 'Auth\LoginController@logout');
 });
@@ -46,7 +49,7 @@ Route::post('/replyComment', 'CommentsController@replyComment');
 Auth::routes();
 
 //homepage
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 

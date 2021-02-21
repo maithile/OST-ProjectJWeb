@@ -39,7 +39,7 @@
             <!-- Responsive Navigation Trigger -->
            <div class="dashboard-sticky-nav">
                 <div class="content-left pull-left">
-                    <h2><a href="/home" class="white">OST</a></h2>
+                    <h2><a href="/" class="white">OST</a></h2>
                 </div>
                 <div class="content-right pull-right">
                     <div class="search-bar">
@@ -90,10 +90,23 @@
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
                     <ul>
-                        <li>    <a> レッスン</a>
+                        <li>    
+
+                            <a> レッスン</a>
                             <ul> 
                                 <li><a href="{{route('post.index')}}"> レッスン管理</span></a></li>
                                 <li><a href="{{route('post.create')}}">レッスン作成</span></a></li>
+                                
+                            </ul>   
+                            
+                        </li>
+
+                        <li>    
+
+                            <a> 質問</a>
+                            <ul> 
+                                <li><a href=""> 質問管理</span></a></li>
+                                <li><a href="">質問作成</span></a></li>
                                 
                             </ul>   
                             
@@ -108,6 +121,7 @@
                         </li>
                         <li><a href="{{ route('logout') }}">ログアウト</a></li>
                     </ul>
+
                 </div>
             </div>
 

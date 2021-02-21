@@ -34,10 +34,6 @@ class updateReques extends FormRequest
             //for question
             'question' => 'required',
             'correct_answerId' => 'required',
-            'answer1' => "required",
-            'answer2' => "required",
-            'answer3' => "required",
-    
         ];
     }
 }

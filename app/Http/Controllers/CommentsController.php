@@ -16,7 +16,6 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-
     public function __construct()
     {
         //return $this->middleware('auth');
@@ -39,10 +38,10 @@ class CommentsController extends Controller
         $output .= '<ol class="review-lists">
                     <li class="comment">
                     <div class="activity_rounded"> 
-                    <img src="/storage/Iconimage/about.png" alt="image"> </div>     
+                    <img src="/storage/icon/icon.jpg" alt="image">  </div>     
                     <div class="comment-body">
                     <h4 class="text-left">'.$value->name.'&nbsp;&nbsp;
-                     <small class="date-posted pull-right">'.$value->created_at.'</small>
+                     <small class="date-posted pull-right">'.\Carbon\Carbon::parse($value->created_at)->diffForHumans().'</small>
                     </h4>
                     <p>'.$value->body.'</p>
                     <button class="pull-left mt_btn_yellow" onclick="toggleReply('.$value->id.')">Reply</button>
@@ -66,7 +65,8 @@ class CommentsController extends Controller
         $comment->parrent_id = '0';
         $comment->lesson_id  = $request->lesson_id;
         $comment->save();
-        return redirect('show/'.$lesson_id);
+        // dd($lesson_id);
+        return redirect()->route('show',$lesson_id);
     }
     public function replyComment(Request $request){
 

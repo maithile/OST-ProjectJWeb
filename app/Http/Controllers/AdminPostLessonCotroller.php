@@ -33,7 +33,7 @@ class AdminPostLessonCotroller extends Controller
     public function create()
 
     {
-    
+
         $lesson = Lesson::pluck('title','id')->all();
         $level = Level::pluck('level','id')->all();
         $category = Catefory::pluck('name','id')->all();
@@ -110,9 +110,6 @@ class AdminPostLessonCotroller extends Controller
           $question = new Question;
             $question->lesson_id =  $post_lesson->id;
             $question->question = $request->input('question');;
-            $question->answer1 = $request->input('answer1');
-            $question->answer2 = $request->input('answer2');
-            $question->answer3 = $request->input('answer3');
             $question->correct_answerId = $request->input('correct_answerId');
             $question->save();
     }
@@ -204,9 +201,6 @@ class AdminPostLessonCotroller extends Controller
     //for question
        $question = Question::find($id);
        $question->question = $request->input('question');
-       $question->answer1 = $request->input('answer1');
-       $question->answer2 = $request->input('answer2');
-       $question->answer3 = $request->input('answer3');
        $question->correct_answerId = $request->input('correct_answerId');
        $question->save();
         return redirect('/admin/post')->with('success', 'update succeed'); 

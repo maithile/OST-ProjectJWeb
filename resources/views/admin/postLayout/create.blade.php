@@ -87,37 +87,14 @@
         <h3>質問</h3>
         </div>
         <div class="question-list">
-            <div class="question-item row with-forms">     
+            <div class="question-item row with-forms"> 
+                    
             　<div class="col-md-8">
                     @error('question')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 {{Form::label('question','質問')}}
                 {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => '質問'])  }}
-                </div>
-
-                <div class="col-md-8">
-                    @error('answer1')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer1','答え１')}}
-                {{Form::text('answer1', '', ['class' => 'form-group']) }}
-                </div>
-
-                <div class="col-md-8">
-                    @error('answer2')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer2','答え２')}}
-                {{Form::text('answer2', '', ['class' => 'form-group'])  }}
-                </div>
-
-                <div class="col-md-8">
-                    @error('answer3')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                {{Form::label('answer3','答え２')}}
-                {{Form::text('answer3', '', ['class' => 'form-group'])  }}
                 </div>
 
                 <div class="col-md-8">
