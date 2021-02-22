@@ -43,7 +43,7 @@
                         
                             <div class="admin-ft pull-right">
                                 <ul>
-                                    <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>{{$comment_count->count()}}</span></a></li>
+                                    <li><a href="#" tabindex="-1"><i class="fa fa-user"></i><span>0 {{$value->comment_count}}</span></a></li>
                                 </ul>
                             </div>
                         </div>

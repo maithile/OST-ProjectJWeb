@@ -41,10 +41,7 @@ class LessonController extends Controller
         $category    = Catefory::with('pots')->get();
         $lesson      = Lesson::find($id); 
         $questions  = Question::where('lesson_id','=', $id)->with('answers')->get(); 
-      
-       
-        
-      
+    
         $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $comment = Comment::where([
                                     ['lesson_id', '=', $id],
@@ -59,7 +56,7 @@ class LessonController extends Controller
     public function  displayCate($id){
 
         $category       = Catefory::all();
-        $comment_count  = Comment::where('lesson_id', '=', $id)->get();
+        $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $categoryDetail = Catefory::where('id', '=', $id)->get();
         $lesson         = Lesson::where('category_id','=', $id)->paginate(5);  
         return view('pages.layoutDetail.displayCate', compact('lesson', 'category', 'comment_count', 'categoryDetail')); 
