@@ -29,13 +29,13 @@
     <div class="over-view">  
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     @foreach ($questions as $value)
-    <div><h2> {{$value->question}} </h2></div>
-    <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} <br><br>
+    <div><h2> {{$value->question}} </h2></div>   
+    <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} </li><br><br>
     <input type="radio" id="male" name="answer" value="2"> {{ $value->answer2}} <br><br>
     <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
-    @endforeach  
-    <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-    <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}">
+
+    <div><h2>正解： {{$value->correct_answerId}} </h2></div>
+    @endforeach 
 </div>
 </div>
 </div>

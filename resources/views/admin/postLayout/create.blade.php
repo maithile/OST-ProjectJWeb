@@ -97,6 +97,29 @@
                 {{Form::text('question', '', ['class' => 'form-group', 'placeholder' => '質問'])  }}
                 </div>
 
+                　<div class="col-md-8">
+                    @error('answer1')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                {{Form::label('answer1','答え１')}}
+                {{Form::text('answer1', '', ['class' => 'form-group'])  }}
+                </div>
+
+                　<div class="col-md-8">
+                    @error('answer2')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                {{Form::label('answer2','答え2')}}
+                {{Form::text('answer2', '', ['class' => 'form-group'])  }}
+                </div>
+                　<div class="col-md-8">
+                    @error('answer3')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                {{Form::label('answer3','答え3')}}
+                {{Form::text('answer3', '', ['class' => 'form-group'])  }}
+                </div>
+
                 <div class="col-md-8">
                     @error('correct_answerId')
                     <div class="alert alert-danger">{{ $message }}</div>

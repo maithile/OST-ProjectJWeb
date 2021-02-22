@@ -13,5 +13,7 @@ class Level extends Model
   public function lesson(){
      return $this->hasMany(Lesson::class, 'level_id', 'id'); // co nhieu post tra ve khoa phu trong bang lesson
   }
+
+
      
 }

@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categoryLayout.create');
     }
 
     /**
@@ -35,7 +35,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+    
+            'name' => 'required'
+          
+        ]);
+        // create 
+        $category = new Catefory;
+        $category->name = $request->input('name');    
+        $category->save();
+        return redirect('/admin/category');
     }
 
     /**

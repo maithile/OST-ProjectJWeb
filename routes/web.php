@@ -28,12 +28,11 @@ Route::get('/show/{id}', 'LessonController@show')->name('show');
 Route::get('/displayCate/{id}', 'LessonController@displayCate')->name('displayCate');
 
 // quetion and answer
-Route::get('/question/{id}', 'LessonController@question')->name('question');
+// Route::post('/question/{id}', 'LessonController@question')->name('question');
 
-// Route::resurce('/comment', 'CommentsController');
 Route::post('/loadComment', 'CommentsController@loadComment');
 Route::post('/addComment', 'CommentsController@addComment');
-Route::post('/replyComment', 'CommentsController@replyComment');
+
 
 //for question 
 
@@ -41,7 +40,7 @@ Route::post('/replyComment', 'CommentsController@replyComment');
  Route::middleware('auth')->group(function(){
 
  Route::resource('/admin/post', 'AdminPostLessonCotroller')->middleware('admin');
- Route::resource('/admin/question', 'QuestionsController')->middleware('admin');
+//  Route::resource('/admin/question', 'QuestionsController')->middleware('admin');
  Route::resource('/admin/category', 'CategoryController')->middleware('admin');
  Route::get('/logout', 'Auth\LoginController@logout');
 });

@@ -19,6 +19,9 @@ class CreateQuestionsTable extends Migration
             $table->bigInteger('lesson_id')->unsigned();
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->string('question');
+            $table->string('answer1');
+            $table->string('answer2');
+            $table->string('answer3');
             $table->string('correct_answerId');
             $table->timestamps();
          });

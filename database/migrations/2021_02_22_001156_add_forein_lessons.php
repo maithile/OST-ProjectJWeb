@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddanswerToQuestion extends Migration
+class AddForeinLessons extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddanswerToQuestion extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->string('answer1')->after('question');
-            $table->string('answer2')->after('answer1');
-            $table->string('answer3')->after('answer2');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->bigInteger('category_id')->after('level_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('catefories')->onDelete('cascade');
         });
     }
 
@@ -27,8 +26,8 @@ class AddanswerToQuestion extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
-       
+        Schema::table('lessons', function (Blueprint $table) {
+            //
         });
     }
 }

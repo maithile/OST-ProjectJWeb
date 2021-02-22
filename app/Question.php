@@ -3,6 +3,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Question extends Model
 {
     // 1-n
@@ -16,7 +17,7 @@ public function lessons(){
   }
 
 public function answers(){
-  return $this->hasMany(Answer::class, 'question_id', 'id');
+  return $this->hasMany(Answer::class, 'question_id');
 }
 
 public function storeQuestion($data){

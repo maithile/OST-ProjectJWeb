@@ -109,7 +109,10 @@ class AdminPostLessonCotroller extends Controller
 
           $question = new Question;
             $question->lesson_id =  $post_lesson->id;
-            $question->question = $request->input('question');;
+            $question->question = $request->input('question');
+            $question->answer1 = $request->input('answer1');
+            $question->answer2 = $request->input('answer2');
+            $question->answer3 = $request->input('answer3');
             $question->correct_answerId = $request->input('correct_answerId');
             $question->save();
     }
@@ -199,12 +202,16 @@ class AdminPostLessonCotroller extends Controller
     $post_lesson->save();
 
     //for question
-       $question = Question::find($id);
-       $question->question = $request->input('question');
-       $question->correct_answerId = $request->input('correct_answerId');
-       $question->save();
-        return redirect('/admin/post')->with('success', 'update succeed'); 
-       
+   
+    $question = Question::find($id);
+    $question->question = $request->input('question');
+    $question->answer1 = $request->input('answer1');
+    $question->answer2 = $request->input('answer2');
+    $question->answer3 = $request->input('answer3');
+    $question->correct_answerId = $request->input('correct_answerId');
+    $question->save();
+     
+     return redirect('/admin/post')->with('success', 'Create lesson success'); 
     }
     /**
      * Remove the specified resource from storage.

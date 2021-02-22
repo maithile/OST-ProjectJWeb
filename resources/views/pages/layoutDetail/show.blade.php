@@ -30,22 +30,23 @@
     <li><a data-toggle="tab" href="#menu2">脚本</a></li>
     </ul>
     <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-    <div class="post_body">
-    <div class="over-view">      
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-    {{-- @foreach ($questions as $value)
-    <div><h2> {{$value->question}} </h2></div>
-    <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} <br><br>
-    <input type="radio" id="male" name="answer" value="2"> {{ $value->answer2}} <br><br>
-    <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
-    @endforeach  
-    <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
-    <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}"> --}}
-</div>
-</div>
-</div>
+        <div id="home" class="tab-pane fade in active">
+        <div class="post_body">
+        <div class="over-view">      
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    
+        @foreach ($questions as $value)
+        <div><h2> {{$value->question}} </h2></div>
+        <input type="radio" id="male" name="answer" value="1"> {{ $value->answer1}} <br><br>
+        <input type="radio" id="male" name="answer" value="2"> {{ $value->answer2}} <br><br>
+        <input type="radio" id="male" name="answer" value="3"> {{ $value->answer3}} <br><br><br>
+        @endforeach  
+        <input class="btn btn-primary" id="check-btn" type="submit" name ="submit" value="Submit">
+        <input type="hidden" id="correct-ans" name ="correct-ans" value="{{ $value->correct_answerId}}">
+       
+    </div>
+    </div>
+    </div>
   
     <div id="menu2" class="tab-pane fade">
         {!! $lesson->script !!}

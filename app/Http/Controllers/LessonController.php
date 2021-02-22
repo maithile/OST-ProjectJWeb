@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use App\Lesson;
 use App\Level;
 use App\Question;
+use App\Answer;
+use DB;
 use App\Comment;
 use App\Catefory;
+use App\Result;
+use PhpParser\Node\Stmt\Foreach_;
+
 class LessonController extends Controller
 {
     public function index(){ 
@@ -15,7 +20,7 @@ class LessonController extends Controller
         return view('welcome'); // ket noi controller voi view
     }
     public function basic(){
-
+      
         $category = Catefory::all();
         $lesson    = Lesson::where('level_id','=', 1)->withCount('comments')->paginate(5);   
         return view('pages.layouts.basic',  compact('lesson', 'category'));
@@ -35,7 +40,11 @@ class LessonController extends Controller
     public function show($id){
         $category    = Catefory::with('pots')->get();
         $lesson      = Lesson::find($id); 
-        $questions   = $lesson->questions; 
+        $questions  = Question::where('lesson_id','=', $id)->with('answers')->get(); 
+      
+       
+        
+      
         $comment_count = Comment::where('lesson_id', '=', $id)->get();
         $comment = Comment::where([
                                     ['lesson_id', '=', $id],
@@ -74,5 +83,15 @@ class LessonController extends Controller
         else  
         return view ('pages.layoutDetail.search', compact('category', 'search', 'lesson'))->withMessage('No result! Try agian!'); 
     }
+
+    // public function question(Request $request){
+
+
+    //   $input = $request->input('Mit');
+    //   $questions  = Question::where('lesson_id','=', $request->id)->with('answers')->get(); 
+      
+    //   return view('pages.layoutDetail.question', compact('input', 'questions'));
+      
+    // }
 }
 

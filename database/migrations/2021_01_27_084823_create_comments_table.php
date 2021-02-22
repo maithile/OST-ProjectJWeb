@@ -18,6 +18,9 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->text('body');
 
+
+              // $table->bigInteger('category_id')->after('id')->unsigned();
+            // $table->foreign('category_id')->references('id')->on('catefories')->onDelete('cascade');
             // $table->bigInteger('user_id')->nullable();
             // $table->foreign('user_id')->references('id')->on('users');
 
