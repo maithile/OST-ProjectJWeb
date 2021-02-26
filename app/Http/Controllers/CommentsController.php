@@ -53,7 +53,6 @@ class CommentsController extends Controller
     }
     public function addComment(Request $request)
     {
-
        $this->validate($request, [
            'name' => 'required',
            'body' => 'required',
@@ -65,24 +64,23 @@ class CommentsController extends Controller
         $comment->parrent_id = '0';
         $comment->lesson_id  = $request->lesson_id;
         $comment->save();
-        // dd($lesson_id);
         return redirect()->route('show',$lesson_id);
     }
-    public function replyComment(Request $request){
+    // public function replyComment(Request $request){
 
-        $this->validate($request, [
-            'name' => 'required',
-            'body' => 'required',
-        ]);
-        $lesson_id    = $request->lesson_id;
-        $reply        = new Comment();
-        $reply->body  = $request->get('body');
-        $reply->name  = $request->get('name');
-        $reply->parrent_id = $request->get('comment_id');
-        $reply->lesson_id  = $request->lesson_id;
-        $reply->save();
-        return redirect('show/'.$lesson_id);
-    }
+    //     $this->validate($request, [
+    //         'name' => 'required',
+    //         'body' => 'required',
+    //     ]);
+    //     $lesson_id    = $request->lesson_id;
+    //     $reply        = new Comment();
+    //     $reply->body  = $request->get('body');
+    //     $reply->name  = $request->get('name');
+    //     $reply->parrent_id = $request->get('comment_id');
+    //     $reply->lesson_id  = $request->lesson_id;
+    //     $reply->save();
+    //     return redirect('show/'.$lesson_id);
+    // }
 
     /**
      * Show the form for creating a new resource.

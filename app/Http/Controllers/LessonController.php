@@ -30,7 +30,6 @@ class LessonController extends Controller
         $category = Catefory::all();
         $lesson    = Lesson::where('level_id','=', 2)->withCount('comments')->paginate(5); 
         return view('pages.layouts.inter',  compact('lesson', 'category')); 
-
     }
     public function advance(){
         $category = Catefory::all();
@@ -80,15 +79,5 @@ class LessonController extends Controller
         else  
         return view ('pages.layoutDetail.search', compact('category', 'search', 'lesson'))->withMessage('No result! Try agian!'); 
     }
-
-    // public function question(Request $request){
-
-
-    //   $input = $request->input('Mit');
-    //   $questions  = Question::where('lesson_id','=', $request->id)->with('answers')->get(); 
-      
-    //   return view('pages.layoutDetail.question', compact('input', 'questions'));
-      
-    // }
 }
 
